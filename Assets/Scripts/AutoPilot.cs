@@ -69,7 +69,7 @@ public class AutoPilot : MonoBehaviour {
         dRot2 = Vector3.zero;
         // bool oT = true;
         distToTarget = dPos.magnitude;
-        if(dPos.magnitude > 0.1 ) {
+        if(dPos.magnitude > 0.1 && goToPos || goToTransform) {
             atTarget = false;
             Vector2 xz = new Vector2(dPos.x, dPos.z);
             tRot.y = Mathf.Atan2(xz.x, xz.y) * (360f/6.28f);

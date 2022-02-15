@@ -46,6 +46,9 @@ public class Helm : Interactable {
         }
 
         if(autopilot) {
+            if(aP.atTarget) {
+                autopilot = false;
+            }
             if(aP == null) {
                 autopilot = false;
                 Debug.LogWarning("Atempted to use an AutoPilot, but none linked");
