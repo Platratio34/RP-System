@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 381262943}
-  m_IndirectSpecularColor: {r: 0.37311992, g: 0.38074034, b: 0.35872713, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311947, g: 0.38074005, b: 0.35872722, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -808,6 +808,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &586538450
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 586538451}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &586538451
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 586538450}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -0.96}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1375122826}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &631561041
 GameObject:
   m_ObjectHideFlags: 0
@@ -892,7 +922,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 631561041}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 20.39, y: 0, z: 6.36}
+  m_LocalPosition: {x: 8.6, y: 0, z: 21.37}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1427938650}
@@ -1411,7 +1441,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 893916515}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 20.39, y: 2, z: 6.36}
+  m_LocalPosition: {x: 8.6, y: 2, z: 21.37}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1756,6 +1786,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1834090234}
+  - {fileID: 586538451}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1908,21 +1939,21 @@ MonoBehaviour:
   goToRot: 0
   targetRot: {x: 0, y: 0, z: 0}
   waitRotForPos: 1
-  goToTransform: 1
-  targetTrans: {fileID: 564029899}
+  goToTransform: 0
+  targetTrans: {fileID: 586538451}
   sameRot: 0
-  distToTransform: 0.4
+  distToTransform: 0
   flatZ: 1
   tLatVel: {x: 0, y: 0, z: 0}
-  tRotVel: {x: 0, y: -15, z: 0}
-  tRot: {x: -0, y: -31.496319, z: 0}
-  distToTarget: 20.022161
-  dPos: {x: -10.455695, y: 0, z: 17.075285}
+  tRotVel: {x: 0, y: 15, z: 0}
+  tRot: {x: -0, y: 151.99901, z: 0}
+  distToTarget: 24.220589
+  dPos: {x: 11.4, y: 0, z: -21.37}
   dRot: {x: 0, y: 0, z: 0}
-  dRot2: {x: 0, y: -31.496319, z: 0}
+  dRot2: {x: 0, y: 151.99901, z: 0}
   ship: {fileID: 631561042}
   cThrust: {x: 0, y: 0, z: 0}
-  cRot: {x: 0, y: -0.75, z: 0}
+  cRot: {x: 0, y: 0.75, z: 0}
   atTarget: 0
 --- !u!1 &1615772461
 GameObject:
