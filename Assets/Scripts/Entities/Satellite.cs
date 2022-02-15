@@ -82,6 +82,7 @@ public class Satellite : Entity {
             CalulateOrbit();
         }
         cVel = transform.position - lpos;
+        lpos = transform.position;
         cVel /= Time.deltaTime;
         orbitalPos += Time.fixedDeltaTime;
         orbitalPos %= orbit.period;

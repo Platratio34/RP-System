@@ -20,15 +20,19 @@ public class Ship : Entity {
     public ThrustArray thrustArray;
 
     void Update() {
-        if(orbit.parent!=null) {
-            Vector3 dPos = transform.position - pPos;
-            dPos /= Time.deltaTime;
-            vel = dPos;
-            pPos = transform.position;
-        } else {
-            vel += accl * Time.deltaTime;
-            transform.position += vel * Time.deltaTime;
+        // if(orbit.parent!=null) {
+        //     Vector3 dPos = transform.position - pPos;
+        //     dPos /= Time.deltaTime;
+        //     vel = dPos;
+        //     pPos = transform.position;
+        // } else {
+        vel += accl * Time.deltaTime;
+        Vector3 mVel = new Vector3(vel.x,vel.y,vel.z);
+        if(cSat != null) {
+            mVel -= cSat.getVel();
         }
+        transform.position += mVel * Time.deltaTime;
+
         rVel += rAccl * Time.deltaTime;
         transform.Rotate(rVel * Time.deltaTime);
     }
@@ -100,9 +104,13 @@ public class Ship : Entity {
     }
 
     public Vector3 getRelativeVel() {
-        Vector3 outV = vel.x * transform.forward;
-        outV += vel.y * transform.up;
-        outV += vel.z * transform.right;
+        Vector3 eV = new Vector3(vel.x,vel.y,vel.z);
+        if(isInSOI()) {
+            eV -= cSat.getVel();
+        }
+        Vector3 outV = eV.x * transform.forward;
+        outV += eV.y * transform.up;
+        outV += eV.z * transform.right;
         return outV;
     }
 
@@ -115,6 +123,14 @@ public class Ship : Entity {
         outV += inV.y * transform.up;
         outV += inV.z * transform.right;
         return outV;
+    }
+
+    public bool isInSOI() {
+        return cSat != null;
+    }
+
+    public Vector3 getSatVel() {
+        return cSat.getVel();
     }
 
     [Serializable]

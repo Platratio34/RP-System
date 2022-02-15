@@ -59,12 +59,16 @@ public class AutoPilot : MonoBehaviour {
                 dRot = targetTrans.eulerAngles - shipT.eulerAngles;
             }
             if(shipT.parent != targetTrans) {
-                Satellite s = shipT.parent.GetComponent<Satellite>();
-                float v = ship.makeRel((transLPos - targetTrans.position) / Time.deltaTime).x;
-                v -= ship.makeRel(s.getVel()).x;
-                relVel.x += v;
+            //     // Satellite s = shipT.parent.GetComponent<Satellite>();
+            //     float v = ;
+            //     // v -= ship.makeRel(s.getVel()).x;
+            //      += v;
+                relVel.x += ship.makeRel((transLPos - targetTrans.position) / Time.deltaTime).x;
             }
         }
+        // if(ship.isInSOI()) {
+        //     relVel += ship.makeRel(ship.getSatVel());
+        // }
         Vector3 eRot = shipT.rotation.eulerAngles;
         dRot2 = Vector3.zero;
         // bool oT = true;
