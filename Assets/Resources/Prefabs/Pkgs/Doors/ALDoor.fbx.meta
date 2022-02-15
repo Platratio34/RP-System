@@ -1,0 +1,942 @@
+fileFormatVersion: 2
+guid: 05f1ec3d699c7e2488050acdb4781ec4
+ModelImporter:
+  serializedVersion: 20200
+  internalIDToNameTable:
+  - first:
+      74: -150895948694115383
+    second: R Center|AL Door LAction.001
+  - first:
+      74: 2436111775446419298
+    second: R Center|AL Door LAction.002
+  - first:
+      74: 4560304453057034733
+    second: R Center|AL Door RAction
+  - first:
+      74: -2789430620810827933
+    second: R Center|AL Door RAction.001
+  - first:
+      74: 5689535227395338921
+    second: R Center|Door LowAction
+  - first:
+      74: 4249186689635698072
+    second: R Center|Door LowAction.001
+  - first:
+      74: -8046479371516927889
+    second: R Center|Door LowAction.002
+  - first:
+      74: 8140580705901920061
+    second: R Center|Door LowAction.003
+  - first:
+      74: -2102176214402604491
+    second: R Center|Door LowAction.004
+  - first:
+      74: -8031247161916009803
+    second: R Center|Door LowAction.005
+  - first:
+      74: -3463347894843833464
+    second: R Center|Door LowAction.006
+  - first:
+      74: -7229182141449999138
+    second: R Center|Door LowAction.007
+  - first:
+      74: -3656429470375166509
+    second: R Center|Door LowAction.008
+  - first:
+      74: 9066505928858619383
+    second: R Center|Door LowAction.009
+  - first:
+      74: -6821801149767881990
+    second: R Center|Door LowAction.010
+  - first:
+      74: 1926905506795803189
+    second: R Center|Door LowAction.011
+  - first:
+      74: 9158668420922820773
+    second: R Center|Door LowAction.012
+  - first:
+      74: -8388109184640721879
+    second: R Center|Door LowAction.013
+  - first:
+      74: 2128778368715267637
+    second: R Center|Door LowAction.014
+  - first:
+      74: 3408868908799570557
+    second: R Center|Door LowAction.015
+  - first:
+      74: 3131848658761918010
+    second: R Center|Door LowAction.016
+  - first:
+      74: -4681198360766530247
+    second: R Center|Door LowAction.017
+  - first:
+      74: 6996505096519682656
+    second: R Center|Door MidAction
+  - first:
+      74: -1716798423748043326
+    second: R Center|Door MidAction.001
+  - first:
+      74: -2532882752375985187
+    second: R Center|Door MidAction.002
+  - first:
+      74: -6726815325075970938
+    second: R Center|Door MidAction.003
+  - first:
+      74: -5496943292050533761
+    second: R Center|Door MidAction.004
+  - first:
+      74: -5575538469849326519
+    second: R Center|Door MidAction.005
+  - first:
+      74: -1096730727696253048
+    second: R Center|Door MidAction.006
+  - first:
+      74: -8421219713706831765
+    second: R Center|Door MidAction.007
+  - first:
+      74: -1741622347898012903
+    second: R Center|Door MidAction.008
+  - first:
+      74: 7409900464917528576
+    second: R Center|Door MidAction.009
+  - first:
+      74: -210228304387901702
+    second: R Center|Door MidAction.010
+  - first:
+      74: 6763225148578984988
+    second: R Center|Door MidAction.011
+  - first:
+      74: 541454637645219926
+    second: R Center|Door MidAction.012
+  - first:
+      74: -532975240090923458
+    second: R Center|Door MidAction.013
+  - first:
+      74: -580069970206499045
+    second: R Center|Door MidAction.014
+  - first:
+      74: -3331022209855952197
+    second: R Center|Door MidAction.015
+  - first:
+      74: -5900889173837094696
+    second: R Center|Door MidAction.016
+  - first:
+      74: 2069094855866326434
+    second: R Center|Door MidAction.017
+  - first:
+      74: 5210621933280682633
+    second: R Center|Door TopAction
+  - first:
+      74: -3890750245511033907
+    second: R Center|Door TopAction.001
+  - first:
+      74: -7472139666698291474
+    second: R Center|Door TopAction.002
+  - first:
+      74: -1149210744338820216
+    second: R Center|Door TopAction.003
+  - first:
+      74: -5791462764655368098
+    second: R Center|Door TopAction.004
+  - first:
+      74: 8045303897208458471
+    second: R Center|Door TopAction.005
+  - first:
+      74: -7324271690430471581
+    second: R Center|Door TopAction.006
+  - first:
+      74: 4687263621006007132
+    second: R Center|Door TopAction.007
+  - first:
+      74: -2883133165111792032
+    second: R Center|Door TopAction.008
+  - first:
+      74: 5778729030735471021
+    second: R Center|Door TopAction.009
+  - first:
+      74: 1907745503121346587
+    second: R Center|Door TopAction.010
+  - first:
+      74: -6923372439431681670
+    second: R Center|Door TopAction.011
+  - first:
+      74: -1349791684770111730
+    second: R Center|Door TopAction.012
+  - first:
+      74: 4901102914626577432
+    second: R Center|Door TopAction.013
+  - first:
+      74: 2994290057119834254
+    second: R Center|Door TopAction.014
+  - first:
+      74: -7668895230559123615
+    second: R Center|Door TopAction.015
+  - first:
+      74: 4100253080781274987
+    second: R Center|Door TopAction.016
+  - first:
+      74: -4911899739167763855
+    second: R Center|Door TopAction.017
+  - first:
+      74: -329722152311294956
+    second: R Center|L CenterAction
+  - first:
+      74: 7751205602199552602
+    second: R Center|L CenterAction.001
+  - first:
+      74: 8187254659411650747
+    second: R Center|Plane.001Action
+  - first:
+      74: -1214740784233523386
+    second: R Center|Plane.001Action.001
+  - first:
+      74: 7184216282693784902
+    second: R Center|Plane.002Action
+  - first:
+      74: -6540618191919044960
+    second: R Center|Plane.002Action.001
+  - first:
+      74: -4614791951944472352
+    second: R Center|Plane.003Action.004
+  - first:
+      74: 8249720306927159974
+    second: R Center|Plane.003Action.005
+  - first:
+      74: 1583900969522011717
+    second: R Center|Plane.004Action
+  - first:
+      74: 7623372011635398347
+    second: R Center|Plane.004Action.001
+  - first:
+      74: 3715256129389945947
+    second: R Center|R CenterAction
+  - first:
+      74: -6309210992540905181
+    second: R Center|R CenterAction.001
+  - first:
+      74: -4994834646677577089
+    second: L Center|AL Door LAction.001
+  - first:
+      74: -9142868240218185222
+    second: L Center|AL Door LAction.002
+  - first:
+      74: -5849005334259465970
+    second: L Center|AL Door RAction
+  - first:
+      74: -5414542531972787155
+    second: L Center|AL Door RAction.001
+  - first:
+      74: 9206241060432725213
+    second: L Center|Door LowAction
+  - first:
+      74: -4268331191057236004
+    second: L Center|Door LowAction.001
+  - first:
+      74: -768893911300203484
+    second: L Center|Door LowAction.002
+  - first:
+      74: -6854294548875396923
+    second: L Center|Door LowAction.003
+  - first:
+      74: 7641884541630300060
+    second: L Center|Door LowAction.004
+  - first:
+      74: 8111062721005382135
+    second: L Center|Door LowAction.005
+  - first:
+      74: 6593657490355637158
+    second: L Center|Door LowAction.006
+  - first:
+      74: 5925524387477823399
+    second: L Center|Door LowAction.007
+  - first:
+      74: 5496043379254571388
+    second: L Center|Door LowAction.008
+  - first:
+      74: -476695851757770440
+    second: L Center|Door LowAction.009
+  - first:
+      74: -6730194636287101508
+    second: L Center|Door LowAction.010
+  - first:
+      74: 5517652744085819928
+    second: L Center|Door LowAction.011
+  - first:
+      74: -7773761365494881507
+    second: L Center|Door LowAction.012
+  - first:
+      74: 4949314133788525534
+    second: L Center|Door LowAction.013
+  - first:
+      74: 7809972205259995282
+    second: L Center|Door LowAction.014
+  - first:
+      74: -3541004664460590992
+    second: L Center|Door LowAction.015
+  - first:
+      74: 1460832342320921398
+    second: L Center|Door LowAction.016
+  - first:
+      74: -2344972042649199475
+    second: L Center|Door LowAction.017
+  - first:
+      74: 590438183824007112
+    second: L Center|Door MidAction
+  - first:
+      74: 8862815983249015349
+    second: L Center|Door MidAction.001
+  - first:
+      74: 9151458514950595374
+    second: L Center|Door MidAction.002
+  - first:
+      74: -4660650673626609274
+    second: L Center|Door MidAction.003
+  - first:
+      74: -2017489646961761003
+    second: L Center|Door MidAction.004
+  - first:
+      74: -160162351029922898
+    second: L Center|Door MidAction.005
+  - first:
+      74: -664650037155925128
+    second: L Center|Door MidAction.006
+  - first:
+      74: -6106073788057334417
+    second: L Center|Door MidAction.007
+  - first:
+      74: -1666685150901490305
+    second: L Center|Door MidAction.008
+  - first:
+      74: 7842400429125182245
+    second: L Center|Door MidAction.009
+  - first:
+      74: 2157898773619788669
+    second: L Center|Door MidAction.010
+  - first:
+      74: 339192633174935109
+    second: L Center|Door MidAction.011
+  - first:
+      74: -4477993168572444298
+    second: L Center|Door MidAction.012
+  - first:
+      74: 8098875093155260591
+    second: L Center|Door MidAction.013
+  - first:
+      74: 5899857511523447661
+    second: L Center|Door MidAction.014
+  - first:
+      74: -2967917904837970237
+    second: L Center|Door MidAction.015
+  - first:
+      74: -6984379962414740196
+    second: L Center|Door MidAction.016
+  - first:
+      74: 1604051441372906362
+    second: L Center|Door MidAction.017
+  - first:
+      74: -6690050048531816751
+    second: L Center|Door TopAction
+  - first:
+      74: -8420096669153556393
+    second: L Center|Door TopAction.001
+  - first:
+      74: -2213813052049134005
+    second: L Center|Door TopAction.002
+  - first:
+      74: -7218863495927301229
+    second: L Center|Door TopAction.003
+  - first:
+      74: -2250088866050354515
+    second: L Center|Door TopAction.004
+  - first:
+      74: 7046011649916314748
+    second: L Center|Door TopAction.005
+  - first:
+      74: 6285010073277178587
+    second: L Center|Door TopAction.006
+  - first:
+      74: -6420353538334354353
+    second: L Center|Door TopAction.007
+  - first:
+      74: 3875729267303335667
+    second: L Center|Door TopAction.008
+  - first:
+      74: 2140009345654134399
+    second: L Center|Door TopAction.009
+  - first:
+      74: 5420610429485814506
+    second: L Center|Door TopAction.010
+  - first:
+      74: 8338645633493531489
+    second: L Center|Door TopAction.011
+  - first:
+      74: -2167418612955667791
+    second: L Center|Door TopAction.012
+  - first:
+      74: 7828635061597625287
+    second: L Center|Door TopAction.013
+  - first:
+      74: 781792368906080997
+    second: L Center|Door TopAction.014
+  - first:
+      74: -5082066760163181852
+    second: L Center|Door TopAction.015
+  - first:
+      74: 2214775216796564114
+    second: L Center|Door TopAction.016
+  - first:
+      74: 1770910787943956171
+    second: L Center|Door TopAction.017
+  - first:
+      74: -6560411580464196780
+    second: L Center|L CenterAction
+  - first:
+      74: 4705633548910403310
+    second: L Center|L CenterAction.001
+  - first:
+      74: 7210559086218191334
+    second: L Center|Plane.001Action
+  - first:
+      74: -6669552683668915081
+    second: L Center|Plane.001Action.001
+  - first:
+      74: 5927375831112963821
+    second: L Center|Plane.002Action
+  - first:
+      74: -4754415023972528629
+    second: L Center|Plane.002Action.001
+  - first:
+      74: 2897165313525901109
+    second: L Center|Plane.003Action.004
+  - first:
+      74: -5679474082086702863
+    second: L Center|Plane.003Action.005
+  - first:
+      74: 797444032363619144
+    second: L Center|Plane.004Action
+  - first:
+      74: -9206257943717181206
+    second: L Center|Plane.004Action.001
+  - first:
+      74: 5685628786904564038
+    second: L Center|R CenterAction
+  - first:
+      74: -125028959276285345
+    second: L Center|R CenterAction.001
+  - first:
+      74: 6516833592997965394
+    second: AL Door L|AL Door LAction.001
+  - first:
+      74: -4496314421604724703
+    second: AL Door L|AL Door LAction.002
+  - first:
+      74: 6940455189279024051
+    second: AL Door L|AL Door RAction
+  - first:
+      74: 3469829032332936270
+    second: AL Door L|AL Door RAction.001
+  - first:
+      74: -1620491223020342672
+    second: AL Door L|Door LowAction
+  - first:
+      74: 5305622863315640835
+    second: AL Door L|Door LowAction.001
+  - first:
+      74: 4114319332450014459
+    second: AL Door L|Door LowAction.002
+  - first:
+      74: -8594212605753417856
+    second: AL Door L|Door LowAction.003
+  - first:
+      74: 7622991497113156335
+    second: AL Door L|Door LowAction.004
+  - first:
+      74: 1401456478292541578
+    second: AL Door L|Door LowAction.005
+  - first:
+      74: -5908352297052569405
+    second: AL Door L|Door LowAction.006
+  - first:
+      74: 4637520463577660629
+    second: AL Door L|Door LowAction.007
+  - first:
+      74: -2631136250849949775
+    second: AL Door L|Door LowAction.008
+  - first:
+      74: 6016853928568621687
+    second: AL Door L|Door LowAction.009
+  - first:
+      74: 4418252816295935695
+    second: AL Door L|Door LowAction.010
+  - first:
+      74: 3741143913283786738
+    second: AL Door L|Door LowAction.011
+  - first:
+      74: -8603433431652255660
+    second: AL Door L|Door LowAction.012
+  - first:
+      74: -977819049531355104
+    second: AL Door L|Door LowAction.013
+  - first:
+      74: -4055829079227038884
+    second: AL Door L|Door LowAction.014
+  - first:
+      74: -648076632827571779
+    second: AL Door L|Door LowAction.015
+  - first:
+      74: 690000021830063121
+    second: AL Door L|Door LowAction.016
+  - first:
+      74: 1420048671751768893
+    second: AL Door L|Door LowAction.017
+  - first:
+      74: 417781670529372002
+    second: AL Door L|Door MidAction
+  - first:
+      74: 6477133014991785126
+    second: AL Door L|Door MidAction.001
+  - first:
+      74: -9038335364701417819
+    second: AL Door L|Door MidAction.002
+  - first:
+      74: 3561104164844288421
+    second: AL Door L|Door MidAction.003
+  - first:
+      74: 6207991941415769732
+    second: AL Door L|Door MidAction.004
+  - first:
+      74: -1873965861932522247
+    second: AL Door L|Door MidAction.005
+  - first:
+      74: 7804605877932773572
+    second: AL Door L|Door MidAction.006
+  - first:
+      74: 5535081857340438035
+    second: AL Door L|Door MidAction.007
+  - first:
+      74: -7489314169119161860
+    second: AL Door L|Door MidAction.008
+  - first:
+      74: -6771730314302676433
+    second: AL Door L|Door MidAction.009
+  - first:
+      74: -1186772753437577504
+    second: AL Door L|Door MidAction.010
+  - first:
+      74: 3361493365767742019
+    second: AL Door L|Door MidAction.011
+  - first:
+      74: -1232540668259004977
+    second: AL Door L|Door MidAction.012
+  - first:
+      74: 5768490405398021361
+    second: AL Door L|Door MidAction.013
+  - first:
+      74: 1874952036611918543
+    second: AL Door L|Door MidAction.014
+  - first:
+      74: 6429219073888784273
+    second: AL Door L|Door MidAction.015
+  - first:
+      74: -433994257587626889
+    second: AL Door L|Door MidAction.016
+  - first:
+      74: 3723824375948114549
+    second: AL Door L|Door MidAction.017
+  - first:
+      74: 6032008912249002588
+    second: AL Door L|Door TopAction
+  - first:
+      74: -6802592833745264298
+    second: AL Door L|Door TopAction.001
+  - first:
+      74: -1758601748609457485
+    second: AL Door L|Door TopAction.002
+  - first:
+      74: 7075344769599433945
+    second: AL Door L|Door TopAction.003
+  - first:
+      74: 1560737869746621166
+    second: AL Door L|Door TopAction.004
+  - first:
+      74: -3318424770525160536
+    second: AL Door L|Door TopAction.005
+  - first:
+      74: -406579886767236553
+    second: AL Door L|Door TopAction.006
+  - first:
+      74: -4600735309153454248
+    second: AL Door L|Door TopAction.007
+  - first:
+      74: 8469763500170507535
+    second: AL Door L|Door TopAction.008
+  - first:
+      74: 5953808595113836514
+    second: AL Door L|Door TopAction.009
+  - first:
+      74: -3797096378781138836
+    second: AL Door L|Door TopAction.010
+  - first:
+      74: -1962303847518291842
+    second: AL Door L|Door TopAction.011
+  - first:
+      74: -7444918637770398704
+    second: AL Door L|Door TopAction.012
+  - first:
+      74: -6492542471879582287
+    second: AL Door L|Door TopAction.013
+  - first:
+      74: -6903556423501294332
+    second: AL Door L|Door TopAction.014
+  - first:
+      74: 6305991550456242627
+    second: AL Door L|Door TopAction.015
+  - first:
+      74: -3826418619394143633
+    second: AL Door L|Door TopAction.016
+  - first:
+      74: 7169546958194130256
+    second: AL Door L|Door TopAction.017
+  - first:
+      74: 720759718566160918
+    second: AL Door L|L CenterAction
+  - first:
+      74: 1957527218666411854
+    second: AL Door L|L CenterAction.001
+  - first:
+      74: 4021398518780161071
+    second: AL Door L|Plane.001Action
+  - first:
+      74: 1623881052097686936
+    second: AL Door L|Plane.001Action.001
+  - first:
+      74: 3953830359285291836
+    second: AL Door L|Plane.002Action
+  - first:
+      74: -776526677650461973
+    second: AL Door L|Plane.002Action.001
+  - first:
+      74: 2747321181608705060
+    second: AL Door L|Plane.003Action.004
+  - first:
+      74: 1140433789765466595
+    second: AL Door L|Plane.003Action.005
+  - first:
+      74: -4871534922474669933
+    second: AL Door L|Plane.004Action
+  - first:
+      74: -5121063388894109085
+    second: AL Door L|Plane.004Action.001
+  - first:
+      74: 5419428099200381781
+    second: AL Door L|R CenterAction
+  - first:
+      74: 6090787936243972689
+    second: AL Door L|R CenterAction.001
+  - first:
+      74: -8258985958509874103
+    second: AL Door R|AL Door LAction.001
+  - first:
+      74: 261221488574264225
+    second: AL Door R|AL Door LAction.002
+  - first:
+      74: 6099932450626423896
+    second: AL Door R|AL Door RAction
+  - first:
+      74: 3043021370522113285
+    second: AL Door R|AL Door RAction.001
+  - first:
+      74: -64436449504242887
+    second: AL Door R|Door LowAction
+  - first:
+      74: -7874263388697085452
+    second: AL Door R|Door LowAction.001
+  - first:
+      74: -5517051667115772284
+    second: AL Door R|Door LowAction.002
+  - first:
+      74: -7638874720038499021
+    second: AL Door R|Door LowAction.003
+  - first:
+      74: -3389685275678095075
+    second: AL Door R|Door LowAction.004
+  - first:
+      74: -8491621585221969246
+    second: AL Door R|Door LowAction.005
+  - first:
+      74: -1353280586355222729
+    second: AL Door R|Door LowAction.006
+  - first:
+      74: -833603195719039223
+    second: AL Door R|Door LowAction.007
+  - first:
+      74: 6268489230930430453
+    second: AL Door R|Door LowAction.008
+  - first:
+      74: 5570554736504232489
+    second: AL Door R|Door LowAction.009
+  - first:
+      74: 502969536277744123
+    second: AL Door R|Door LowAction.010
+  - first:
+      74: 8954748014823167127
+    second: AL Door R|Door LowAction.011
+  - first:
+      74: 3788349331472173844
+    second: AL Door R|Door LowAction.012
+  - first:
+      74: -364546604076443380
+    second: AL Door R|Door LowAction.013
+  - first:
+      74: 5246091928074316797
+    second: AL Door R|Door LowAction.014
+  - first:
+      74: -8842833690216640249
+    second: AL Door R|Door LowAction.015
+  - first:
+      74: 5399022527862888948
+    second: AL Door R|Door LowAction.016
+  - first:
+      74: 3990702860208139003
+    second: AL Door R|Door LowAction.017
+  - first:
+      74: -5444302218808453219
+    second: AL Door R|Door MidAction
+  - first:
+      74: 292947851325960666
+    second: AL Door R|Door MidAction.001
+  - first:
+      74: 1929829060020845300
+    second: AL Door R|Door MidAction.002
+  - first:
+      74: -2498558181965806431
+    second: AL Door R|Door MidAction.003
+  - first:
+      74: -682781896109855739
+    second: AL Door R|Door MidAction.004
+  - first:
+      74: 6850838276142746074
+    second: AL Door R|Door MidAction.005
+  - first:
+      74: 5880715981436818339
+    second: AL Door R|Door MidAction.006
+  - first:
+      74: 4935175483323694017
+    second: AL Door R|Door MidAction.007
+  - first:
+      74: -8356754983351934383
+    second: AL Door R|Door MidAction.008
+  - first:
+      74: 922198885701001454
+    second: AL Door R|Door MidAction.009
+  - first:
+      74: -5284019301036428231
+    second: AL Door R|Door MidAction.010
+  - first:
+      74: -7475373812022841191
+    second: AL Door R|Door MidAction.011
+  - first:
+      74: 5284422348515477828
+    second: AL Door R|Door MidAction.012
+  - first:
+      74: -9058340811512667359
+    second: AL Door R|Door MidAction.013
+  - first:
+      74: 7723699982799769338
+    second: AL Door R|Door MidAction.014
+  - first:
+      74: -5973604894074031469
+    second: AL Door R|Door MidAction.015
+  - first:
+      74: 4155542045185100742
+    second: AL Door R|Door MidAction.016
+  - first:
+      74: 608491339259002804
+    second: AL Door R|Door MidAction.017
+  - first:
+      74: 3161672038027272466
+    second: AL Door R|Door TopAction
+  - first:
+      74: -6719082242685251852
+    second: AL Door R|Door TopAction.001
+  - first:
+      74: -3613440246029635348
+    second: AL Door R|Door TopAction.002
+  - first:
+      74: 7312574185340021121
+    second: AL Door R|Door TopAction.003
+  - first:
+      74: -4862503743064613360
+    second: AL Door R|Door TopAction.004
+  - first:
+      74: 7958475901820243958
+    second: AL Door R|Door TopAction.005
+  - first:
+      74: 9111087365066592119
+    second: AL Door R|Door TopAction.006
+  - first:
+      74: -5732730654235841796
+    second: AL Door R|Door TopAction.007
+  - first:
+      74: -8529514314623137097
+    second: AL Door R|Door TopAction.008
+  - first:
+      74: -5937973891830070112
+    second: AL Door R|Door TopAction.009
+  - first:
+      74: -1102607842964296344
+    second: AL Door R|Door TopAction.010
+  - first:
+      74: 9196180840126604490
+    second: AL Door R|Door TopAction.011
+  - first:
+      74: 2421109109802456948
+    second: AL Door R|Door TopAction.012
+  - first:
+      74: 7494540033066798746
+    second: AL Door R|Door TopAction.013
+  - first:
+      74: -4718934949347002090
+    second: AL Door R|Door TopAction.014
+  - first:
+      74: -728036674255469991
+    second: AL Door R|Door TopAction.015
+  - first:
+      74: 5022050061913476802
+    second: AL Door R|Door TopAction.016
+  - first:
+      74: -8533885675070380070
+    second: AL Door R|Door TopAction.017
+  - first:
+      74: 135741538057394129
+    second: AL Door R|L CenterAction
+  - first:
+      74: 9032641396275133461
+    second: AL Door R|L CenterAction.001
+  - first:
+      74: -5682386828915216925
+    second: AL Door R|Plane.001Action
+  - first:
+      74: -1885849004712133313
+    second: AL Door R|Plane.001Action.001
+  - first:
+      74: 6792481724392335884
+    second: AL Door R|Plane.002Action
+  - first:
+      74: 4148741754236980921
+    second: AL Door R|Plane.002Action.001
+  - first:
+      74: -1448475171590025133
+    second: AL Door R|Plane.003Action.004
+  - first:
+      74: 590605983416991827
+    second: AL Door R|Plane.003Action.005
+  - first:
+      74: -2795660626104302239
+    second: AL Door R|Plane.004Action
+  - first:
+      74: 6749650928434547016
+    second: AL Door R|Plane.004Action.001
+  - first:
+      74: -8179122423906043490
+    second: AL Door R|R CenterAction
+  - first:
+      74: -9096098758208943932
+    second: AL Door R|R CenterAction.001
+  externalObjects: {}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

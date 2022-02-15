@@ -1,0 +1,942 @@
+fileFormatVersion: 2
+guid: 8e70677a3a9271744aa3d736d82529d9
+ModelImporter:
+  serializedVersion: 20200
+  internalIDToNameTable:
+  - first:
+      74: 3650891457272863809
+    second: Plane.001|AL Door LAction.001
+  - first:
+      74: 8044934514324785295
+    second: Plane.001|AL Door LAction.002
+  - first:
+      74: -4230486007133777625
+    second: Plane.001|AL Door RAction
+  - first:
+      74: 6113878791283991115
+    second: Plane.001|AL Door RAction.001
+  - first:
+      74: 4638288190887647018
+    second: Plane.001|Door LowAction
+  - first:
+      74: -7288809544540148264
+    second: Plane.001|Door LowAction.001
+  - first:
+      74: 6846440837407962989
+    second: Plane.001|Door LowAction.002
+  - first:
+      74: 7316543780001971836
+    second: Plane.001|Door LowAction.003
+  - first:
+      74: 7841520692536655954
+    second: Plane.001|Door LowAction.004
+  - first:
+      74: -834075452995631671
+    second: Plane.001|Door LowAction.005
+  - first:
+      74: 7934383124631752321
+    second: Plane.001|Door LowAction.006
+  - first:
+      74: -3270642839327278745
+    second: Plane.001|Door LowAction.007
+  - first:
+      74: 738681784918705121
+    second: Plane.001|Door LowAction.008
+  - first:
+      74: -4724897149607352509
+    second: Plane.001|Door LowAction.009
+  - first:
+      74: 6595960431277940142
+    second: Plane.001|Door LowAction.010
+  - first:
+      74: 61916792099724298
+    second: Plane.001|Door LowAction.011
+  - first:
+      74: -6147006231319516886
+    second: Plane.001|Door LowAction.012
+  - first:
+      74: -3506952067774738472
+    second: Plane.001|Door LowAction.013
+  - first:
+      74: 8278546376013642026
+    second: Plane.001|Door LowAction.014
+  - first:
+      74: 2692099080401277292
+    second: Plane.001|Door LowAction.015
+  - first:
+      74: -6403111885687963614
+    second: Plane.001|Door LowAction.016
+  - first:
+      74: 3643561402014609305
+    second: Plane.001|Door LowAction.017
+  - first:
+      74: 5471398799623587292
+    second: Plane.001|Door MidAction
+  - first:
+      74: -5577199818207727419
+    second: Plane.001|Door MidAction.001
+  - first:
+      74: -14874798717868472
+    second: Plane.001|Door MidAction.002
+  - first:
+      74: 8296289911325195594
+    second: Plane.001|Door MidAction.003
+  - first:
+      74: -372045170383015068
+    second: Plane.001|Door MidAction.004
+  - first:
+      74: 3909751301923423088
+    second: Plane.001|Door MidAction.005
+  - first:
+      74: 4129346177779511594
+    second: Plane.001|Door MidAction.006
+  - first:
+      74: 5593582698651618642
+    second: Plane.001|Door MidAction.007
+  - first:
+      74: -7084424297644491089
+    second: Plane.001|Door MidAction.008
+  - first:
+      74: 2817098972697829708
+    second: Plane.001|Door MidAction.009
+  - first:
+      74: -2198175662451530641
+    second: Plane.001|Door MidAction.010
+  - first:
+      74: 5228933673893398724
+    second: Plane.001|Door MidAction.011
+  - first:
+      74: 4691675934482911847
+    second: Plane.001|Door MidAction.012
+  - first:
+      74: 7794617387056353794
+    second: Plane.001|Door MidAction.013
+  - first:
+      74: -2503931562809680966
+    second: Plane.001|Door MidAction.014
+  - first:
+      74: 5938108538685528136
+    second: Plane.001|Door MidAction.015
+  - first:
+      74: 2283977444070937144
+    second: Plane.001|Door MidAction.016
+  - first:
+      74: -758136710134049255
+    second: Plane.001|Door MidAction.017
+  - first:
+      74: -9129796083602711699
+    second: Plane.001|Door TopAction
+  - first:
+      74: -1900049258067246728
+    second: Plane.001|Door TopAction.001
+  - first:
+      74: 8636312591026672618
+    second: Plane.001|Door TopAction.002
+  - first:
+      74: 5165530286148868748
+    second: Plane.001|Door TopAction.003
+  - first:
+      74: 6628564043095810599
+    second: Plane.001|Door TopAction.004
+  - first:
+      74: -704550064875254048
+    second: Plane.001|Door TopAction.005
+  - first:
+      74: -7510869265267896669
+    second: Plane.001|Door TopAction.006
+  - first:
+      74: 7127750129721353738
+    second: Plane.001|Door TopAction.007
+  - first:
+      74: -5939954823196063473
+    second: Plane.001|Door TopAction.008
+  - first:
+      74: -7867558459449970733
+    second: Plane.001|Door TopAction.009
+  - first:
+      74: 8005704143644985245
+    second: Plane.001|Door TopAction.010
+  - first:
+      74: -5835606911601663506
+    second: Plane.001|Door TopAction.011
+  - first:
+      74: -7639804326989909453
+    second: Plane.001|Door TopAction.012
+  - first:
+      74: -2839031938479901280
+    second: Plane.001|Door TopAction.013
+  - first:
+      74: -1906301682358816367
+    second: Plane.001|Door TopAction.014
+  - first:
+      74: -1896096576209572147
+    second: Plane.001|Door TopAction.015
+  - first:
+      74: -141383290844210
+    second: Plane.001|Door TopAction.016
+  - first:
+      74: -5948651473739082818
+    second: Plane.001|Door TopAction.017
+  - first:
+      74: -3588729564102802022
+    second: Plane.001|L CenterAction
+  - first:
+      74: -2090293960288569383
+    second: Plane.001|L CenterAction.001
+  - first:
+      74: -2858551162337178960
+    second: Plane.001|Plane.001Action
+  - first:
+      74: 6043887957968587842
+    second: Plane.001|Plane.001Action.001
+  - first:
+      74: 6855588529536243965
+    second: Plane.001|Plane.002Action
+  - first:
+      74: -2574714104428831180
+    second: Plane.001|Plane.002Action.001
+  - first:
+      74: 576869174219346713
+    second: Plane.001|Plane.003Action.004
+  - first:
+      74: -3408764293156917733
+    second: Plane.001|Plane.003Action.005
+  - first:
+      74: -6287438649780975003
+    second: Plane.001|Plane.004Action
+  - first:
+      74: 74212694581208753
+    second: Plane.001|Plane.004Action.001
+  - first:
+      74: 2344432345013083922
+    second: Plane.001|R CenterAction
+  - first:
+      74: -2050733661557134826
+    second: Plane.001|R CenterAction.001
+  - first:
+      74: 5703603406763211830
+    second: Plane.002|AL Door LAction.001
+  - first:
+      74: 4225549721568621069
+    second: Plane.002|AL Door LAction.002
+  - first:
+      74: 5718200020928863086
+    second: Plane.002|AL Door RAction
+  - first:
+      74: -4208401208711871125
+    second: Plane.002|AL Door RAction.001
+  - first:
+      74: 7210415028148275741
+    second: Plane.002|Door LowAction
+  - first:
+      74: 6146202797924242084
+    second: Plane.002|Door LowAction.001
+  - first:
+      74: -8171317256616088695
+    second: Plane.002|Door LowAction.002
+  - first:
+      74: 1507849814078247988
+    second: Plane.002|Door LowAction.003
+  - first:
+      74: 8629839023540617488
+    second: Plane.002|Door LowAction.004
+  - first:
+      74: -1554278012572279131
+    second: Plane.002|Door LowAction.005
+  - first:
+      74: -3522180894636893739
+    second: Plane.002|Door LowAction.006
+  - first:
+      74: 738320064671909843
+    second: Plane.002|Door LowAction.007
+  - first:
+      74: -192503830483005794
+    second: Plane.002|Door LowAction.008
+  - first:
+      74: 5470724190946084823
+    second: Plane.002|Door LowAction.009
+  - first:
+      74: -1301923414146989018
+    second: Plane.002|Door LowAction.010
+  - first:
+      74: -6682473644787257907
+    second: Plane.002|Door LowAction.011
+  - first:
+      74: 3584488146783356782
+    second: Plane.002|Door LowAction.012
+  - first:
+      74: -7617698066489729050
+    second: Plane.002|Door LowAction.013
+  - first:
+      74: 8703715675745718281
+    second: Plane.002|Door LowAction.014
+  - first:
+      74: -5473228830725580874
+    second: Plane.002|Door LowAction.015
+  - first:
+      74: -3962123267823721290
+    second: Plane.002|Door LowAction.016
+  - first:
+      74: -4640317693372749511
+    second: Plane.002|Door LowAction.017
+  - first:
+      74: 2872761316484563758
+    second: Plane.002|Door MidAction
+  - first:
+      74: -5096411848183801890
+    second: Plane.002|Door MidAction.001
+  - first:
+      74: -7131160060559072399
+    second: Plane.002|Door MidAction.002
+  - first:
+      74: 3109317842713412080
+    second: Plane.002|Door MidAction.003
+  - first:
+      74: -5279169091925775730
+    second: Plane.002|Door MidAction.004
+  - first:
+      74: 3600925812722406668
+    second: Plane.002|Door MidAction.005
+  - first:
+      74: 1810357559994917004
+    second: Plane.002|Door MidAction.006
+  - first:
+      74: 5445582268941605804
+    second: Plane.002|Door MidAction.007
+  - first:
+      74: 8730991643400604169
+    second: Plane.002|Door MidAction.008
+  - first:
+      74: 2015519672139268549
+    second: Plane.002|Door MidAction.009
+  - first:
+      74: -5296013358920366664
+    second: Plane.002|Door MidAction.010
+  - first:
+      74: -1196939624408361262
+    second: Plane.002|Door MidAction.011
+  - first:
+      74: -5838523584379348903
+    second: Plane.002|Door MidAction.012
+  - first:
+      74: 3410294733667673897
+    second: Plane.002|Door MidAction.013
+  - first:
+      74: -4740092815064622094
+    second: Plane.002|Door MidAction.014
+  - first:
+      74: -4624100640661525700
+    second: Plane.002|Door MidAction.015
+  - first:
+      74: -5549407455180321550
+    second: Plane.002|Door MidAction.016
+  - first:
+      74: 822637303237381178
+    second: Plane.002|Door MidAction.017
+  - first:
+      74: 5657385311068085940
+    second: Plane.002|Door TopAction
+  - first:
+      74: -6205672722169217825
+    second: Plane.002|Door TopAction.001
+  - first:
+      74: 6621396656122262185
+    second: Plane.002|Door TopAction.002
+  - first:
+      74: 1292640281233310459
+    second: Plane.002|Door TopAction.003
+  - first:
+      74: -856009975947053991
+    second: Plane.002|Door TopAction.004
+  - first:
+      74: -1703344385677959347
+    second: Plane.002|Door TopAction.005
+  - first:
+      74: -7567827324863405929
+    second: Plane.002|Door TopAction.006
+  - first:
+      74: -6565775286927863342
+    second: Plane.002|Door TopAction.007
+  - first:
+      74: -3115482868977895457
+    second: Plane.002|Door TopAction.008
+  - first:
+      74: 826575736441608192
+    second: Plane.002|Door TopAction.009
+  - first:
+      74: 2146253687605892322
+    second: Plane.002|Door TopAction.010
+  - first:
+      74: -540329875074941280
+    second: Plane.002|Door TopAction.011
+  - first:
+      74: -115537072940350406
+    second: Plane.002|Door TopAction.012
+  - first:
+      74: 5218438669500300425
+    second: Plane.002|Door TopAction.013
+  - first:
+      74: -3412778919291732902
+    second: Plane.002|Door TopAction.014
+  - first:
+      74: 90840634275199870
+    second: Plane.002|Door TopAction.015
+  - first:
+      74: 274113313292795320
+    second: Plane.002|Door TopAction.016
+  - first:
+      74: 2926939839645367506
+    second: Plane.002|Door TopAction.017
+  - first:
+      74: -7141900784331007322
+    second: Plane.002|L CenterAction
+  - first:
+      74: -2220643422035965951
+    second: Plane.002|L CenterAction.001
+  - first:
+      74: 4910038636033323727
+    second: Plane.002|Plane.001Action
+  - first:
+      74: -4117909669941486248
+    second: Plane.002|Plane.001Action.001
+  - first:
+      74: -1177906569688301896
+    second: Plane.002|Plane.002Action
+  - first:
+      74: 2731343949843440731
+    second: Plane.002|Plane.002Action.001
+  - first:
+      74: -5570740941611537130
+    second: Plane.002|Plane.003Action.004
+  - first:
+      74: 27848947384038768
+    second: Plane.002|Plane.003Action.005
+  - first:
+      74: 3014605971857321428
+    second: Plane.002|Plane.004Action
+  - first:
+      74: 1666582606462304402
+    second: Plane.002|Plane.004Action.001
+  - first:
+      74: -8421947964046794804
+    second: Plane.002|R CenterAction
+  - first:
+      74: 6371898860277654872
+    second: Plane.002|R CenterAction.001
+  - first:
+      74: -7897707704885780639
+    second: Plane.004|AL Door LAction.001
+  - first:
+      74: 2565400582375938211
+    second: Plane.004|AL Door LAction.002
+  - first:
+      74: 7178004986976018103
+    second: Plane.004|AL Door RAction
+  - first:
+      74: 7406971643020560421
+    second: Plane.004|AL Door RAction.001
+  - first:
+      74: -2754024257595441750
+    second: Plane.004|Door LowAction
+  - first:
+      74: -6130027347877278668
+    second: Plane.004|Door LowAction.001
+  - first:
+      74: -6088391202004068586
+    second: Plane.004|Door LowAction.002
+  - first:
+      74: -8377809376547547785
+    second: Plane.004|Door LowAction.003
+  - first:
+      74: -1752308431107326399
+    second: Plane.004|Door LowAction.004
+  - first:
+      74: -163863396639042104
+    second: Plane.004|Door LowAction.005
+  - first:
+      74: -995312250235574933
+    second: Plane.004|Door LowAction.006
+  - first:
+      74: -3814153082621978093
+    second: Plane.004|Door LowAction.007
+  - first:
+      74: -4825735107259764385
+    second: Plane.004|Door LowAction.008
+  - first:
+      74: -3913178643876308307
+    second: Plane.004|Door LowAction.009
+  - first:
+      74: -4315945065349255292
+    second: Plane.004|Door LowAction.010
+  - first:
+      74: -7197316153528783485
+    second: Plane.004|Door LowAction.011
+  - first:
+      74: 4242800560344881566
+    second: Plane.004|Door LowAction.012
+  - first:
+      74: 8259567263255486514
+    second: Plane.004|Door LowAction.013
+  - first:
+      74: 7182851970289249190
+    second: Plane.004|Door LowAction.014
+  - first:
+      74: -5262291229234658171
+    second: Plane.004|Door LowAction.015
+  - first:
+      74: 347961096777981257
+    second: Plane.004|Door LowAction.016
+  - first:
+      74: 7905885670368448687
+    second: Plane.004|Door LowAction.017
+  - first:
+      74: 2724504130983644877
+    second: Plane.004|Door MidAction
+  - first:
+      74: 3374038249300860349
+    second: Plane.004|Door MidAction.001
+  - first:
+      74: -4588335442708629498
+    second: Plane.004|Door MidAction.002
+  - first:
+      74: -1059994863677096171
+    second: Plane.004|Door MidAction.003
+  - first:
+      74: 8710175579441879485
+    second: Plane.004|Door MidAction.004
+  - first:
+      74: 161788593140797271
+    second: Plane.004|Door MidAction.005
+  - first:
+      74: -7454151153267937373
+    second: Plane.004|Door MidAction.006
+  - first:
+      74: -7325914554862396125
+    second: Plane.004|Door MidAction.007
+  - first:
+      74: 5933762000873265874
+    second: Plane.004|Door MidAction.008
+  - first:
+      74: -438048186832715902
+    second: Plane.004|Door MidAction.009
+  - first:
+      74: -908724507021222618
+    second: Plane.004|Door MidAction.010
+  - first:
+      74: -7234393560421067155
+    second: Plane.004|Door MidAction.011
+  - first:
+      74: 6390992117570754553
+    second: Plane.004|Door MidAction.012
+  - first:
+      74: -4377825058291281608
+    second: Plane.004|Door MidAction.013
+  - first:
+      74: 1990465746852538383
+    second: Plane.004|Door MidAction.014
+  - first:
+      74: -7401049734320474304
+    second: Plane.004|Door MidAction.015
+  - first:
+      74: -3465807117356346182
+    second: Plane.004|Door MidAction.016
+  - first:
+      74: -3119395003854163072
+    second: Plane.004|Door MidAction.017
+  - first:
+      74: -4411886111588903272
+    second: Plane.004|Door TopAction
+  - first:
+      74: -2287764061322143544
+    second: Plane.004|Door TopAction.001
+  - first:
+      74: -979898412506446130
+    second: Plane.004|Door TopAction.002
+  - first:
+      74: -2419151785792135294
+    second: Plane.004|Door TopAction.003
+  - first:
+      74: -853039562478861053
+    second: Plane.004|Door TopAction.004
+  - first:
+      74: -2293066478445084736
+    second: Plane.004|Door TopAction.005
+  - first:
+      74: 3002446274168701239
+    second: Plane.004|Door TopAction.006
+  - first:
+      74: 3915365577448373360
+    second: Plane.004|Door TopAction.007
+  - first:
+      74: 6612636434365333910
+    second: Plane.004|Door TopAction.008
+  - first:
+      74: 8010574549672428890
+    second: Plane.004|Door TopAction.009
+  - first:
+      74: 408786543921691016
+    second: Plane.004|Door TopAction.010
+  - first:
+      74: -9083531585188874810
+    second: Plane.004|Door TopAction.011
+  - first:
+      74: -5574896248161768661
+    second: Plane.004|Door TopAction.012
+  - first:
+      74: 2174836309273533367
+    second: Plane.004|Door TopAction.013
+  - first:
+      74: -855866721186168300
+    second: Plane.004|Door TopAction.014
+  - first:
+      74: 965026608651383559
+    second: Plane.004|Door TopAction.015
+  - first:
+      74: 9021919015881234369
+    second: Plane.004|Door TopAction.016
+  - first:
+      74: 7719510772795425925
+    second: Plane.004|Door TopAction.017
+  - first:
+      74: 7465911044246164183
+    second: Plane.004|L CenterAction
+  - first:
+      74: -3369281566678886464
+    second: Plane.004|L CenterAction.001
+  - first:
+      74: 3252592423211296312
+    second: Plane.004|Plane.001Action
+  - first:
+      74: 9187896667767914154
+    second: Plane.004|Plane.001Action.001
+  - first:
+      74: 1210066571216443769
+    second: Plane.004|Plane.002Action
+  - first:
+      74: -8584158693312155985
+    second: Plane.004|Plane.002Action.001
+  - first:
+      74: 7636241644925083212
+    second: Plane.004|Plane.003Action.004
+  - first:
+      74: 5805179303111615446
+    second: Plane.004|Plane.003Action.005
+  - first:
+      74: 3291044285716752439
+    second: Plane.004|Plane.004Action
+  - first:
+      74: -6214880886141506197
+    second: Plane.004|Plane.004Action.001
+  - first:
+      74: 2886718536441655340
+    second: Plane.004|R CenterAction
+  - first:
+      74: -3593286859550925604
+    second: Plane.004|R CenterAction.001
+  - first:
+      74: 8325767389171894333
+    second: Plane.003|AL Door LAction.001
+  - first:
+      74: -5290018590802203614
+    second: Plane.003|AL Door LAction.002
+  - first:
+      74: -4517491600998247027
+    second: Plane.003|AL Door RAction
+  - first:
+      74: -4324147765213302959
+    second: Plane.003|AL Door RAction.001
+  - first:
+      74: -1249059074316257486
+    second: Plane.003|Door LowAction
+  - first:
+      74: 380357941717602224
+    second: Plane.003|Door LowAction.001
+  - first:
+      74: -7263613168662842344
+    second: Plane.003|Door LowAction.002
+  - first:
+      74: -2758445166969282355
+    second: Plane.003|Door LowAction.003
+  - first:
+      74: 5799025858378554454
+    second: Plane.003|Door LowAction.004
+  - first:
+      74: -562889509826649139
+    second: Plane.003|Door LowAction.005
+  - first:
+      74: -854247612046592569
+    second: Plane.003|Door LowAction.006
+  - first:
+      74: -482168240645946930
+    second: Plane.003|Door LowAction.007
+  - first:
+      74: -2336302140570305628
+    second: Plane.003|Door LowAction.008
+  - first:
+      74: 8177358857942431047
+    second: Plane.003|Door LowAction.009
+  - first:
+      74: 6906379062018486052
+    second: Plane.003|Door LowAction.010
+  - first:
+      74: 5289631435655717324
+    second: Plane.003|Door LowAction.011
+  - first:
+      74: -1119171501461950266
+    second: Plane.003|Door LowAction.012
+  - first:
+      74: 7457214112747867841
+    second: Plane.003|Door LowAction.013
+  - first:
+      74: 4239804179480133841
+    second: Plane.003|Door LowAction.014
+  - first:
+      74: 162431722526780433
+    second: Plane.003|Door LowAction.015
+  - first:
+      74: 8209750730524667257
+    second: Plane.003|Door LowAction.016
+  - first:
+      74: 8366602665744863676
+    second: Plane.003|Door LowAction.017
+  - first:
+      74: -604907061044181594
+    second: Plane.003|Door MidAction
+  - first:
+      74: 5826432259149727823
+    second: Plane.003|Door MidAction.001
+  - first:
+      74: 6001485584500079193
+    second: Plane.003|Door MidAction.002
+  - first:
+      74: -4087144038759885496
+    second: Plane.003|Door MidAction.003
+  - first:
+      74: -3714656001611768867
+    second: Plane.003|Door MidAction.004
+  - first:
+      74: -175626783582526450
+    second: Plane.003|Door MidAction.005
+  - first:
+      74: 8080752348389721321
+    second: Plane.003|Door MidAction.006
+  - first:
+      74: 2216664906043709136
+    second: Plane.003|Door MidAction.007
+  - first:
+      74: -4043873194376634545
+    second: Plane.003|Door MidAction.008
+  - first:
+      74: 8175909837974141748
+    second: Plane.003|Door MidAction.009
+  - first:
+      74: 4008096827234702091
+    second: Plane.003|Door MidAction.010
+  - first:
+      74: -5304504148046260950
+    second: Plane.003|Door MidAction.011
+  - first:
+      74: -1563790805164742513
+    second: Plane.003|Door MidAction.012
+  - first:
+      74: -1604490989206635866
+    second: Plane.003|Door MidAction.013
+  - first:
+      74: 1954194338954852919
+    second: Plane.003|Door MidAction.014
+  - first:
+      74: -5261176152079183265
+    second: Plane.003|Door MidAction.015
+  - first:
+      74: -4161124305789423935
+    second: Plane.003|Door MidAction.016
+  - first:
+      74: -5646731804835224333
+    second: Plane.003|Door MidAction.017
+  - first:
+      74: 5503825176503416232
+    second: Plane.003|Door TopAction
+  - first:
+      74: -8625100417592151288
+    second: Plane.003|Door TopAction.001
+  - first:
+      74: -6781299993635257804
+    second: Plane.003|Door TopAction.002
+  - first:
+      74: 7281390992377263831
+    second: Plane.003|Door TopAction.003
+  - first:
+      74: 1927225273451430289
+    second: Plane.003|Door TopAction.004
+  - first:
+      74: -4354478812557724941
+    second: Plane.003|Door TopAction.005
+  - first:
+      74: -7908125214982050879
+    second: Plane.003|Door TopAction.006
+  - first:
+      74: -8456295775435202869
+    second: Plane.003|Door TopAction.007
+  - first:
+      74: 6877938352244263168
+    second: Plane.003|Door TopAction.008
+  - first:
+      74: -9027557778142166437
+    second: Plane.003|Door TopAction.009
+  - first:
+      74: 7541534160610960361
+    second: Plane.003|Door TopAction.010
+  - first:
+      74: -4003433841953955364
+    second: Plane.003|Door TopAction.011
+  - first:
+      74: 6047864529318358603
+    second: Plane.003|Door TopAction.012
+  - first:
+      74: 2936996474150481964
+    second: Plane.003|Door TopAction.013
+  - first:
+      74: -6255173052809335064
+    second: Plane.003|Door TopAction.014
+  - first:
+      74: -5750322420512317703
+    second: Plane.003|Door TopAction.015
+  - first:
+      74: 503395760871380548
+    second: Plane.003|Door TopAction.016
+  - first:
+      74: 7931662776632189319
+    second: Plane.003|Door TopAction.017
+  - first:
+      74: 5972494970585414209
+    second: Plane.003|L CenterAction
+  - first:
+      74: 1518181584217428880
+    second: Plane.003|L CenterAction.001
+  - first:
+      74: -123665337150688299
+    second: Plane.003|Plane.001Action
+  - first:
+      74: -1994871162714822373
+    second: Plane.003|Plane.001Action.001
+  - first:
+      74: -5839455570910890988
+    second: Plane.003|Plane.002Action
+  - first:
+      74: 794647919018599542
+    second: Plane.003|Plane.002Action.001
+  - first:
+      74: 1071279283956223380
+    second: Plane.003|Plane.003Action.004
+  - first:
+      74: 7845869496605548992
+    second: Plane.003|Plane.003Action.005
+  - first:
+      74: -8678120721183469476
+    second: Plane.003|Plane.004Action
+  - first:
+      74: 5945105006899684226
+    second: Plane.003|Plane.004Action.001
+  - first:
+      74: -5607009417813916237
+    second: Plane.003|R CenterAction
+  - first:
+      74: -8325473935883370064
+    second: Plane.003|R CenterAction.001
+  externalObjects: {}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

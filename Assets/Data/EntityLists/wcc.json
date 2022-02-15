@@ -1,0 +1,26 @@
+{
+    "wCC_MHD":{
+        "prefab":"WCC/MainHangerDoor",
+        "selbox":{
+            "ox":0,
+            "oy":7.5,
+            "oz":0.75,
+            "sx":22,
+            "sy":7,
+            "sz":1.01
+        },
+        "spawable":false
+    },
+    "wCC_DBD":{
+        "prefab":"WCC/DropBayDoor",
+        "selbox":{
+            "ox":0,
+            "oy":-0.9,
+            "oz":8.9,
+            "sx":22,
+            "sy":1.1,
+            "sz":18
+        },
+        "spawable":false
+    }
+}

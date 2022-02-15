@@ -1,0 +1,27 @@
+{
+	"entities": {
+		"tester": {
+			"id": "tester",
+			"name": "Tester1",
+			"px": "0",
+			"py": "0",
+			"pz": "1",
+			"rx": "0",
+			"ry": "0",
+			"rz": "0",
+			"rw": "1",
+			"inv": {
+				"name": "Tester 1",
+				"items": [
+					{
+						"id": "creditChip",
+						"q": "3",
+						"custom": {
+							"a": "1"
+						}
+					}
+				]
+			}
+		}
+	}
+}

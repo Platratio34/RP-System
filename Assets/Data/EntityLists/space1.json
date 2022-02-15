@@ -1,0 +1,18 @@
+{
+    "galenStation":{
+        "prefab":"GalenStation",
+        "selbox": {
+            "offset": {"x": 0, "y": 0, "z": 0},
+            "scale": {"x": 0, "y": 0, "z": 0}
+        },
+        "spawable": false
+    },
+    "ship-WCC": {
+        "prefab":"Wandering Class Cruiser",
+        "selbox": {
+            "offset": {"x": 0, "y": 0, "z": 0},
+            "scale": {"x": 0, "y": 0, "z": 0}
+        },
+        "spawnable": false
+    }
+}

@@ -1,0 +1,10 @@
+{
+    "creditChip": {
+        "icon":"n/a",
+        "icon3d": {
+            "icon":"Credit Chip",
+            "pos": {"x": 0, "y": 0, "z": 0},
+            "rot": {"x": 0, "y": 0, "z": 0}
+        }
+    }
+}

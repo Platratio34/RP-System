@@ -1,0 +1,19 @@
+{
+    "entities": {
+        "ship": {
+            "type": "wCC",
+			"id": "ship",
+			"name": "Wandering Class Cruiser",
+			"static": "False",
+			"editable": "True",
+			"px": "0",
+			"py": "0",
+			"pz": "0",
+			"rx": "0",
+			"ry": "0",
+			"rz": "0",
+			"rw": "1",
+			"parent": ""
+        }
+    }
+}

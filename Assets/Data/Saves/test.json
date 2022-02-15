@@ -1,0 +1,138 @@
+{
+	"entities": {
+		"9ttzjb1p": {
+			"type": "galenStation",
+			"id": "9ttzjb1p",
+			"name": "Galen Station",
+			"static": "False",
+			"editable": "False",
+			"px": "0",
+			"py": "0",
+			"pz": "0",
+			"rx": "0",
+			"ry": "0",
+			"rz": "0",
+			"rw": "1",
+			"parent": ""
+		},
+		"sbgsjz97": {
+			"type": "storageBox",
+			"id": "sbgsjz97",
+			"name": "Storage Box",
+			"static": "False",
+			"editable": "True",
+			"px": "2",
+			"py": "0.5",
+			"pz": "2",
+			"rx": "0",
+			"ry": "0",
+			"rz": "0",
+			"rw": "1",
+			"inv": {
+				"name": "Storage Box",
+				"items": [
+					{
+						"id": "shortSword",
+						"q": "1"
+					},
+					{
+						"id": "mediumSword",
+						"q": "1"
+					},
+					{
+						"id": "longSword",
+						"q": "1"
+					}
+				]
+			},
+			"parent": ""
+		},
+		"oci0tkr4": {
+			"type": "player",
+			"id": "oci0tkr4",
+			"name": "Player",
+			"static": "False",
+			"editable": "True",
+			"px": "-5",
+			"py": "1",
+			"pz": "6",
+			"rx": "0",
+			"ry": "0",
+			"rz": "0",
+			"rw": "1",
+			"custom": {
+				"playerid": "0"
+			},
+			"inv": {
+				"name": "Player",
+				"items": [
+					{
+						"id": "creditChip",
+						"q": "250"
+					}
+				]
+			},
+			"parent": ""
+		},
+		"w85k7u89": {
+			"type":"testDoor",
+			"id":"w85k7u89",
+			"name":"Test Door",
+			"static": "True",
+			"editable": "True",
+			"px": "0",
+			"py": "0",
+			"pz": "2.01",
+			"rx": "0",
+			"ry": "0",
+			"rz": "0",
+			"rw": "1",
+			"parent": "9ttzjb1p"
+		},
+		"rnwbffx5": {
+			"type":"testDoor",
+			"id":"rnwbffx5",
+			"name":"Test Door",
+			"static": "True",
+			"editable": "True",
+			"px": "7.5",
+			"py": "0",
+			"pz": "2.1",
+			"rx": "0",
+			"ry": "0",
+			"rz": "0",
+			"rw": "1",
+			"parent": "9ttzjb1p"
+		},
+		"gngw5qw2": {
+			"type":"testDoor",
+			"id":"gngw5qw2",
+			"name":"Test Door",
+			"static": "True",
+			"editable": "True",
+			"px": "7.5",
+			"py": "0",
+			"pz": "-2",
+			"rx": "0",
+			"ry": "0",
+			"rz": "0",
+			"rw": "1",
+			"parent": "9ttzjb1p"
+		},
+		"21rxqvdb": {
+			"type":"testDoor",
+			"id":"21rxqvdb",
+			"name":"Test Door",
+			"static": "True",
+			"editable": "True",
+			"px": "3",
+			"py": "0",
+			"pz": "3.9",
+			"rx": "0",
+			"ry": "0.7071068",
+			"rz": "0",
+			"rw": "-0.7071068",
+			"parent": "9ttzjb1p"
+		}
+	}
+}

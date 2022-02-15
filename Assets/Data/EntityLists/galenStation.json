@@ -1,0 +1,14 @@
+{
+    "galenStation":{
+        "prefab":"GalenStation",
+        "selbox":{
+            "ox":0,
+            "oy":0,
+            "oz":0,
+            "sx":0,
+            "sy":0,
+            "sz":0
+        },
+        "spawable":false
+    }
+}

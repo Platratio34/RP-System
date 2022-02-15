@@ -1,0 +1,92 @@
+{
+	"entities": {
+		"galenStation0": {
+			"type": "galenStation",
+			"id": "galenStation0",
+			"name": "GalenStation",
+			"static": "False",
+			"editable": "False",
+			"px": "0",
+			"py": "0",
+			"pz": "0",
+			"rx": "0",
+			"ry": "0",
+			"rz": "0",
+			"rw": "1",
+			"parent": ""
+		},
+		"storage0": {
+			"type": "storageBox",
+			"id": "storage0",
+			"name": "StorageBox",
+			"static": "False",
+			"editable": "True",
+			"px": "2",
+			"py": "0.5",
+			"pz": "2",
+			"rx": "0",
+			"ry": "0",
+			"rz": "0",
+			"rw": "1",
+			"inv": {
+				"name": "StorageBox",
+				"items": [
+				]
+			},
+			"parent": ""
+		},
+		"player0": {
+			"type": "player",
+			"id": "player0",
+			"name": "Player",
+			"static": "False",
+			"editable": "True",
+			"px": "-16.02793",
+			"py": "0.9999986",
+			"pz": "11.65888",
+			"rx": "0",
+			"ry": "0",
+			"rz": "0",
+			"rw": "1",
+			"custom": {
+				"playerid": "0"
+			},
+			"inv": {
+				"name": "Player",
+				"items": [
+					{
+						"id": "creditChip",
+						"q": "256",
+						"custom": {
+							"a": "1"
+						}
+					}
+				]
+			},
+			"parent": ""
+		},
+		"tester0": {
+			"type": "tester",
+			"id": "tester0",
+			"name": "Tester1",
+			"static": "False",
+			"editable": "True",
+			"px": "0",
+			"py": "0.5",
+			"pz": "2",
+			"rx": "0",
+			"ry": "0",
+			"rz": "0",
+			"rw": "1",
+			"custom": {
+				"a": "1"
+			},
+			"inv": {
+				"name": "Tester1",
+				"items": [
+				]
+			},
+			"parent": ""
+		}
+	}
+}
