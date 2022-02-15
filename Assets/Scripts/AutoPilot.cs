@@ -59,14 +59,17 @@ public class AutoPilot : MonoBehaviour {
                 dRot = targetTrans.eulerAngles - shipT.eulerAngles;
             }
             if(shipT.parent != targetTrans) {
-                relVel.x += ship.makeRel((transLPos - targetTrans.position) / Time.deltaTime).x;
+                Satellite s = shipT.parent.GetComponent<Satellite>();
+                float v = ship.makeRel((transLPos - targetTrans.position) / Time.deltaTime).x;
+                v -= ship.makeRel(s.getVel()).x;
+                relVel.x += v;
             }
         }
         Vector3 eRot = shipT.rotation.eulerAngles;
         dRot2 = Vector3.zero;
         // bool oT = true;
         distToTarget = dPos.magnitude;
-        if(dPos.magnitude > (goToTransform?Mathf.Max(0.1f,distToTransform):0.1) ) {
+        if(dPos.magnitude > 0.1 ) {
             atTarget = false;
             Vector2 xz = new Vector2(dPos.x, dPos.z);
             tRot.y = Mathf.Atan2(xz.x, xz.y) * (360f/6.28f);
@@ -114,7 +117,7 @@ public class AutoPilot : MonoBehaviour {
             float ts = Mathf.Clamp(pID(dPos.magnitude), 0, 2f);
             tLatVel.x = ts * (dRot2.magnitude/Mathf.Pow(dRot2.magnitude, 1.1f));
         }
-        if(dRot2.magnitude > 10) {
+        if(dRot2.magnitude > 10 || atTarget) {
             tLatVel.x = 0;
         }
         cThrust = new Vector3((tLatVel.x - relVel.x) / ship.effectiveAccl.x, (tLatVel.y - relVel.y) / ship.effectiveAccl.y, (tLatVel.z - relVel.z) / ship.effectiveAccl.z);
