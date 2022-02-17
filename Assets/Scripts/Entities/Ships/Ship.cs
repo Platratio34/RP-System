@@ -28,9 +28,9 @@ public class Ship : Entity {
         // } else {
         vel += accl * Time.deltaTime;
         Vector3 mVel = new Vector3(vel.x,vel.y,vel.z);
-        if(cSat != null) {
-            mVel -= cSat.getVel();
-        }
+        // if(cSat != null) {
+        //     mVel -= cSat.getVel();
+        // }
         transform.position += mVel * Time.deltaTime;
 
         rVel += rAccl * Time.deltaTime;
@@ -46,6 +46,8 @@ public class Ship : Entity {
     void OnTriggerExit(Collider other) {
         Satellite nSat = other.GetComponent<Satellite>();
         if(nSat != null && cSat == nSat) {
+            // print("Adding: " + vel + " + " + cSat.getVel());
+            vel += cSat.getVel();
             cSat = null;
             // orbit.parent = null;
             // transform.SetParent(null);
@@ -59,6 +61,8 @@ public class Ship : Entity {
         if(nSat != null && nSat != cSat) {
             if(cSat == null) {
                 cSat = nSat;
+                // print("Subtracting: " + vel + " - " + cSat.getVel());
+                vel -= cSat.getVel();
                 // newOrbit();
                 // parent object
                 // transform.SetParent(other.transform);
@@ -66,7 +70,11 @@ public class Ship : Entity {
                 // vel -= nSat.getVel();
             } else {
                 if(cSat.sOI > nSat.sOI) {
+                    // print("Adding: " + vel + " + " + cSat.getVel());
+                    vel += cSat.getVel();
                     cSat = nSat;
+                    // print("Subtracting: " + vel + " - " + cSat.getVel());
+                    vel -= cSat.getVel();
                     // newOrbit();
                     // parent object
                     // transform.SetParent(other.transform);
@@ -74,7 +82,11 @@ public class Ship : Entity {
                     // vel -= nSat.getVel();
                 } else {
                     if(Vector3.Distance(transform.position, cSat.transform.position) > cSat.sOI) {
+                        // print("Adding: " + vel + " + " + cSat.getVel());
+                        vel += cSat.getVel();
                         cSat = nSat;
+                        // print("Subtracting: " + vel + " - " + cSat.getVel());
+                        vel -= cSat.getVel();
                         // newOrbit();
                         // parent object
                         // transform.SetParent(other.transform);
@@ -105,9 +117,9 @@ public class Ship : Entity {
 
     public Vector3 getRelativeVel() {
         Vector3 eV = new Vector3(vel.x,vel.y,vel.z);
-        if(isInSOI()) {
-            eV -= cSat.getVel();
-        }
+        // if(isInSOI()) {
+        //     eV -= cSat.getVel();
+        // }
         Vector3 outV = eV.x * transform.forward;
         outV += eV.y * transform.up;
         outV += eV.z * transform.right;

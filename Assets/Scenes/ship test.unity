@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 381262943}
-  m_IndirectSpecularColor: {r: 0.37311947, g: 0.38074005, b: 0.35872722, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311992, g: 0.38074034, b: 0.35872713, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -266,6 +266,36 @@ Transform:
   m_Father: {fileID: 207038173}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!1 &202668236
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 202668237}
+  m_Layer: 0
+  m_Name: P 1.0 Aproach
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &202668237
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 202668236}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.4}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 564029899}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &207038171
 GameObject:
   m_ObjectHideFlags: 0
@@ -582,7 +612,7 @@ GameObject:
   - component: {fileID: 434126063}
   - component: {fileID: 434126062}
   m_Layer: 0
-  m_Name: p0
+  m_Name: p1.0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -723,7 +753,7 @@ GameObject:
   - component: {fileID: 564029898}
   - component: {fileID: 564029897}
   m_Layer: 0
-  m_Name: P 1.1
+  m_Name: P 1.0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -776,7 +806,7 @@ MonoBehaviour:
   dispPoints: 0
   dispColor: {r: 0, g: 0.82892895, b: 1, a: 1}
   focus: 1
-  lockDirToParent: 0
+  lockDirToParent: 1
   lookDirToPrograde: 0
   sOICollider: {fileID: 564029898}
   calcPer: 0
@@ -800,11 +830,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 564029896}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 9.725422, y: 0, z: 23.776413}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 434126061}
+  - {fileID: 202668237}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -818,7 +849,7 @@ GameObject:
   m_Component:
   - component: {fileID: 586538451}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: P 1 Aproach
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -848,7 +879,6 @@ GameObject:
   m_Component:
   - component: {fileID: 631561043}
   - component: {fileID: 631561042}
-  - component: {fileID: 631561044}
   - component: {fileID: 631561045}
   - component: {fileID: 631561046}
   m_Layer: 0
@@ -888,7 +918,7 @@ MonoBehaviour:
   children: []
   staticEntity: 0
   editableEntity: 1
-  orbit: {fileID: 631561044}
+  orbit: {fileID: 0}
   vel: {x: 0, y: 0, z: 0}
   accl: {x: 0, y: 0, z: 0}
   rVel: {x: 0, y: 0, z: 0}
@@ -922,7 +952,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 631561041}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.6, y: 0, z: 21.37}
+  m_LocalPosition: {x: 7.22, y: 0, z: 18.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1427938650}
@@ -937,57 +967,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &631561044
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 631561041}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1a4841cf7db04f40976074be6dafba0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  selBoxOffset: {x: 0, y: 0, z: 0}
-  selBoxScale: {x: 0, y: 0, z: 0}
-  eParams:
-    parameters: []
-  id: 
-  dispName: 
-  isNameKey: 0
-  selBoxes: []
-  inventory: {fileID: 0}
-  interactableController: {fileID: 0}
-  customDataArray: []
-  entityId: 
-  entityName: 
-  entityType: 
-  parentEntity: 
-  children: []
-  staticEntity: 0
-  editableEntity: 1
-  parent: {fileID: 0}
-  orbitalPer: 0
-  orbitalPos: 0
-  offset: 0
-  sOI: 0
-  mass: 1
-  orbit:
-    alt: 1
-    inc: 0
-    ect: 0
-    majorAxis: 0
-    debug: 0
-    period: 1
-  disp: 1
-  dispPoints: 0
-  dispColor: {r: 1, g: 0, b: 0, a: 1}
-  focus: 0
-  lockDirToParent: 0
-  lookDirToPrograde: 1
-  sOICollider: {fileID: 0}
-  calcPer: 1
 --- !u!135 &631561045
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1441,7 +1420,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 893916515}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 8.6, y: 2, z: 21.37}
+  m_LocalPosition: {x: 7.22, y: 2, z: 18.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1939,18 +1918,18 @@ MonoBehaviour:
   goToRot: 0
   targetRot: {x: 0, y: 0, z: 0}
   waitRotForPos: 1
-  goToTransform: 0
-  targetTrans: {fileID: 586538451}
+  goToTransform: 1
+  targetTrans: {fileID: 202668237}
   sameRot: 0
   distToTransform: 0
   flatZ: 1
   tLatVel: {x: 0, y: 0, z: 0}
   tRotVel: {x: 0, y: 15, z: 0}
-  tRot: {x: -0, y: 151.99901, z: 0}
-  distToTarget: 24.220589
-  dPos: {x: 11.4, y: 0, z: -21.37}
+  tRot: {x: -0, y: 21.764286, z: 0}
+  distToTarget: 5.6809626
+  dPos: {x: 2.1054225, y: 0, z: 5.276413}
   dRot: {x: 0, y: 0, z: 0}
-  dRot2: {x: 0, y: 151.99901, z: 0}
+  dRot2: {x: 0, y: 21.764286, z: 0}
   ship: {fileID: 631561042}
   cThrust: {x: 0, y: 0, z: 0}
   cRot: {x: 0, y: 0.75, z: 0}
@@ -2254,7 +2233,7 @@ GameObject:
   - component: {fileID: 1834090236}
   - component: {fileID: 1834090235}
   m_Layer: 0
-  m_Name: p0
+  m_Name: p1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
