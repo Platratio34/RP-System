@@ -9,6 +9,7 @@ public class Interactable : MonoBehaviour {
     public EditabelParams eParams;
     public string id;
     public string dispName;
+    public LocalString localName;
     public bool isNameKey = false;
 
     public SelectionBox[] selBoxes;

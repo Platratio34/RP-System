@@ -194,6 +194,10 @@ MonoBehaviour:
       slid: 0
   id: 
   dispName: bulkheadDoor
+  localName:
+    key: bulkheadDoor
+    catagory: interactableNames
+    dropIns: []
   isNameKey: 1
   selBoxes:
   - {fileID: 5299141169262967342}

@@ -25,16 +25,23 @@ public class Player : Entity {
     }
 
     void Update() {
-        bool onGround = Physics.Raycast(transform.position, transform.up*-1, 1.1f);
-        float h = Input.GetAxis("Left/Right");
-        move.y=h;
-        float v = Input.GetAxis("Forward/Backward");
-        move.x=v;
+        Vector3 xD = new Vector3(0.1f*transform.forward.x,0.1f*transform.forward.y,0.1f*transform.forward.z);
+        Vector3 yD = new Vector3(0.1f*transform.right.x,0.1f*transform.right.y,0.1f*transform.right.z);
+        bool onGround = Physics.Raycast(transform.position+xD, transform.up*-1, 1.1f);
+        onGround = onGround || Physics.Raycast(transform.position-xD, transform.up*-1, 1.1f);
+        onGround = onGround || Physics.Raycast(transform.position+yD, transform.up*-1, 1.1f);
+        onGround = onGround || Physics.Raycast(transform.position-yD, transform.up*-1, 1.1f);
         if(controlled) {
+            float h = Input.GetAxis("Left/Right");
+            move.y=h;
+            float v = Input.GetAxis("Forward/Backward");
+            move.x=v;
             Cursor.lockState = CursorLockMode.Locked;
             MouseAiming();
             if(!onGround) {
                 rb.drag = 0.5f;
+                rb.AddForce(transform.forward*v*rb.mass*mp/4f, ForceMode.Force);
+                rb.AddForce(transform.right*h*rb.mass*mp/4f, ForceMode.Force);
             } else {
                 rb.drag = 5f;
                 rb.AddForce(transform.forward*v*rb.mass*mp, ForceMode.Force);
@@ -57,11 +64,13 @@ public class Player : Entity {
                 if(inter != null) {
                     // print("interacting with " + inter.id);
                 }
+            } else {
+                inter = null;
             }
 
             if(inter != null) {
                 if(inter.isNameKey) {
-                    lookingAtText.text = LocalStrings.GetLocalString("interactableNames",inter.dispName);
+                    lookingAtText.text = inter.localName.ToString();/*LocalStrings.GetLocalString("interactableNames",inter.dispName)*/;
                 } else {
                     lookingAtText.text = inter.dispName;
                 }

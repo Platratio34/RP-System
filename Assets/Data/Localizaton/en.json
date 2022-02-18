@@ -50,6 +50,16 @@
             "DBD": "Drop Bay Door",
             "MHD": "Main Hanger Door"
         },
+        "nW": {
+            "hD": "Hanger Door"
+        },
+        "door": {
+            "cIC": "CIC",
+            "hang": "Hanger",
+            "hangD": "Hanger Door",
+            "med": "Medical Bay",
+            "engr": "Engineering"
+        },
         "dockingRing": "Docking Ring",
         "aLDoor": "Airlock Door",
         "intDoor": "Interior Door",

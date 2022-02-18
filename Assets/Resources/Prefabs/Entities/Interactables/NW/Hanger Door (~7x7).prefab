@@ -550,8 +550,12 @@ MonoBehaviour:
   eParams:
     parameters: []
   id: 
-  dispName: 
-  isNameKey: 0
+  dispName: nW.hD
+  localName:
+    key: hangD
+    catagory: interactableNames
+    dropIns: []
+  isNameKey: 1
   selBoxes:
   - {fileID: 6207177339966447552}
   - {fileID: 1242205826626058874}

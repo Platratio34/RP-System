@@ -1526,6 +1526,10 @@ MonoBehaviour:
     parameters: []
   id: 
   dispName: 
+  localName:
+    key: 
+    catagory: 
+    dropIns: []
   isNameKey: 0
   selBoxes: []
   inventory: {fileID: 0}
@@ -1538,6 +1542,26 @@ MonoBehaviour:
   children: []
   staticEntity: 0
   editableEntity: 1
+  orbit: {fileID: 0}
+  vel: {x: 0, y: 0, z: 0}
+  accl: {x: 0, y: 0, z: 0}
+  rVel: {x: 0, y: 0, z: 0}
+  rAccl: {x: 0, y: 0, z: 0}
+  effectiveAccl: {x: 0, y: 0, z: 0}
+  effectiveRot: {x: 1, y: 1, z: 1}
+  thrustArray:
+    forward: []
+    backwards: []
+    right: []
+    left: []
+    up: []
+    down: []
+    pitchP: []
+    pitchM: []
+    yawP: []
+    yawM: []
+    rollP: []
+    rollM: []
 --- !u!114 &367430058236348659
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3240,6 +3264,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8655273632503310785}
     m_Modifications:
+    - target: {fileID: 10181661915729956, guid: 0092002a9ee146e4daa0b51abb853d36, type: 3}
+      propertyPath: localName.key
+      value: nW.hD
+      objectReference: {fileID: 0}
     - target: {fileID: 655868324647451277, guid: 0092002a9ee146e4daa0b51abb853d36, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1

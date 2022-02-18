@@ -360,6 +360,10 @@ MonoBehaviour:
       slid: 0
   id: mainHangerDoor
   dispName: wCC.MHD
+  localName:
+    key: wCC.MHD
+    catagory: interactableNames
+    dropIns: []
   isNameKey: 1
   selBoxes:
   - {fileID: 855688684762050344}

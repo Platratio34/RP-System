@@ -300,6 +300,10 @@ MonoBehaviour:
       slid: 0
   id: 
   dispName: roomDoor
+  localName:
+    key: roomDoor
+    catagory: interactableNames
+    dropIns: []
   isNameKey: 1
   selBoxes:
   - {fileID: 6400203618810535}

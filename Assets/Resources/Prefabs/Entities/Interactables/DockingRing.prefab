@@ -1496,6 +1496,7 @@ GameObject:
   - component: {fileID: 8641942060802887148}
   - component: {fileID: 5767615570048006438}
   - component: {fileID: 5407226376830228720}
+  - component: {fileID: 4049265492045415195}
   m_Layer: 0
   m_Name: DockingRing
   m_TagString: Untagged
@@ -1638,7 +1639,11 @@ MonoBehaviour:
       slid: 0
   id: 
   dispName: 
-  isNameKey: 0
+  localName:
+    key: dockingRing
+    catagory: interactableNames
+    dropIns: []
+  isNameKey: 1
   selBoxes:
   - {fileID: 5313816921804860243}
   - {fileID: 4069279897339050012}
@@ -1652,6 +1657,20 @@ MonoBehaviour:
   ringAnimator: {fileID: 5491062923881177648}
   door: 0
   doorAnimator: {fileID: 308783675368015016}
+--- !u!64 &4049265492045415195
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5407226376830228723}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -2998388277931797027, guid: e7039a688245b7247943da621df9b5b4, type: 3}
 --- !u!1 &5491062922131398462
 GameObject:
   m_ObjectHideFlags: 0

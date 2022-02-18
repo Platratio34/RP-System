@@ -248,6 +248,10 @@ MonoBehaviour:
       slid: 0
   id: dropBayDoor
   dispName: wCC.DBD
+  localName:
+    key: wCC.DBD
+    catagory: interactableNames
+    dropIns: []
   isNameKey: 1
   selBoxes:
   - {fileID: 335960838007992940}
