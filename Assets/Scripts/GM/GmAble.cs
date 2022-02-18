@@ -269,7 +269,7 @@ public class GmAble : MonoBehaviour {
                 if(!popup.shown) {
                     if(selInter.eParams.parameters.Length > 0) {
                         popup.Reset();
-                        popup.PopUp(selInter.isNameKey ? LocalStrings.GetLocalString("interactableNames", selInter.dispName) : selInter.dispName);
+                        popup.PopUp(selInter.isNameKey ? selInter.localName.ToString()/*LocalStrings.GetLocalString("interactableNames", selInter.dispName)*/ : selInter.dispName);
                         string[] strs = selInter.GetParams();
                         for(int i = 0; i < strs.Length; i++) {
                             if(selInter.GetParamType(strs[i]) == ParamType.BOOL) {
