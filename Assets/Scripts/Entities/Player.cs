@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : Entity {
 
@@ -17,6 +18,7 @@ public class Player : Entity {
     public float interactDist = 3f;
     private Vector3 interP;
     private Vector3 interP2;
+    public Text lookingAtText;
 
     public override void OnStart() {
         rb.freezeRotation = true;
@@ -43,19 +45,32 @@ public class Player : Entity {
             }
             rb.AddForce(transform.up*-5*rb.mass, ForceMode.Force);
 
-            if(Input.GetButtonDown("Interact")) {
-                Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
-                RaycastHit hit;
-                if(Physics.Raycast(ray, out hit, interactDist)) {
-                    interP = hit.point;
-                    interP2 = transform.position;
-                    Interactable inter = Interactable.GetInteractable(hit.collider.gameObject);
-                    // print("atemtpting interaction " + interP);
-                    if(inter != null) {
-                        // print("interacting with " + inter.id);
-                        inter.OnInteract(false);
-                    }
+            Interactable inter = null;
+
+            Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
+            RaycastHit hit;
+            if(Physics.Raycast(ray, out hit, interactDist)) {
+                interP = hit.point;
+                interP2 = transform.position;
+                inter = Interactable.GetInteractable(hit.collider.gameObject);
+                // print("atemtpting interaction " + interP);
+                if(inter != null) {
+                    // print("interacting with " + inter.id);
                 }
+            }
+
+            if(inter != null) {
+                if(inter.isNameKey) {
+                    lookingAtText.text = LocalStrings.GetLocalString("interactableNames",inter.dispName);
+                } else {
+                    lookingAtText.text = inter.dispName;
+                }
+            } else {
+                lookingAtText.text = "";
+            }
+
+            if(Input.GetButtonDown("Interact") && inter != null) {
+                inter.OnInteract(false);
             }
         } else {
             Cursor.lockState = CursorLockMode.None;
