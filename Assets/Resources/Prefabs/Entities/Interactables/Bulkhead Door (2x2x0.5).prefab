@@ -203,7 +203,7 @@ MonoBehaviour:
   - {fileID: 5299141169262967342}
   open: 0
   locked: 0
-  lockable: 0
+  lockable: 1
   frozen: 0
   invertAnimation: 0
   animator: {fileID: 2557286028350356920}

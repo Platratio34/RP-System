@@ -124,7 +124,7 @@ public class DockingTube : Interactable {
         eParams.GetParam("door").valueB = door;
     }
 
-    public override void OnInteract(bool gm) {
+    public override void OnInteract(bool gm, int b) {
         open = !open;
         eParams.GetParam("open").valueB = open;
     }

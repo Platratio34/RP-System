@@ -201,7 +201,13 @@ public class GmAble : MonoBehaviour {
                     popupT.Hide();
                 }
             } else if(Input.GetButtonDown("Interact")) {
-                selEntity.OnInteract(true);
+                // print("Interact");
+                // print(Input.GetButton("Interact Modifier"));
+                if(Input.GetButton("Interact Modifier")) {
+                    selEntity.OnInteract(true, 1);
+                } else {
+                    selEntity.OnInteract(true, 0);
+                }
             }
             if(!selEntity.staticEntity) {
                 if(Input.GetButton("GM Select Entity")) {
@@ -264,7 +270,13 @@ public class GmAble : MonoBehaviour {
             }
 
             if(Input.GetButtonDown("Interact")) {
-                selInter.OnInteract(true);
+                // print("Interact");
+                // print(Input.GetButton("Interact Modifier"));
+                if(Input.GetButton("Interact Modifier")) {
+                    selInter.OnInteract(true, 1);
+                } else {
+                    selInter.OnInteract(true, 0);
+                }
             } else if(Input.GetButtonDown("GM Entity Properties")) {
                 if(!popup.shown) {
                     if(selInter.eParams.parameters.Length > 0) {

@@ -13,7 +13,7 @@ public class Door : Entity {
     public ObjAnimator animator;
 
     public override void OnStart() {
-        
+
     }
 
     void Update() {
@@ -43,7 +43,7 @@ public class Door : Entity {
         closed = eParams.GetParam("closed").valueB;
     }
 
-    public override void OnInteract(bool gm) {
+    public override void OnInteract(bool gm, int b) {
         closed = !closed;
         eParams.GetParam("closed").valueB = closed;
     }

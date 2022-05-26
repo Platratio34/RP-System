@@ -3,7 +3,7 @@ using UnityEngine;
 
 /// <summary><c>String Parser</c> is a librar of functions for parsing Json type string</summary>
 public static class StringParser {
-    
+
     /// <summary><c>Parse For String</c> pareses a Json type string for a string</summary>
     /// <param name="str">The string to parse</param>
     /// <returns>A <c>StringParse</c> object of type <c>string</c>, use <c>".data"</c> for the string</returns>
@@ -227,7 +227,7 @@ public struct StringParse<T> {
     public int l;
     /// <value>The return data</value>
     public T data;
-    
+
     /// <summary>Constructor for <c>String Parse</c></summary>
     /// <param name="data">The return data</param>
     /// <param name="l">The number of charecters that were parsed through</param>

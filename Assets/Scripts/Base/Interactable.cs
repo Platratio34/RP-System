@@ -15,7 +15,11 @@ public class Interactable : MonoBehaviour {
     public SelectionBox[] selBoxes;
 
     /// <summary>Called when the the interact key is used on the entity</summary>
-    public virtual void OnInteract(bool gm) {}
+    public void OnInteract(bool gm) {
+        OnInteract(gm, 0);
+    }
+    /// <summary>Called when the the interact key is used on the entity</summary>
+    public virtual void OnInteract(bool gm, int b) {}
     /// <summary>Called right after an editable paramter is changed</summary>
     protected virtual void OnEdit() {}
     /// <summary>Called when the interactable is saved</summary>

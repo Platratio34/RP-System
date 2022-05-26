@@ -15,7 +15,7 @@ public class MultiPartDoor : Entity {
     public Vector3[] colliderScale;
 
     public override void OnStart() {
-        
+
     }
 
     void Update() {
@@ -43,7 +43,7 @@ public class MultiPartDoor : Entity {
         closed = eParams.GetParam("Closed").valueB;
     }
 
-    public override void OnInteract(bool gm) {
+    public override void OnInteract(bool gm, int b) {
         closed = !closed;
         eParams.GetParam("Closed").valueB = closed;
     }
@@ -57,6 +57,6 @@ public class MultiPartDoor : Entity {
             gameObject.transform.localPosition = MathP.VLerp(positions[0], positions[1], t);
         }
     }
-    
-    
+
+
 }

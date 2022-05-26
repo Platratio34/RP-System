@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class InteractableDoor : Interactable {
-    
+
     public bool open;
     public bool locked;
     public bool lockable;
@@ -12,7 +12,7 @@ public class InteractableDoor : Interactable {
     public ObjAnimator animator;
 
     void Start() {
-        
+
     }
 
     void Update() {
@@ -38,7 +38,7 @@ public class InteractableDoor : Interactable {
         }
     }
 
-    public override void OnInteract(bool gm) {
+    public override void OnInteract(bool gm, int b) {
         if(!locked || gm) {
             open = !open;
         }
@@ -76,5 +76,12 @@ public class InteractableDoor : Interactable {
         if(obj.ContainsKey("locked")) locked = obj.GetBool("locked");
         if(obj.ContainsKey("lockable")) lockable = obj.GetBool("lockable");
         if(obj.ContainsKey("frozen")) frozen = obj.GetBool("frozen");
+    }
+
+    public void setOpen(bool open) {
+        if(!locked) this.open = open;
+    }
+    public void setLock(bool locked) {
+        if(lockable) this.locked = locked;
     }
 }
