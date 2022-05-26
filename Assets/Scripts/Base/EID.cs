@@ -89,4 +89,5 @@ public class EID : Interactable {
     }
 }
 
+[System.Serializable]
 public class EidEvent : UnityEvent<EID> {}

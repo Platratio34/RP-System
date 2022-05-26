@@ -160,5 +160,13 @@ public class DockingTube : Interactable {
         if(obj.ContainsKey("door")) door = obj.GetBool("door");
     }
 
+    public void onEidOpen(EID eid) {
+        if(eid.state == 1) open = !open;
+        eParams.GetParam("open").valueB = open;
+    }
+    public void onEidExtend(EID eid) {
+        if(eid.state == 1) extend = !extend;
+        eParams.GetParam("extend").valueB = extend;
+    }
 
 }
