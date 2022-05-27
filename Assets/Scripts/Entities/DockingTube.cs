@@ -168,5 +168,32 @@ public class DockingTube : Interactable {
         if(eid.state == 1) extend = !extend;
         eParams.GetParam("extend").valueB = extend;
     }
+    public void onEidRingExtend(EID eid) {
+        if(eid.state == 1) {
+            exPos = 2;
+        } else {
+            exPos = 0;
+        }
+    }
+    public void onEidFoorExtend1(EID eid) {
+        if(eid.state == 1) {
+            fPos = 2;
+        } else {
+            fPos = 0;
+        }
+    }
+    public void onEidFoorExtend2(EID eid) {
+        if(eid.state == 1) {
+            fPos = 3;
+        } else {
+            fPos = 2;
+        }
+    }
+    public void onEidDoor(EID eid) {
+        door = eid.state==1;
+    }
+    public void onEidManual(EID eid) {
+        manual = eid.state==1;
+    }
 
 }

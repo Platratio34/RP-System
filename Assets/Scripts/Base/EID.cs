@@ -39,15 +39,18 @@ public class EID : Interactable {
             if(b == 1) state--;
             state %= (maxVal+1);
         }
-        onChangeEvent.Invoke(this);
+        // print(this.state);
+        EID eid = this;
+        // EID eid = new EID();
+        onChangeEvent.Invoke((EID)eid);
     }
+
     protected override void OnEdit() {
 
     }
 
     // Start is called before the first frame update
     void Start() {
-        onChangeEvent = new EidEvent();
         sPos = transform.localPosition;
     }
 
@@ -59,7 +62,8 @@ public class EID : Interactable {
                 if(pTime <= 0) {
                     state = 0;
                     pTime = 0;
-                    onChangeEvent.Invoke(this);
+                    EID eid = this;
+                    onChangeEvent.Invoke((EID)eid);
                 }
             }
         }
@@ -86,6 +90,12 @@ public class EID : Interactable {
         TOGGLE,
         DIAL,
         DIAL_CONT
+    }
+
+    public void matchEID(EID eid) {
+        if(eid.type == type) {
+            state = eid.state;
+        }
     }
 }
 
