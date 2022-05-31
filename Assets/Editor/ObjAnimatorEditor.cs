@@ -72,6 +72,12 @@ public class ObjAnimatorEditor : Editor {
             change = true;
         }
 
+        bool tB = EditorGUILayout.Toggle("Loop", o.loop);
+        if(tB != o.loop) {
+            o.loop = tB;
+            change = true;
+        }
+
         EditorGUILayout.Space();
         EditorGUILayout.BeginHorizontal();
         // objs = EditorGUILayout.BeginFoldoutHeaderGroup(objs, "Objects");

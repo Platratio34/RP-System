@@ -17,6 +17,7 @@ public class EID : Interactable {
     public Vector3 posF;
     public Vector3 rotF;
     private Vector3 sPos;
+    private Vector3 sRot;
     public float moveTime = 0.25f;
     public ObjAnimator animator;
     public float mTarget = 1f;
@@ -40,6 +41,9 @@ public class EID : Interactable {
             if(b == 0) state++;
             if(b == 1) state--;
             state %= (maxVal+1);
+            if(state < 0) {
+                state += maxVal+1;
+            }
         }
         // print(this.state);
         EID eid = this;
@@ -55,6 +59,7 @@ public class EID : Interactable {
     // Start is called before the first frame update
     void Start() {
         sPos = transform.localPosition;
+        sRot = transform.localEulerAngles;
     }
 
     // Update is called once per frame
@@ -81,16 +86,22 @@ public class EID : Interactable {
             if(type == EidType.PUSH || type == EidType.TOGGLE) {
                 cState = Mathf.Clamp(cState, 0, 1);
                 transform.localPosition = sPos + Vector3.Lerp(pos0, posF, cState);
-                transform.localEulerAngles = Vector3.Lerp(rot0, rotF, cState);
+                transform.localEulerAngles = sRot + Vector3.Lerp(rot0, rotF, cState);
             } else {
                 cState = Mathf.Clamp(cState, 0, maxVal);
                 transform.localPosition = sPos + Vector3.Lerp(pos0, posF, (float)cState/(float)maxVal);
-                transform.localEulerAngles = Vector3.Lerp(rot0, rotF, (float)cState/(float)maxVal);
+                transform.localEulerAngles = sRot + Vector3.Lerp(rot0, rotF, (float)cState/(float)maxVal);
             }
         } else {
-            if(type == EidType.DIAL || type == EidType.DIAL_CONT ) animator.target = state;
-            else if(state == 0) animator.target = 0;
-            else animator.target = mTarget;
+            if(type == EidType.DIAL) {
+                animator.target = state * (animator.steps / (float)maxVal);
+            } else if(type == EidType.DIAL_CONT) {
+                animator.target = state * (animator.steps / ((float)maxVal+1f));
+            } else if(state == 0) {
+                animator.target = 0;
+            } else {
+                animator.target = mTarget;
+            }
         }
     }
 

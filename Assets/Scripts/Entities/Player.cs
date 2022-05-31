@@ -79,7 +79,7 @@ public class Player : Entity {
             }
 
             if(Input.GetButtonDown("Interact") && inter != null) {
-                inter.OnInteract(false);
+                inter.OnInteract(false, Input.GetButton("Interact Modifier")?1:0);
             }
         } else {
             Cursor.lockState = CursorLockMode.None;

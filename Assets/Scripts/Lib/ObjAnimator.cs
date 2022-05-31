@@ -14,6 +14,8 @@ public class ObjAnimator : MonoBehaviour {
 
     public float target = -1f;
 
+    public bool loop = false;
+
     void Start() {
 
     }
@@ -21,28 +23,64 @@ public class ObjAnimator : MonoBehaviour {
     void Update() {
         if(Application.IsPlaying(this)) {
             if(target != -1f) {
+                // target %= steps;
                 if(speed > 0) {
-                    if(time > target * timeScale) {
-                        speed *= -1f;
-                        time += speed * Time.deltaTime;
-                        time = Mathf.Clamp(time, timeScale * target, timeScale * steps);
+                    if(!loop) {
+                        if(time > target * timeScale) {
+                            speed *= -1f;
+                            time += speed * Time.deltaTime;
+                            time = Mathf.Clamp(time, timeScale * target, timeScale * steps);
+                        } else {
+                            time += speed * Time.deltaTime;
+                            time = Mathf.Clamp(time, 0, timeScale * target);
+                        }
                     } else {
-                        time += speed * Time.deltaTime;
-                        time = Mathf.Clamp(time, 0, timeScale * target);
+                        float trg2 = target + steps/2f;
+                        trg2 *= timeScale;
+                        trg2 %= timeScale * steps;
+                        float tm2 = time + (timeScale*steps)/2f;
+                        if(!(time > trg2 && time > target)) {
+                            speed *= -1f;
+                            time += speed * Time.deltaTime;
+                            time %= timeScale * steps;
+                            time = Mathf.Clamp(time, timeScale * target, timeScale * steps);
+                        } else {
+                            time += speed * Time.deltaTime;
+                            time %= timeScale * steps;
+                            time = Mathf.Clamp(time, 0, timeScale * target);
+                        }
                     }
                 } else if(speed < 0) {
-                    if(time < target * timeScale) {
-                        speed *= -1f;
-                        time += speed * Time.deltaTime;
-                        time = Mathf.Clamp(time, 0, timeScale * target);
+                    if(!loop) {
+                        if(time < target * timeScale) {
+                            speed *= -1f;
+                            time += speed * Time.deltaTime;
+                            time = Mathf.Clamp(time, 0, timeScale * target);
+                        } else {
+                            time += speed * Time.deltaTime;
+                            time = Mathf.Clamp(time, timeScale * target, timeScale * steps);
+                        }
                     } else {
-                        time += speed * Time.deltaTime;
-                        time = Mathf.Clamp(time, timeScale * target, timeScale * steps);
+                        float trg2 = target + steps/2f;
+                        trg2 *= timeScale;
+                        trg2 %= timeScale * steps;
+                        float tm2 = time + (timeScale*steps)/2f;
+                        if(!(time < trg2 && time < target)) {
+                            speed *= -1f;
+                            time += speed * Time.deltaTime;
+                            time %= timeScale * steps;
+                            time = Mathf.Clamp(time, 0, timeScale * target);
+                        } else {
+                            time += speed * Time.deltaTime;
+                            time %= timeScale * steps;
+                            time = Mathf.Clamp(time, timeScale * target, timeScale * target);
+                        }
                     }
                 }
             } else {
                 time += speed * Time.deltaTime;
-                time = Mathf.Clamp(time, 0, timeScale * steps);
+                if(!loop) time = Mathf.Clamp(time, 0, timeScale * steps);
+                else time %= timeScale * steps;
             }
         }
         UpdateObjs();
