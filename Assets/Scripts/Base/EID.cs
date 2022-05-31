@@ -18,6 +18,8 @@ public class EID : Interactable {
     public Vector3 rotF;
     private Vector3 sPos;
     public float moveTime = 0.25f;
+    public ObjAnimator animator;
+    public float mTarget = 1f;
 
     public override void OnInteract(bool gm, int b) {
         if(type == EidType.PUSH) {
@@ -43,6 +45,7 @@ public class EID : Interactable {
         EID eid = this;
         // EID eid = new EID();
         onChangeEvent.Invoke((EID)eid);
+        if(animator != null) animator.speed = 1;
     }
 
     protected override void OnEdit() {
@@ -67,21 +70,27 @@ public class EID : Interactable {
                 }
             }
         }
-        float mA = Time.deltaTime/moveTime;
-        if(cState > state) {
-            cState -= Mathf.Min(mA, cState-state);
-        }
-        if(cState < state) {
-            cState += Mathf.Min(mA, state-cState);
-        }
-        if(type == EidType.PUSH || type == EidType.TOGGLE) {
-            cState = Mathf.Clamp(cState, 0, 1);
-            transform.localPosition = sPos + Vector3.Lerp(pos0, posF, cState);
-            transform.localEulerAngles = Vector3.Lerp(rot0, rotF, cState);
+        if(animator == null) {
+            float mA = Time.deltaTime/moveTime;
+            if(cState > state) {
+                cState -= Mathf.Min(mA, cState-state);
+            }
+            if(cState < state) {
+                cState += Mathf.Min(mA, state-cState);
+            }
+            if(type == EidType.PUSH || type == EidType.TOGGLE) {
+                cState = Mathf.Clamp(cState, 0, 1);
+                transform.localPosition = sPos + Vector3.Lerp(pos0, posF, cState);
+                transform.localEulerAngles = Vector3.Lerp(rot0, rotF, cState);
+            } else {
+                cState = Mathf.Clamp(cState, 0, maxVal);
+                transform.localPosition = sPos + Vector3.Lerp(pos0, posF, (float)cState/(float)maxVal);
+                transform.localEulerAngles = Vector3.Lerp(rot0, rotF, (float)cState/(float)maxVal);
+            }
         } else {
-            cState = Mathf.Clamp(cState, 0, maxVal);
-            transform.localPosition = sPos + Vector3.Lerp(pos0, posF, (float)cState/(float)maxVal);
-            transform.localEulerAngles = Vector3.Lerp(rot0, rotF, (float)cState/(float)maxVal);
+            if(type == EidType.DIAL || type == EidType.DIAL_CONT ) animator.target = state;
+            else if(state == 0) animator.target = 0;
+            else animator.target = mTarget;
         }
     }
 
