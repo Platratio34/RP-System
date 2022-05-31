@@ -84,4 +84,11 @@ public class InteractableDoor : Interactable {
     public void setLock(bool locked) {
         if(lockable) this.locked = locked;
     }
+
+    public void onOpen(EID eid) {
+        setOpen(eid.state==1);
+    }
+    public void onLock(EID eid) {
+        setLock(eid.state==1);
+    }
 }
