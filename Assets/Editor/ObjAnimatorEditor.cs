@@ -18,6 +18,7 @@ public class ObjAnimatorEditor : Editor {
     }
 
     public override void OnInspectorGUI() {
+        bool change = false;
 
         if(saveChange && !Application.IsPlaying(gO)) UnityEditor.Undo.RecordObject(gO, "descriptive name of this operation");
 
@@ -26,26 +27,50 @@ public class ObjAnimatorEditor : Editor {
         EditorGUILayout.BeginHorizontal();
         if(GUILayout.Button("-1")) {
             o.speed = -1f;
+            change = true;
         }
         if(GUILayout.Button("Freeze")) {
             o.speed = 0f;
+            change = true;
         }
         if(GUILayout.Button("+1")) {
             o.speed = 1f;
+            change = true;
         }
         EditorGUILayout.EndHorizontal();
 
-        o.speed = EditorGUILayout.Slider(o.speed, -1f, 1f);
+        float t = EditorGUILayout.Slider(o.speed, -1f, 1f);
+        if(t != o.speed) {
+            o.speed = t;
+            change = true;
+        }
 
         EditorGUILayout.LabelField("Target");
-        o.target = EditorGUILayout.Slider(o.target, -1f, o.steps);
+        t = EditorGUILayout.Slider(o.target, -1f, o.steps);
+        if(t != o.target) {
+            o.target = t;
+            change = true;
+        }
+
 
         EditorGUILayout.Space();
 
         EditorGUILayout.LabelField("Time");
-        o.time = EditorGUILayout.Slider(o.time, 0f, o.timeScale * o.steps);
-        o.timeScale = EditorGUILayout.FloatField("Timescale", o.timeScale);
-        o.steps = EditorGUILayout.IntField("Steps", o.steps);
+        t = EditorGUILayout.Slider(o.time, 0f, o.timeScale * o.steps);
+        if(t != o.time) {
+            o.time = t;
+            change = true;
+        }
+        t = EditorGUILayout.FloatField("Timescale", o.timeScale);
+        if(t != o.timeScale) {
+            o.timeScale = t;
+            change = true;
+        }
+        t = EditorGUILayout.IntField("Steps", o.steps);
+        if(t != o.timeScale) {
+            o.timeScale = t;
+            change = true;
+        }
 
         EditorGUILayout.Space();
         EditorGUILayout.BeginHorizontal();
@@ -60,6 +85,7 @@ public class ObjAnimatorEditor : Editor {
                 }
                 o.objs = oA;
                 o.objs[0] = new AnimatedObj();
+                change = true;
             }
             EditorGUILayout.EndHorizontal();
 
@@ -79,10 +105,15 @@ public class ObjAnimatorEditor : Editor {
                         Array.Copy(o.objs, 0, oA, 0, i);
                         Array.Copy(o.objs, i + 1, oA, i, o.objs.Length - (i+1) );
                         o.objs = oA;
+                        change = true;
                     }
                     EditorGUILayout.EndHorizontal();
 
-                    a.g = (GameObject)EditorGUILayout.ObjectField(a.g, typeof(GameObject), true);
+                    GameObject tGO = (GameObject)EditorGUILayout.ObjectField(a.g, typeof(GameObject), true);
+                    if(tGO != a.g) {
+                        a.g = tGO;
+                        change = true;
+                    }
 
                     EditorGUILayout.BeginHorizontal();
                     EditorGUILayout.LabelField("Positions");
@@ -94,6 +125,7 @@ public class ObjAnimatorEditor : Editor {
                         }
                         a.p = oA;
                         a.p[a.p.Length - 1] = a.p.Length==1?new ATransform():a.p[a.p.Length - 2].Clone();
+                        change = true;
                     }
                     EditorGUILayout.EndHorizontal();
 
@@ -112,6 +144,7 @@ public class ObjAnimatorEditor : Editor {
                                 Array.Copy(a.p, 0, oA, 0, i);
                                 Array.Copy(a.p, i + 1, oA, i, a.p.Length - (i+1) );
                                 a.p = oA;
+                                change = true;
                             }
                             EditorGUILayout.EndHorizontal();
 
@@ -121,19 +154,33 @@ public class ObjAnimatorEditor : Editor {
                                 ATransform at = a.p[j-1];
                                 a.p[j-1] = a.p[j];
                                 a.p[j] = at;
+                                change = true;
                             }
                             if(j < a.p.Length - 1 && GUILayout.Button("Move Down")) {
                                 ATransform at = a.p[j+1];
                                 a.p[j+1] = a.p[j];
                                 a.p[j] = at;
+                                change = true;
                             }
                             EditorGUILayout.EndHorizontal();
 
                             EditorGUI.indentLevel++;
 
-                            a.p[j].position = EditorGUILayout.Vector3Field("Pos", a.p[j].position);
-                            a.p[j].rotation = EditorGUILayout.Vector3Field("Rot", a.p[j].rotation);
-                            a.p[j].scale = EditorGUILayout.Vector3Field("Scale", a.p[j].scale);
+                            Vector3 tV3 = EditorGUILayout.Vector3Field("Pos", a.p[j].position);
+                            if(tV3 != a.p[j].position) {
+                                a.p[j].position = tV3;
+                                change = true;
+                            }
+                            tV3 = EditorGUILayout.Vector3Field("Rot", a.p[j].rotation);
+                            if(tV3 != a.p[j].rotation) {
+                                a.p[j].rotation = tV3;
+                                change = true;
+                            }
+                            tV3 = EditorGUILayout.Vector3Field("Scale", a.p[j].scale);
+                            if(tV3 != a.p[j].scale) {
+                                a.p[j].scale = tV3;
+                                change = true;
+                            }
 
 
 
@@ -145,7 +192,11 @@ public class ObjAnimatorEditor : Editor {
                                 r2 = (Rect)EditorGUILayout.BeginVertical();
                                 EditorGUI.DrawRect(r2, new Color(0.3f, 0.3f, 0.3f));
 
-                                a.p[j].curve = EditorGUILayout.CurveField(a.p[j].curve);
+                                AnimationCurve tC = EditorGUILayout.CurveField(a.p[j].curve);
+                                if(tC != a.p[j].curve) {
+                                    a.p[j].curve = tC;
+                                    change = true;
+                                }
 
                                 EditorGUILayout.EndVertical();
                             }
@@ -170,7 +221,7 @@ public class ObjAnimatorEditor : Editor {
             saveChange = EditorGUILayout.Toggle("Save Changes to prefab", saveChange);
         }
 
-        if(saveChange && !Application.IsPlaying(gO)) {
+        if(saveChange && !Application.IsPlaying(gO) && change) {
             UnityEditor.EditorUtility.SetDirty(gO);
             UnityEditor.PrefabUtility.RecordPrefabInstancePropertyModifications(gO);
             UnityEditor.SceneManagement.EditorSceneManager.MarkSceneDirty(gO.scene);
