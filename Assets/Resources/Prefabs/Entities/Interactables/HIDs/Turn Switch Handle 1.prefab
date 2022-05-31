@@ -282,7 +282,7 @@ MonoBehaviour:
     show: 0
   speed: 0
   time: 0
-  timeScale: 2
+  timeScale: 0.5
   steps: 2
   target: -1
 --- !u!1 &8080551409274250513

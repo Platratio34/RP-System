@@ -367,6 +367,6 @@ MonoBehaviour:
     show: 0
   speed: 0
   time: 0
-  timeScale: 1
+  timeScale: 0.5
   steps: 1
   target: -1

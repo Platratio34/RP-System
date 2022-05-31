@@ -66,9 +66,9 @@ public class ObjAnimatorEditor : Editor {
             o.timeScale = t;
             change = true;
         }
-        t = EditorGUILayout.IntField("Steps", o.steps);
-        if(t != o.timeScale) {
-            o.timeScale = t;
+        int tI = EditorGUILayout.IntField("Steps", o.steps);
+        if(tI != o.steps) {
+            o.steps = tI;
             change = true;
         }
 
