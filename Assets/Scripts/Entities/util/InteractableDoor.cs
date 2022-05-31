@@ -81,6 +81,9 @@ public class InteractableDoor : Interactable {
     public void setOpen(bool open) {
         if(!locked) this.open = open;
     }
+    public void setOpenO(bool open) {
+        this.open = open;
+    }
     public void setLock(bool locked) {
         if(lockable) this.locked = locked;
     }
@@ -90,5 +93,10 @@ public class InteractableDoor : Interactable {
     }
     public void onLock(EID eid) {
         setLock(eid.state==1);
+    }
+
+    public bool isOpen() {
+        if(invertAnimation) return !animator.maxTime();
+        else return animator.time != 0;
     }
 }

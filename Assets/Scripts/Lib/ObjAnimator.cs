@@ -53,6 +53,10 @@ public class ObjAnimator : MonoBehaviour {
             objs[i].Update(time/timeScale);
         }
     }
+
+    public bool maxTime() {
+        return time == timeScale * steps;
+    }
 }
 
 [System.Serializable]

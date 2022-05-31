@@ -555,7 +555,7 @@ MonoBehaviour:
     show: 0
   speed: 0
   time: 0
-  timeScale: 1
+  timeScale: 3
   steps: 3
   target: -1
 --- !u!1 &5441845385980273824
