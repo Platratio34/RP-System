@@ -3504,6 +3504,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1473000124710149401, guid: 467c39ffc54199a42af829efc2500365, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ce2b0890a77e1de94b519a71bb3d0c3f, type: 2}
     - target: {fileID: 2223953665589517334, guid: 467c39ffc54199a42af829efc2500365, type: 3}
       propertyPath: open
       value: 1
@@ -3759,6 +3763,10 @@ PrefabInstance:
     - target: {fileID: 7884781969212443484, guid: 467c39ffc54199a42af829efc2500365, type: 3}
       propertyPath: m_Name
       value: DR L Manual Switch Handle 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8193957234188451063, guid: 467c39ffc54199a42af829efc2500365, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8655273632503310784, guid: 467c39ffc54199a42af829efc2500365, type: 3}
       propertyPath: m_Name
