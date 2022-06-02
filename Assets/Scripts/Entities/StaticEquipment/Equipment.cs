@@ -41,8 +41,17 @@ public class Equipment : Interactable {
     public float getNetPower() {
         return powerOut - powerIn;
     }
+    public float getPowerReq() {
+        return powerInReq;
+    }
     public float getNetHeat() {
         return heatGen - pasiveHeatDisp - heatOut;
+    }
+    public float getPasiveHeatDisp() {
+        return pasiveHeatDisp;
+    }
+    public void setPasiveHeatDisp(float disp) {
+        pasiveHeatDisp = disp;
     }
     public float getTotalHeat() {
         return totalHeat;

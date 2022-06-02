@@ -6,6 +6,8 @@ public class Reactor : Equipment {
 
     [Range(0,1)]
     public float controlLevel;
+    private float actualLevel = 0f;
+    public float controlSpeed = 1f;
 
     public float powerGenTotal;
     public AnimationCurve powerCurve;
@@ -23,8 +25,14 @@ public class Reactor : Equipment {
     }
 
     protected override void onUpdate() {
-        powerOut = powerGenTotal * powerCurve.Evaluate(controlLevel);
-        heatGen = heatGenTotal * heatCurve.Evaluate(controlLevel);
+        if(actualLevel < controlLevel) {
+            actualLevel = Mathf.Clamp(actualLevel + (Time.deltaTime/controlSpeed), 0, controlLevel);
+        } else if(actualLevel > controlLevel) {
+            actualLevel = Mathf.Clamp(actualLevel - (Time.deltaTime/controlSpeed), controlLevel, 1);
+        }
+
+        powerOut = powerGenTotal * powerCurve.Evaluate(actualLevel);
+        heatGen = heatGenTotal * heatCurve.Evaluate(actualLevel);
 
         if(totalHeat > overheatTemp) {
             overheating = true;
@@ -35,13 +43,17 @@ public class Reactor : Equipment {
         if(totalHeat < overheatTemp && overheating) {
             overheatingTime -= Time.deltaTime * 0.5f;
         } else if(overheating) {
-            overheatingTime += Time.deltaTime * ((totalHeat-overheatTemp)/overheatTemp);
+            overheatingTime += Time.deltaTime * (totalHeat / overheatTemp);
         } else {
             overheatingTime -= Time.deltaTime;
         }
-        overheatingTime = Mathf.Min(overheatingTime, 0);
+        overheatingTime = Mathf.Max(overheatingTime, 0);
         if(overheatingTime > maxOverheatTime) {
-            damage(((totalHeat-overheatTemp)/overheatTemp) * damageMod * Time.deltaTime);
+            damage( (totalHeat / overheatTemp) * damageMod * Time.deltaTime);
         }
+    }
+
+    public float getActualLevel() {
+        return actualLevel;
     }
 }

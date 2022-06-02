@@ -598,6 +598,7 @@ MonoBehaviour:
   heatOut: 0
   health: 100
   controlLevel: 0
+  controlSpeed: 10
   powerGenTotal: 1000
   powerCurve:
     serializedVersion: 2
@@ -886,18 +887,6 @@ PrefabInstance:
     - target: {fileID: 5723097154966896322, guid: 723d6ab6592a7c74eb6a2245269422ea, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5723097154966896326, guid: 723d6ab6592a7c74eb6a2245269422ea, type: 3}
-      propertyPath: mp
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 5723097154966896326, guid: 723d6ab6592a7c74eb6a2245269422ea, type: 3}
-      propertyPath: turnSpeed
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 5723097154966896326, guid: 723d6ab6592a7c74eb6a2245269422ea, type: 3}
-      propertyPath: controlled
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5723097154966896344, guid: 723d6ab6592a7c74eb6a2245269422ea, type: 3}
       propertyPath: m_Name

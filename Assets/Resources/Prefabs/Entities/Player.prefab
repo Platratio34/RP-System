@@ -28,6 +28,7 @@ Transform:
   m_LocalRotation: {x: -0, y: 0.9941321, z: -0, w: 0.10817287}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 1, z: 0.5}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5723097154966896322}
   m_RootOrder: 0
@@ -51,6 +52,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -113,6 +115,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 9179059780929957540}
   - {fileID: 5723097155701178157}
@@ -139,6 +142,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -201,6 +205,10 @@ MonoBehaviour:
     parameters: []
   id: 
   dispName: player
+  localName:
+    key: 
+    catagory: 
+    dropIns: []
   isNameKey: 1
   selBoxes: []
   inventory: {fileID: 5723097154966896323}
@@ -215,12 +223,12 @@ MonoBehaviour:
   children: []
   staticEntity: 0
   editableEntity: 1
-  controlled: 0
+  controlled: 1
   rb: {fileID: 5723097154966896345}
   move: {x: 0, y: 0}
   jp: 75
-  mp: 20
-  turnSpeed: 3
+  mp: 40
+  turnSpeed: 6
   cameraO: {fileID: 5723097155701178156}
   firstPers: 1
   cameraLock: 1
@@ -283,6 +291,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5723097155876729314}
   m_Father: {fileID: 5723097154966896322}
@@ -316,6 +325,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5723097155701178157}
   m_RootOrder: 0
