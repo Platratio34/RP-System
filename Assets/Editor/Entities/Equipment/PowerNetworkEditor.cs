@@ -25,6 +25,26 @@ public class PowerNetworkEditor : Editor {
         EditorGUILayout.LabelField("Overage", Mathf.Round(net.getOverage())+" W");
 
         EditorGUILayout.Space();
+        EditorGUILayout.LabelField("Total Power Stored", Mathf.Round(net.getTotalStored()/360f)+" / " + Mathf.Round(net.getMaxStorage()/360f) + " Wh");
+        float sTO = net.getTimeToOut();
+        String tTO = "";
+        if(sTO != float.PositiveInfinity && sTO < TimeSpan.MaxValue.TotalSeconds) {
+            tTO = TimeSpan.FromSeconds(sTO).ToString(@"hh\:mm\:ss");
+        } else {
+            tTO = "Infinity";
+        }
+        EditorGUILayout.LabelField("Time till out", tTO);
+        float sTC = net.getTimeToCharged();
+        String tTC = "";
+        if(sTC != float.PositiveInfinity && sTC < TimeSpan.MaxValue.TotalSeconds) {
+            tTC = TimeSpan.FromSeconds(sTC).ToString(@"hh\:mm\:ss");
+        } else {
+            tTC = "Infinity";
+        }
+        EditorGUILayout.LabelField("Time till Charged", tTC);
+
+        EditorGUILayout.Space();
+        EditorGUILayout.Space();
         EditorGUILayout.PropertyField(serializedObject.FindProperty("equipment"), new GUIContent("Equipment"));
         EditorGUILayout.PropertyField(serializedObject.FindProperty("powerStorage"), new GUIContent("Power Storage"));
         EditorGUILayout.PropertyField(serializedObject.FindProperty("subNets"), new GUIContent("Sub Nets"));

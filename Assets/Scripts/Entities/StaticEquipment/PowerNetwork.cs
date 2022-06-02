@@ -10,8 +10,13 @@ public class PowerNetwork : MonoBehaviour {
 
     private float totalAvalib;
     private float totalReq;
+    private float powerUsed;
     private float batUssage;
     private float overage;
+    private float totalStored;
+    private float estTimeToOut;
+    private float maxStored;
+    private float estTimeToCharged;
 
     void Start() {
 
@@ -27,18 +32,21 @@ public class PowerNetwork : MonoBehaviour {
             totalReq += equipment[i].getPowerReq();
         }
         float dif = totalAvalib - totalReq;
-        if(dif > 0) {
+        if(dif >= 0) {
             for(int i = 0; i < equipment.Length; i++) {
                 equipment[i].matchPowerIn();
             }
             for(int i = 0; i < powerStorage.Length; i++) {
                 if(dif > 0) {
                     float input = Mathf.Clamp(dif, 0, powerStorage[i].maxIn);
-                    input -= powerStorage[i].inputJ(input * Time.deltaTime);
-                    batUssage -= input;
-                    dif -= input;
+                    float p = powerStorage[i].inputJ(input * Time.deltaTime);
+                    p /= Time.deltaTime;
+                    input -= p;
+                    batUssage -= p;
+                    dif -= p;
                 }
             }
+            powerUsed = totalReq;
             overage = dif;
         } else {
             float avlb = 0;
@@ -54,14 +62,33 @@ public class PowerNetwork : MonoBehaviour {
             avlb /= Time.deltaTime;
             batUssage = avlb;
             overage = dif+avlb;
+            avlb += totalAvalib;
             overage *= 1f;
+            powerUsed = 0;
             for(int i = 0; i < equipment.Length; i++) {
                 if(avlb <= 0) {
                     break;
                 }
-                avlb -= equipment[i].inputPower(avlb);
+                float p = equipment[i].inputPower(avlb);
+                avlb -= p;
+                powerUsed += p;
             }
         }
+
+        totalStored = 0;
+        for(int i = 0; i < powerStorage.Length; i++) {
+            totalStored += powerStorage[i].currentStored;
+        }
+        estTimeToOut = totalStored / Mathf.Max(batUssage, 0);
+        if(estTimeToOut == float.NaN) estTimeToOut = float.PositiveInfinity;
+
+        maxStored = 0;
+        for(int i = 0; i < powerStorage.Length; i++) {
+            maxStored += powerStorage[i].maxStored;
+        }
+        estTimeToCharged = (maxStored-totalStored) / Mathf.Max(batUssage*-1f, 0);
+        if(estTimeToCharged == float.NaN) estTimeToCharged = float.PositiveInfinity;
+        if(batUssage > 0) estTimeToCharged = float.PositiveInfinity;
     }
 
     public float getTotalAvalib() {
@@ -76,5 +103,23 @@ public class PowerNetwork : MonoBehaviour {
     }
     public float getOverage() {
         return overage;
+    }
+
+    public float getPowerUsed() {
+        return powerUsed;
+    }
+
+    public float getTotalStored() {
+        return totalStored;
+    }
+    public float getTimeToOut() {
+        return estTimeToOut;
+    }
+
+    public float getMaxStorage() {
+        return maxStored;
+    }
+    public float getTimeToCharged() {
+        return estTimeToCharged;
     }
 }
