@@ -13,6 +13,8 @@ public class Equipment : Interactable {
     [SerializeField] protected float pasiveHeatDisp;
     [SerializeField] protected float heatOut;
     [SerializeField] protected float health = 100;
+    public int inPrio = 50;
+    public int outPrio = 50;
 
     void Start() {
 
@@ -58,5 +60,18 @@ public class Equipment : Interactable {
     }
     public float getHealth() {
         return health;
+    }
+
+    public float getPowerOut() {
+        return powerOut;
+    }
+
+    public void matchPowerIn() {
+        powerIn = powerInReq;
+    }
+    public float inputPower(float power) {
+        power = Mathf.Min(power, powerInReq);
+        powerIn = power;
+        return power;
     }
 }

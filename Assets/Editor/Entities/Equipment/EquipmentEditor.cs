@@ -21,13 +21,17 @@ public class EquipmentEditor : InteractableEditor {
 
         EditorGUILayout.Space();
         EditorGUILayout.LabelField("- Equipment -");
-        EditorGUILayout.LabelField("Net Power", eq.getNetPower()+" W");
-        EditorGUILayout.LabelField("Required Power", eq.getPowerReq()+" W");
-        EditorGUILayout.LabelField("Net Heat", eq.getNetHeat()+" K/s");
+        EditorGUILayout.LabelField("Net Power", Mathf.Round(eq.getNetPower())+" W");
+        EditorGUILayout.LabelField("Required Power", Mathf.Round(eq.getPowerReq())+" W");
+        EditorGUILayout.LabelField("Net Heat", Math.Round(eq.getNetHeat(),2)+" K/s");
         // EditorGUILayout.LabelField("Passive Heat Disipation", eq.getPasiveHeatDisp()+" K/s");
         eq.setPasiveHeatDisp(EditorGUILayout.FloatField("Pasive Heat Disp", eq.getPasiveHeatDisp()));
-        EditorGUILayout.LabelField("Total Heat", eq.getTotalHeat()+" K");
-        EditorGUILayout.LabelField("Health", eq.getHealth()+"/100");
+        EditorGUILayout.LabelField("Total Heat", Math.Round(eq.getTotalHeat(),2)+" K");
+        EditorGUILayout.LabelField("Health", Math.Round(eq.getHealth(),1)+"/100");
+
+        EditorGUILayout.Space();
+        eq.inPrio = EditorGUILayout.IntSlider("Input Priority", eq.inPrio, 0, 100);
+        eq.outPrio = EditorGUILayout.IntSlider("Output Priority", eq.outPrio, 0, 100);
 
         base.serializedObject.ApplyModifiedProperties();
     }

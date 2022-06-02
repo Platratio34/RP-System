@@ -20,7 +20,7 @@ public class ReactorEditor : EquipmentEditor {
         EditorGUILayout.LabelField("- Reactor -");
 
         rt.controlLevel = EditorGUILayout.Slider("Control Level", rt.controlLevel, 0, 1);
-        EditorGUILayout.LabelField("Level", rt.getActualLevel()*100 + "%");
+        EditorGUILayout.LabelField("Level", Math.Round(rt.getActualLevel()*100, 2) + "%");
         rt.controlSpeed = EditorGUILayout.FloatField("Control Time", rt.controlSpeed);
 
         EditorGUILayout.Space();
