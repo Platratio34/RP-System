@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class Equipment : Entity {
+public class Equipment : Interactable {
 
     [SerializeField] protected float powerOut;
     [SerializeField] protected float powerIn;
@@ -14,13 +14,10 @@ public class Equipment : Entity {
     [SerializeField] protected float heatOut;
     [SerializeField] protected float health = 100;
 
-    // Start is called before the first frame update
-    void Start()
-    {
+    void Start() {
 
     }
 
-    // Update is called once per frame
     void Update() {
         onUpdate();
         totalHeat += heatGen * Time.deltaTime;
@@ -39,5 +36,18 @@ public class Equipment : Entity {
 
     public void damage(float amt) {
         health = Mathf.Clamp(health - amt, 0, 100);
+    }
+
+    public float getNetPower() {
+        return powerOut - powerIn;
+    }
+    public float getNetHeat() {
+        return heatGen - pasiveHeatDisp - heatOut;
+    }
+    public float getTotalHeat() {
+        return totalHeat;
+    }
+    public float getHealth() {
+        return health;
     }
 }
