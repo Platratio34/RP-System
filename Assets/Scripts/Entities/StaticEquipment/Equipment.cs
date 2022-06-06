@@ -13,8 +13,6 @@ public class Equipment : Interactable {
     [SerializeField] protected float pasiveHeatDisp;
     [SerializeField] protected float heatOut;
     [SerializeField] protected float health = 100;
-    public int inPrio = 50;
-    public int outPrio = 50;
 
     void Start() {
 

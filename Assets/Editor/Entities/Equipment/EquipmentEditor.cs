@@ -29,10 +29,6 @@ public class EquipmentEditor : InteractableEditor {
         EditorGUILayout.LabelField("Total Heat", Math.Round(eq.getTotalHeat(),2)+" K");
         EditorGUILayout.LabelField("Health", Math.Round(eq.getHealth(),1)+"/100");
 
-        EditorGUILayout.Space();
-        eq.inPrio = EditorGUILayout.IntSlider("Input Priority", eq.inPrio, 0, 100);
-        eq.outPrio = EditorGUILayout.IntSlider("Output Priority", eq.outPrio, 0, 100);
-
         base.serializedObject.ApplyModifiedProperties();
     }
 }
