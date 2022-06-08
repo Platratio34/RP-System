@@ -2735,6 +2735,7 @@ MonoBehaviour:
   opereratingIn: 10
   charge: 1
   isCharged: 0
+  overchargeRate: 1000
   effecincy: 0.001
   totalMass: 1
   dischargeTime: 0.0001
