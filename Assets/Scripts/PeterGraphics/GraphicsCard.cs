@@ -3,11 +3,26 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Threading;
 
+/// <summary>
+/// Handles rendering for CustomScreens with Frames
+/// </summary>
 public class GraphicsCard : MonoBehaviour {
 
+    /// <summary>
+    /// Queue of rendered frames
+    /// </summary>
     public Queue<Frame> frames;
+    /// <summary>
+    /// Fancy thing to prevent bugs with filling the rendered queue
+    /// </summary>
     public System.Object queueLocker = new System.Object();
+    /// <summary>
+    /// Array of screens connected to the graphics card
+    /// </summary>
     public CustomScreen[] screens;
+    /// <summary>
+    /// Array of render threads
+    /// </summary>
     private List<Thread> threads;
     // public int frame = 0;
 
@@ -18,8 +33,8 @@ public class GraphicsCard : MonoBehaviour {
     }
 
     void Update() {
-        if(frames.Count > 0) {
-            lock(queueLocker) {
+        if(frames.Count > 0) { // go through all rendered frames and apply them
+            lock(queueLocker) { // prevent the queue from being modified while reading from it
                 while(frames.Count > 0) {
                     Frame frame = frames.Dequeue();
                     int dest = frame.GetDest();
@@ -27,8 +42,6 @@ public class GraphicsCard : MonoBehaviour {
                         if(screens[dest] != null) {
                             if(!screens[dest].SetTexture(frame)) {
                                 print("Couldn't Draw frame for screen " + dest + ", because the renderer is null");
-                            } else {
-                                frame.Dispose();
                             }
                         } else {
                             print("Couldn't Draw frame for screen " + dest + " with " + frame.GetNumActions() + " actions, becasue the screen is null");
@@ -36,11 +49,16 @@ public class GraphicsCard : MonoBehaviour {
                     } else {
                         print("Couldn't Draw frame for screen " + dest + " with " + frame.GetNumActions() + " actions, becasue the index is out of range");
                     }
+                    frame.Dispose();
                 }
             }
         }
     }
 
+    /// <summary>
+    /// Render and apply a frame
+    /// </summary>
+    /// <param name="frame">Frame to render</param>
     public void Render(Frame frame) {
         frame.SetCard(this);
         // print("Starting render of frame for screen " + frame.GetDest());
@@ -51,9 +69,19 @@ public class GraphicsCard : MonoBehaviour {
         // frame.Render();
     }
 
+    /// <summary>
+    /// Create a new frame for the screen at index
+    /// </summary>
+    /// <param name="screen">Screen index</param>
+    /// <returns>New Frame initialized for screen</returns>
     public Frame NewFrame(int screen) {
         return new Frame(screens[screen], screen);
     }
+    /// <summary>
+    /// Creates a new frame for the screen with name
+    /// </summary>
+    /// <param name="name">Screen name</param>
+    /// <returns>New Frame initialized for screen</returns>
     public Frame NewFrameByName(string name) {
         int index = 0;
         for(int i = 0; i < screens.Length; i++) {
@@ -66,6 +94,10 @@ public class GraphicsCard : MonoBehaviour {
         return new Frame(screens[index], index);
     }
 
+    /// <summary>
+    /// Logs from this object
+    /// </summary>
+    /// <param name="text">Log message</param>
     public void Log(string text) {
         print(text);
     }

@@ -2,8 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Screen for Peter Graphics
+/// </summary>
 public class CustomScreen : MonoBehaviour {
-
+    
     public Renderer screen;
     public Vector2Int size;
     public string screenName;
