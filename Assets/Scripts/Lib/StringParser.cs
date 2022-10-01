@@ -1,10 +1,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-/// <summary><c>String Parser</c> is a librar of functions for parsing Json type string</summary>
+/// <summary>
+/// <c>String Parser</c> is a library of functions for parsing Json type string
+/// </summary>
 public static class StringParser {
 
-    /// <summary><c>Parse For String</c> pareses a Json type string for a string</summary>
+    /// <summary>
+    /// <c>Parse For String</c> pareses a Json type string for a string
+    /// </summary>
     /// <param name="str">The string to parse</param>
     /// <returns>A <c>StringParse</c> object of type <c>string</c>, use <c>".data"</c> for the string</returns>
     public static StringParse<string> ParseForString(string str) {
@@ -51,7 +55,9 @@ public static class StringParser {
         return new StringParse<string>(o, i);
     }
 
-    /// <summary><c>Parse For KV</c> pareses a Json type key value par (ex. "key":"value" )</summary>
+    /// <summary>
+    /// <c>Parse For KV</c> pareses a Json type key value par (ex. "key":"value" )
+    /// </summary>
     /// <param name="str">The string to parse</param>
     /// <returns>A <c>StringParse</c> object of type <c>string[]</c>, use <c>".data"</c> for the string array. Index 0 is the key and index 1 is the value</returns>
     public static StringParse<string[]> ParseForKV(string str) {
@@ -113,7 +119,9 @@ public static class StringParser {
         return new StringParse<string[]>(o, i);
     }
 
-    /// <summary><c>Parse For Array</c> pareses a Json type key array (ex. ["value","value",...] )</summary>
+    /// <summary>
+    /// <c>Parse For Array</c> pareses a Json type key array (ex. ["value","value",...] )
+    /// </summary>
     /// <param name="str">The string to parse</param>
     /// <returns>A <c>StringParse</c> object of type <c>JsonObject</c>, use <c>".data"</c> for the Json Object, and <c>JsonObj.array</c> for the array</returns>
     public static StringParse<JsonObj> ParseForArray(string str) {
@@ -167,7 +175,9 @@ public static class StringParser {
         return new StringParse<JsonObj>(new JsonObj(o.ToArray()), i);
     }
 
-    /// <summary><c>Parse Object</c> pareses a Json type key Object (ex. {"key":"value","key":"value",...} )</summary>
+    /// <summary>
+    /// <c>Parse Object</c> pareses a Json type key Object (ex. {"key":"value","key":"value",...} )
+    /// </summary>
     /// <param name="str">The string to parse</param>
     /// <returns>A <c>StringParse</c> object of type <c>JsonObj</c>, use <c>".data"</c> for the Json Object, and <c>JsonObj.objs</c> to acces the KV pairs</returns>
     public static StringParse<JsonObj> ParseObject(string str) {
@@ -220,17 +230,21 @@ public static class StringParser {
         return new StringParse<JsonObj>(obj, i);
     }
 }
-/// <summary><c>String Parse</c> of type <typeparamref name="T"/> is the return type for all of <c>String Parser</c></summary>
+/// <summary>
+/// <c>String Parse</c> of type <typeparamref name="T"/> is the return type for all of <c>String Parser</c>
+/// </summary>
 /// <typeparam name="T">The type of data returned</typeparam>
 public struct StringParse<T> {
-    /// <value>The number of charecters that were parsed through</value>
+    /// <summary>The number of characters that were parsed through</summary>
     public int l;
-    /// <value>The return data</value>
+    /// <summary>The return data</summary>
     public T data;
 
-    /// <summary>Constructor for <c>String Parse</c></summary>
+    /// <summary>
+    /// Constructor for <c>String Parse</c>
+    /// </summary>
     /// <param name="data">The return data</param>
-    /// <param name="l">The number of charecters that were parsed through</param>
+    /// <param name="l">The number of characters that were parsed through</param>
     public StringParse(T data, int l) {
         this.data = data;
         this.l = l;

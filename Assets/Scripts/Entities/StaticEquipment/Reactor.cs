@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Generates power for the network, also produces heat
+/// </summary>
 public class Reactor : Equipment {
 
     [Range(0,1)]

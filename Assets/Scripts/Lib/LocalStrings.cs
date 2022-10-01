@@ -2,19 +2,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Localization system
+/// </summary>
 public class LocalStrings : MonoBehaviour {
-    private static Dictionary<string,LocalLang> local;
-    /// <value>The currently selected language. Default: "en"</value>
-    public static string lang = "en";
-    /// <value>The array of language files to load. The value of <c>lang</c> should be in this array</value>
-    public static string[] langs;
-    public string[] langs2;
 
+    /// <summary>
+    /// Dictionary of languages
+    /// </summary>
+    private static Dictionary<string,LocalLang> local;
+    /// <summary>
+    /// The currently selected language. Default: "en"
+    /// </summary>
+    public static string lang = "en";
+    /// <summary>
+    /// The array of language files to load. The value of <c>lang</c> should be in this array
+    /// </value>
+    public static string[] langs;
+    private string[] langs2;
+    
+    // Called when initialized
     void Awake() {
         langs = langs2;
         LoadDict();
     }
 
+    /// <summary>
+    /// Load the dictionary from file
+    /// </summary>
     private static void LoadDict() {
         local = new Dictionary<string, LocalLang>();
         if(langs == null) {
@@ -31,8 +46,11 @@ public class LocalStrings : MonoBehaviour {
     }
 
     
-    /// <summary>Retuns a localized string based on the key from the current language. For string from a catagory, use the method with 2 paramaters</summary>
+    /// <summary>
+    /// Returns a localized string based on the key from the current language. For a string from a category, use the method with 2 parameters
+    /// </summary>
     /// <param name="key">The localization key</param>
+    /// <returns>The localized string</returns>
     public static string GetLocalString(string key) {
         string r = "";
         if(local == null) {
@@ -50,9 +68,12 @@ public class LocalStrings : MonoBehaviour {
         return r;
     }
 
-    /// <summary>Retuns a localized string based on the catagory and key from the current language</summary>
-    /// <param name="catagory">The first level catagory of key</param>
-    /// <param name="key">The localization key. May include '.' to mark sub-catagory, ex: "file.save"</param>
+    /// <summary>
+    /// Returns a localized string based on the category and key from the current language
+    /// </summary>
+    /// <param name="catagory">The first level category of key</param>
+    /// <param name="key">The localization key. May include '.' to mark sub-category, ex: "file.save"</param>
+    /// <returns>The localized string</returns>
     public static string GetLocalString(string catagory, string key) {
         string r = "";
         if(local == null) {
@@ -77,10 +98,13 @@ public class LocalStrings : MonoBehaviour {
         Debug.LogError(r);
         return r;
     }
-    /// <summary>Returns a localized string based on the catagory and key from the current language, with varible replacment</summary>
+    /// <summary>
+    /// Returns a localized string based on the catagory and key from the current language, with variable replacement
+    /// </summary>
     /// <param name="cat">The first level catagory of key</param>
     /// <param name="key">The localization key. May include '.' to mark sub-catagory, ex: "file.save"</param>
-    /// <param name="drops">The array of varibles to drop into the string</param>
+    /// <param name="drops">The array of variables to drop into the string</param>
+    /// <returns>The localized string</returns>
     public static string GetLocalStringD(string cat, string key, string[] drops) {
         string str = GetLocalString(cat,key);
         if(str.Contains("[")) {
@@ -106,8 +130,17 @@ public class LocalStrings : MonoBehaviour {
         return str;
     }
 
+    /// <summary>
+    /// Localized language dictionary
+    /// </summary>
     private class LocalLang {
+        /// <summary>
+        /// The first level of string associations
+        /// </summary>
         public Dictionary<string, string> strings;
+        /// <summary>
+        /// Sub catagories
+        /// </summary>
         public Dictionary<string, LocalLang> catagories;
 
         public LocalLang(JsonObj o) {
@@ -122,14 +155,20 @@ public class LocalStrings : MonoBehaviour {
             }
         }
 
-        /// <summary>Returns a string from the catagory based on the keys provided</summary>
+        /// <summary>
+        /// Returns a string from the catagory based on the keys provided
+        /// </summary>
         /// <param name="keys">Array of keys, each element except the last is a sub-catagory</param>
+        /// <returns>The localized string</returns>
         public string GetString(string[] keys) {
             return GetString(keys, 0);
         }
-        /// <summary>Returns a string from the catagory based on the keys provided started at index <c>l</c></summary>
+        /// <summary>
+        /// Returns a string from the catagory based on the keys provided started at index <c>l</c>
+        /// </summary>
         /// <param name="keys">Array of keys, each element except the last is a sub-catagory</param>
         /// <param name="l">The index to start looking for a  key or catagory at</param>
+        /// <returns>The localized string</returns>
         private string GetString(string[] keys, int l) {
             if(strings.ContainsKey(keys[l])) {
                 return strings[keys[l]];

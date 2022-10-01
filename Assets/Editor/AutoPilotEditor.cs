@@ -3,7 +3,7 @@ using UnityEditor;
 
 [CustomEditor(typeof(AutoPilot))]
 [CanEditMultipleObjects]
-public class LookAtPointEditor : Editor {
+public class AutoPilotEditor : Editor {
 
     private AutoPilot aP;
 
@@ -22,6 +22,8 @@ public class LookAtPointEditor : Editor {
         aP.targetTrans = (Transform)EditorGUILayout.ObjectField("- Target Transform", aP.targetTrans, typeof(Transform), true);
         aP.sameRot = EditorGUILayout.Toggle("- Same Rotation as Transform", aP.sameRot);
         aP.distToTransform = EditorGUILayout.FloatField("- Distance to Transform", aP.distToTransform);
+        EditorGUILayout.Space();
+        // aP.posHold = EditorGUILayout.Toggle("Position Hold", aP.posHold);
         EditorGUILayout.Space();
         aP.flatZ = EditorGUILayout.Toggle("Flat Z", aP.flatZ);
         EditorGUILayout.Space();

@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// A collection of math functions that seem like the should be part of Math or MathF, like VLerp, Clamp, and LCM
+/// </summary>
 public static class MathP {
 
     /// <summary>Interpolates between 2 Vector3s by time <c>t</c></summary>

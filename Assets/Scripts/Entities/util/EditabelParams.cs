@@ -5,8 +5,16 @@ using UnityEngine;
 [System.Serializable]
 public class EditabelParams {
     
+    /// <summary>
+    /// The array of parameter editable in game
+    /// </summary>
     public EditableParam[] parameters;
 
+    /// <summary>
+    /// If a parameter with the name exists
+    /// </summary>
+    /// <param name="name">The name to look for</param>
+    /// <returns>If there is a parameter by that name</returns>
     public bool HasParam(string name) {
         for(int i = 0; i < parameters.Length; i++) {
             if(parameters[i].name.Equals(name)) {
@@ -15,6 +23,11 @@ public class EditabelParams {
         }
         return false;
     }
+    /// <summary>
+    /// Returns the parameter with the name
+    /// </summary>
+    /// <param name="name">The parameter name</param>
+    /// <returns>The EditableParam, or null if no parameter with name exists</returns>
     public EditableParam GetParam(string name) {
         if(!HasParam(name)) {
             return null;
@@ -27,6 +40,11 @@ public class EditabelParams {
         return null;
     }
 
+    /// <summary>
+    /// Checks if a parameter with name has a range
+    /// </summary>
+    /// <param name="name">The parameter name</param>
+    /// <returns>If the parameter is ranged, or false if the parameter does not exist</returns>
     public bool IsParameterRanged(string name) {
         if(!HasParam(name)) {
             return false;
@@ -39,6 +57,11 @@ public class EditabelParams {
         return false;
     }
 
+    /// <summary>
+    /// Gets the range of a parameter
+    /// </summary>
+    /// <param name="name">The parameter name</param>
+    /// <returns>The range of the parametr, or 0 if the parameter does not exist</returns>
     public Vector2 GetParamRange(string name) {
         if(!HasParam(name)) {
             return Vector2.zero;
@@ -50,6 +73,11 @@ public class EditabelParams {
         }
         return Vector2.zero;
     }
+    /// <summary>
+    /// If the parameter should have a slider
+    /// </summary>
+    /// <param name="name"><The parameter name/param>
+    /// <returns>If the parameter should have a slider, or false if the parameter does not exist</returns>
     public bool IsParamSlid(string name) {
         if(!HasParam(name)) {
             return false;
@@ -85,17 +113,47 @@ public class EditabelParams {
     // }
 }
 
+/// <summary>
+/// An editable parameter that is serialized in the save process
+/// </summary>
 [System.Serializable]
 public class EditableParam {
+    /// <summary>
+    /// The name of the parameter. Must be unique to the object
+    /// </summary>
     public string name;
+    /// <summary>
+    /// The type of parameter
+    /// </summary>
     public ParamType type;
+    /// <summary>
+    /// The string value of the parameter
+    /// </summary>
     public string valueS;
+    /// <summary>
+    /// The float value of the parameter
+    /// </summary>
     public float valueF;
+    /// <summary>
+    /// The integer value of the parameter
+    /// </summary>
     public int valueI;
+    /// <summary>
+    /// The boolean value of the parameter
+    /// </summary>
     public bool valueB;
+    /// <summary>
+    /// The range of the parameter
+    /// </summary>
     public Vector2 range;
+    /// <summary>
+    /// If a slider should be used for the parameter
+    /// </summary>
     public bool slid;
 
+    /// <summary>
+    /// Validates the state of the parameter
+    /// </summary>
     public void Validate() {
         if(range.x != range.y) {
             if(type == ParamType.FLOAT) {
@@ -107,6 +165,9 @@ public class EditableParam {
     }
 }
 
+/// <summary>
+/// Type of editable parameter
+/// </summary>
 [System.Serializable]
 public enum ParamType {
     NULL,

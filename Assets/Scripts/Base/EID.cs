@@ -3,23 +3,74 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+/// <summary>
+/// Entity Interface Device, used for buttons, switches, dials, and the like
+/// </summary>
 public class EID : Interactable {
 
+    /// <summary>
+    /// Current state of the device
+    /// </summary>
     public int state = 0;
+    /// <summary>
+    /// State used for animation
+    /// </summary>
     private float cState = 0;
+    /// <summary>
+    /// How long the push button should stay pushed
+    /// </summary>
     public float pushTime = 0.5f;
+    /// <summary>
+    /// How long since it was pushed
+    /// </summary>
     private float pTime = 0f;
+    /// <summary>
+    /// They type of device
+    /// </summary>
     public EidType type = EidType.TOGGLE;
+    /// <summary>
+    /// The maximum value of the dial
+    /// </summary>
     public int maxVal = 10;
+    /// <summary>
+    /// Event called every time the state is changed
+    /// </summary>
     public EidEvent onChangeEvent;
+    /// <summary>
+    /// Position of the device at state 0
+    /// </summary>
     public Vector3 pos0;
+    /// <summary>
+    /// Rotation of the device at state 0
+    /// </summary>
     public Vector3 rot0;
+    /// <summary>
+    /// Position of the device at max state
+    /// </summary>
     public Vector3 posF;
+    /// <summary>
+    /// Rotation of the device at max state
+    /// </summary>
     public Vector3 rotF;
+    /// <summary>
+    /// Stating position of the device, used to make pos0 and posF relative to starting
+    /// </summary>
     private Vector3 sPos;
+    /// <summary>
+    /// Stating rotation of the device, used to make rots0 and rotF relative to starting
+    /// </summary>
     private Vector3 sRot;
+    /// <summary>
+    /// The amount of time it takes to move one state
+    /// </summary>
     public float moveTime = 0.25f;
+    /// <summary>
+    /// Animator for sub-object movement
+    /// </summary>
     public ObjAnimator animator;
+    /// <summary>
+    /// The move target
+    /// </summary>
     public float mTarget = 1f;
 
     public override void OnInteract(bool gm, int b) {
@@ -105,13 +156,32 @@ public class EID : Interactable {
         }
     }
 
+    /// <summary>
+    /// The type of Entity Interaction Device
+    /// </summary>
     public enum EidType {
+        /// <summary>
+        /// Push button, resets after time
+        /// </summary>
         PUSH,
+        /// <summary>
+        /// Toggle button, only changes on input
+        /// </summary>
         TOGGLE,
+        /// <summary>
+        /// Dial from 0 to max
+        /// </summary>
         DIAL,
+        /// <summary>
+        /// Dial, but wraps after max
+        /// </summary>
         DIAL_CONT
     }
 
+    /// <summary>
+    /// Makes this EID match another EID
+    /// </summary>
+    /// <param name="eid">The EID to match</param>
     public void matchEID(EID eid) {
         if(eid.type == type) {
             state = eid.state;
@@ -119,5 +189,8 @@ public class EID : Interactable {
     }
 }
 
+/// <summary>
+/// EID on change event
+/// </summary>
 [System.Serializable]
 public class EidEvent : UnityEvent<EID> {}

@@ -2,18 +2,54 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Basic moving object in the game world
+/// </summary>
 public class Entity : Interactable {
     
+    /// <summary>
+    /// The inventory associated with the entity
+    /// </summary>
     public Inventory inventory;
+    /// <summary>
+    /// InteractableController for child intractable
+    /// </summary>
     public InteractableController interactableController;
+    /// <summary>
+    /// The custom data of each instance of the entity, used for loading and saving
+    /// </summary>
     public CustomData[] customDataArray;
+    /// <summary>
+    /// Instance custom data, not editable by GM
+    /// </summary>
     public Dictionary<string, string> customData;
+    /// <summary>
+    /// The unique ID of the instance
+    /// </summary>
     public string entityId;
+    /// <summary>
+    /// The displayed name of the entity, may be localized soon
+    /// </summary>
     public string entityName;
+    /// <summary>
+    /// The type of entity, unique to class, but not instance
+    /// </summary>
     public string entityType;
+    /// <summary>
+    /// The parent entity
+    /// </summary>
     public string parentEntity;
+    /// <summary>
+    /// List of child entities
+    /// </summary>
     public List<string> children;
+    /// <summary>
+    /// If the entity is static, IE can not be moved by players or GM
+    /// </summary>
     public bool staticEntity = false;
+    /// <summary>
+    /// If the entity is editable by GM
+    /// </summary>
     public bool editableEntity = true;
 
     void Start() {
@@ -28,17 +64,31 @@ public class Entity : Interactable {
         OnStart();
     }
 
-    /// <summary>Called right after init of base entity</summary>
+    /// <summary>
+    /// Called right after init of base entity
+    /// </summary>
     public virtual void OnStart() {}
-    /// <summary>Called right before the entity is stringified</summary>
+    /// <summary>
+    /// Called right before the entity is stringified
+    /// </summary>
     protected virtual void OnEntitySave() {}
-    /// <summary>Called right after the entity is loaded from string</summary>
+    /// <summary>
+    /// Called right after the entity is loaded from string
+    /// </summary>
     protected virtual void OnEntityLoad() {}
-    /// <summary>Called right before the entity is destroyed</summary>
+    /// <summary>
+    /// Called right before the entity is destroyed
+    /// </summary>
     public virtual void OnDestory() {}
-    /// <summary>Called when the position is set by an exteranl source</summary>
+    /// <summary>
+    /// Called when the position is set by an external source
+    /// </summary>
     public virtual void OnSetPosition() {}
 
+    /// <summary>
+    /// Saves the entity to a JSON object
+    /// </summary>
+    /// <returns>JSON object representing the entity</returns>
     public override JsonObj Save() {
         OnEntitySave();
         
@@ -69,6 +119,10 @@ public class Entity : Interactable {
         return obj;
     }
 
+    /// <summary>
+    /// Loads the entity from a JSON object
+    /// </summary>
+    /// <param name="obj">JSON object representing the entity</param>
     public override void Load(JsonObj obj) {
         
         if(obj.ContainsKey("type")) entityType = obj.GetString("type");
@@ -116,10 +170,18 @@ public class Entity : Interactable {
         OnEntityLoad();
     }
 
+    /// <summary>
+    /// Sets the position of the entity, and calluses OnSetPosition()
+    /// </summary>
+    /// <param name="pos">The new position</param>
     public void SetPosition(Vector3 pos) {
         transform.position = pos;
         OnSetPosition();
     }
+    /// <summary>
+    /// Sets the position of the entity relative to it's parent
+    /// </summary>
+    /// <param name="pos">The new local position</param>
     public void SetLocalPosition(Vector3 pos) {
         // print("Test " + pos);
         transform.localPosition = pos;
@@ -128,6 +190,9 @@ public class Entity : Interactable {
 
 }
 
+/// <summary>
+/// Used to load a dictionary from JSON array
+/// </summary>
 [System.Serializable]
 public class CustomData {
     public string key;

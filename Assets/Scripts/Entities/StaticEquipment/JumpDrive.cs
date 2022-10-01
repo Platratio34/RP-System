@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Fancy science thing
+/// </summary>
 public class JumpDrive : Equipment {
 
     public float maxStored;

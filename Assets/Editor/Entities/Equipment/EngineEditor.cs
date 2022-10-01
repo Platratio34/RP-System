@@ -23,7 +23,10 @@ public class EngineEditor : EquipmentEditor {
         eng.maxPower = EditorGUILayout.FloatField("Max Power", eng.maxPower);
         eng.maxThrust = EditorGUILayout.FloatField("Max Thrust", eng.maxThrust);
 
-        EditorGUILayout.LabelField("Thrust", eng.thrust + " N");
+        EditorGUILayout.LabelField("Current Thrust", eng.thrust + " N");
+
+        eng.ship = (Ship)EditorGUILayout.ObjectField("Ship", (UnityEngine.Object)eng.ship, typeof(Ship), true);
+        eng.dir = EditorGUILayout.Vector3Field("Direction", eng.dir);
 
         base.serializedObject.ApplyModifiedProperties();
     }

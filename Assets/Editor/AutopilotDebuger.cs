@@ -54,12 +54,13 @@ public class AutopilotDebuger : EditorWindow {
 
         if(aP.atTarget) GUILayout.Label("At Target!");
         if(aP.goToPos || aP.goToTransform) EditorGUILayout.FloatField("Distance To Target", aP.distToTarget);
-        if(aP.goToPos || aP.goToTransform) EditorGUILayout.Vector3Field("Target Lateral Velocity"+(aP.dRot2.magnitude>1?(" "+aP.dRot2.magnitude+" off"):""), aP.tLatVel);
+        if(aP.goToPos || aP.goToTransform) EditorGUILayout.Vector3Field("Target Lateral Velocity"+(aP.dRot2.magnitude>1?(", "+(Mathf.Floor(aP.dRot2.magnitude*10f)/10f)+" m away"):""), aP.tLatVel);
         if(aP.goToPos || aP.goToRot || aP.goToTransform) EditorGUILayout.Vector3Field("Target Rotational Velocity", aP.tRotVel);
         if(aP.goToPos || aP.goToRot || aP.goToTransform) EditorGUILayout.Vector3Field("Target Rotation", aP.tRot);
         if(aP.goToPos || aP.goToTransform) EditorGUILayout.Vector3Field("Diffrence in Position", aP.dPos);
         if(aP.goToRot || aP.goToTransform) EditorGUILayout.Vector3Field("Diffrence in Rotation", aP.dRot);
         EditorGUILayout.Vector3Field("Current Thrusting", aP.cThrust);
+        EditorGUILayout.Vector3Field("Current Rotating", aP.cRot);
         SaveToSaver();
     }
 

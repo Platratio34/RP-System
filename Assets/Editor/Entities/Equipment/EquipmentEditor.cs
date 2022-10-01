@@ -21,9 +21,9 @@ public class EquipmentEditor : InteractableEditor {
 
         EditorGUILayout.Space();
         EditorGUILayout.LabelField("- Equipment -");
-        EditorGUILayout.LabelField("Net Power", Mathf.Round(eq.getNetPower())+" W");
-        EditorGUILayout.LabelField("Required Power", Mathf.Round(eq.getPowerReq())+" W");
-        EditorGUILayout.LabelField("Net Heat", Math.Round(eq.getNetHeat(),2)+" K/s");
+        EditorGUILayout.LabelField("Net Power", Math.Round(eq.getNetPower(), 2)+" W");
+        EditorGUILayout.LabelField("Required Power", Math.Round(eq.getPowerReq(), 2)+" W");
+        EditorGUILayout.LabelField("Net Heat", Math.Round(eq.getNetHeat(), 2)+" K/s");
         // EditorGUILayout.LabelField("Passive Heat Disipation", eq.getPasiveHeatDisp()+" K/s");
         eq.setPasiveHeatDisp(EditorGUILayout.FloatField("Pasive Heat Disp", eq.getPasiveHeatDisp()));
         EditorGUILayout.LabelField("Total Heat", Math.Round(eq.getTotalHeat(),2)+" K");

@@ -3,11 +3,11 @@ using UnityEngine;
 
 /// <summary><c>Json Object</c> is a class used for saving and loading JSON</summary>
 public class JsonObj {
-    /// <value>The key value pairs of the JSON object</value>
+    /// <summary>The key value pairs of the JSON object</summary>
     protected Dictionary<string, JsonObj> objs;
-    /// <value>The array value</value>
+    /// <summary>The array value</summary>
     public JsonObj[] array;
-    /// <value>The string value</value>
+    /// <summary>The string value</summary>
     public string val;
     protected JsonParamType type = JsonParamType.STRING;
 
@@ -181,23 +181,23 @@ public class JsonObj {
         }
         return str;
     }
-    /// <summary>Formats the object ito a JSON string, using default parmaters (quotes enabled, non-nice string)</summary>
+    /// <summary>Formats the object ito a JSON string, using default parameters (quotes enabled, non-nice string)</summary>
     public override string ToString() {
         return ToString(true, false, "");
     }
-    /// <summary>Formats the object ito a JSON string, using default parmater (non-nice string)</summary>
+    /// <summary>Formats the object ito a JSON string, using default parameter (non-nice string)</summary>
     /// <param name="q">Quote values, set to false if you are getting the value only</param>
     public string ToString(bool q) {
         return ToString(q, false, "");
     }
-    /// <summary>Formats the object ito a JSON string, using default parmater (quotes enabled)</summary>
+    /// <summary>Formats the object ito a JSON string, using default parameter (quotes enabled)</summary>
     /// <param name="i">Make string nice</param>
     /// <param name="s">Starting string for each line. (Mostly for internal use)</param>
     public string ToString(bool i, string s) {
         return ToString(true, i, s);
     }
 
-    /// <summary>Returns a Vecotor 3 from keys "x", "y", "z", of parameter <c>key</c></summary>
+    /// <summary>Returns a Vector3 from keys "x", "y", "z", of parameter <c>key</c></summary>
     /// <param name="key">The parameter to parse</param>
     public Vector3 GetVector3(string key) {
         if(!objs.ContainsKey(key)) {
@@ -205,12 +205,12 @@ public class JsonObj {
         }
         return objs[key].GetVector3();
     }
-    /// <summary>Returns a Vecotor 3 from keys "x", "y", "z"</summary>
+    /// <summary>Returns a Vector3 from keys "x", "y", "z"</summary>
     public Vector3 GetVector3() {
         return new Vector3( GetFloat("x"), GetFloat("y"), GetFloat("z") );
     }
 
-    /// <summary>Adds a Vecotr3 key named <c>key</c></summary>
+    /// <summary>Adds a Vector3 key named <c>key</c></summary>
     /// <param name="key">The key</param>
     /// <param name="x">The x value</param>
     /// <param name="y">The y value</param>
@@ -222,7 +222,7 @@ public class JsonObj {
         v.AddFloat("z", z);
         AddKey(key, v);
     }
-    /// <summary>Adds a Vecotr3 key named <c>key</c></summary>
+    /// <summary>Adds a Vector3 key named <c>key</c></summary>
     /// <param name="key">The key</param>
     /// <param name="v3">The Vector3 to add</param>
     public void AddVector3(string key, Vector3 v3) {
@@ -329,12 +329,12 @@ public class JsonObj {
         return objs[key];
     }
 
-    /// <summary>Returns the object dictonary for iterating over from parameter<c>key</c></summary>
+    /// <summary>Returns the object dictionary for iterating over from parameter<c>key</c></summary>
     /// <param name="key">The parameter to get</param>
     public Dictionary<string,JsonObj> GetObjs(string key) {
         return objs[key].GetObjs();
     }
-    /// <summary>Returns the object dictonary for iterating over</summary>
+    /// <summary>Returns the object dictionary for iterating over</summary>
     public Dictionary<string,JsonObj> GetObjs() {
         return objs;
     }
@@ -361,7 +361,7 @@ public class JsonObj {
         objs.Remove(key);
     }
 
-    /// <summary>Returns the number of keys in the object dictonary</summary>
+    /// <summary>Returns the number of keys in the object dictionary</summary>
     public int NumberOfKeys() {
         return objs.Count;
     }
