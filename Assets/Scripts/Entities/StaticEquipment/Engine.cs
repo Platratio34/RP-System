@@ -21,6 +21,10 @@ public class Engine : Equipment {
     /// </summary>
     public float maxThrust;
     /// <summary>
+    /// The heat produced at max power
+    /// </summary>
+    public float maxHeatGen = 0;
+    /// <summary>
     /// The current thrust of the engine
     /// </summary>
     public float thrust;
@@ -65,6 +69,7 @@ public class Engine : Equipment {
         float pP = powerIn / maxPower; // calculates the current percent of full thrust possible
         pP = Mathf.Clamp(pP, 0, throttle); // limits thrust to throttle
         thrust = maxThrust * pP; // Sets thrust
+        heatGen = maxHeatGen * pP;
         
         if(thrusted) {
             return;
@@ -83,6 +88,7 @@ public class Engine : Equipment {
         float pP = powerIn / maxPower; // calculates the current percent of full thrust possible
         pP = Mathf.Clamp(pP, 0, throttle); // limits thrust to throttle
         thrust = maxThrust * pP; // sets thrust
+        heatGen = maxHeatGen * pP;
 
         if(thrusted) { // If setThrust() was called since last tick, skip applying thrust to the ship
             thrusted = false;

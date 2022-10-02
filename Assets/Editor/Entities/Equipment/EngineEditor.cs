@@ -22,6 +22,7 @@ public class EngineEditor : EquipmentEditor {
         eng.throttle = EditorGUILayout.Slider("Throttle", eng.throttle, 0, 1);
         eng.maxPower = EditorGUILayout.FloatField("Max Power", eng.maxPower);
         eng.maxThrust = EditorGUILayout.FloatField("Max Thrust", eng.maxThrust);
+        eng.maxHeatGen = EditorGUILayout.FloatField("Max Heat Gen", eng.maxHeatGen);
 
         EditorGUILayout.LabelField("Current Thrust", eng.thrust + " N");
 

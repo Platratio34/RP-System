@@ -38,7 +38,7 @@ public class JumpDrive : Equipment {
     protected override void onUpdate() {
         if(charge) {
             isCharged = currentStored >= curReq;
-            if(!isCharged) {
+            if(!isCharged && powerIn > opereratingIn) {
                 currentStored += (powerIn - opereratingIn) * Time.deltaTime;
                 currentStored = Mathf.Clamp(currentStored, 0, maxStored);
                 powerInReq = Mathf.Min(maxIn, (curReq-currentStored)/Time.deltaTime) + opereratingIn;
@@ -52,7 +52,8 @@ public class JumpDrive : Equipment {
             powerInReq = opereratingIn;
             if(currentStored < maxStored) {
                 powerInReq += Mathf.Clamp((maxStored-currentStored)/Time.deltaTime,0,overchargeRate);
-                currentStored += (powerIn - opereratingIn) * Time.deltaTime;
+                if(powerIn > opereratingIn) currentStored += (powerIn - opereratingIn) * Time.deltaTime;
+                currentStored = Mathf.Clamp(currentStored, 0, maxStored);
             }
         }
         if(state == 3) {

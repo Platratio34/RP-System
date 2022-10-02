@@ -50,6 +50,7 @@ public class Equipment : Interactable {
         totalHeat += heatGen * Time.deltaTime;
         totalHeat -= pasiveHeatDisp * Time.deltaTime;
         totalHeat -= heatOut * Time.deltaTime;
+        heatOut = 0;
         totalHeat = Mathf.Max(totalHeat, 0);
         if(health == 0) {
             explode();
@@ -69,6 +70,16 @@ public class Equipment : Interactable {
     /// </summary>
     public virtual void explode() {
         print("BOOM!");
+    }
+
+    public float takeHeat(float amount) {
+        amount = MathF.Min(amount, totalHeat);
+        totalHeat -= amount;
+        return amount;
+    }
+
+    public void addHeatOut(float amount) {
+        heatOut = amount;
     }
 
     /// <summary>

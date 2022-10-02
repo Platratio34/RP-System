@@ -34,7 +34,7 @@ public class PowerDisplay : Interactable, Displayer {
     }
 
     public void display() {
-        print("Somthing");
+        // print("Somthing");
         Frame frame = gCard.NewFrame(0);
 
         frame.Fill(new Color(0.05f, 0.05f, 0.08f, 1));
