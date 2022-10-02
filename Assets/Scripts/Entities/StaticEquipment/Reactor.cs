@@ -23,8 +23,16 @@ public class Reactor : Equipment {
     public float overheatingTime;
     public float damageMod = 1f;
 
-    void Start() {
+    public bool modifyEmission;
+    public float minEmission = 0;
+    public float maxEmission = 1;
+    public Renderer emissionRenderer;
+    private Color emissionColor;
 
+    void Start() {
+        if(modifyEmission) {
+            emissionColor = emissionRenderer.material.GetColor("_EmissionColor");
+        }
     }
 
     protected override void onUpdate() {
@@ -53,6 +61,10 @@ public class Reactor : Equipment {
         overheatingTime = Mathf.Max(overheatingTime, 0);
         if(overheatingTime > maxOverheatTime) {
             damage( (totalHeat / overheatTemp) * damageMod * Time.deltaTime);
+        }
+
+        if(modifyEmission) {
+            emissionRenderer.material.SetColor("_EmissionColor", emissionColor * Mathf.Lerp(minEmission, maxEmission, actualLevel));
         }
     }
 

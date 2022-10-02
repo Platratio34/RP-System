@@ -19,7 +19,7 @@ public class MemoryTracker : MonoBehaviour {
     ProfilerRecorder systemUsedMemoryRecorder;
 
     private long maxMemUsed = 0;
-    private float[] memUsedArr = new float[256];
+    private float[] memUsedArr = new float[512];
     private int memUsedArrInd = 0;
 
     void OnEnable()

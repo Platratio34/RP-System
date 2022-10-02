@@ -18,7 +18,8 @@ public class Player : Entity {
     public float interactDist = 3f;
     private Vector3 interP;
     private Vector3 interP2;
-    public Text lookingAtText;
+    public Text tooltip1;
+    public Text tooltip2;
 
     public override void OnStart() {
         rb.freezeRotation = true;
@@ -70,12 +71,21 @@ public class Player : Entity {
 
             if(inter != null) {
                 if(inter.isNameKey) {
-                    lookingAtText.text = inter.localName.ToString();/*LocalStrings.GetLocalString("interactableNames",inter.dispName)*/;
+                    tooltip1.text = inter.localName.ToString();/*LocalStrings.GetLocalString("interactableNames",inter.dispName)*/;
                 } else {
-                    lookingAtText.text = inter.dispName;
+                    tooltip1.text = inter.dispName;
+                }
+                if(inter is EID) {
+                    EID eid = (EID)inter;
+                    if(eid.type == EID.EidType.PUSH || eid.type == EID.EidType.TOGGLE) {
+                        tooltip2.text = (eid.state == 1 ? "True" : "False");
+                    } else {
+                        tooltip2.text = eid.state+"";
+                    }
                 }
             } else {
-                lookingAtText.text = "";
+                tooltip1.text = "";
+                tooltip2.text = "";
             }
 
             if(Input.GetButtonDown("Interact") && inter != null) {
@@ -109,8 +119,8 @@ public class Player : Entity {
         }
 
         // rotate the camera
-        transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y + y, transform.eulerAngles.z);
-        cameraO.transform.eulerAngles = new Vector3(crx, cameraO.transform.eulerAngles.y, cameraO.transform.eulerAngles.z);
+        transform.localEulerAngles = new Vector3(0, transform.localEulerAngles.y + y, 0);
+        cameraO.transform.localEulerAngles = new Vector3(crx, cameraO.transform.localEulerAngles.y, cameraO.transform.localEulerAngles.z);
     }
 
     protected override void OnEntitySave() {

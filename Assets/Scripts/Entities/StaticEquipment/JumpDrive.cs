@@ -29,13 +29,16 @@ public class JumpDrive : Equipment {
 
     private float timeToJump = 1;
 
-    public GameObject ship;
+    public Ship ship;
 
     void Start() {
 
     }
 
     protected override void onUpdate() {
+        if(ship != null) {
+            totalMass = ship.mass;
+        }
         if(charge) {
             isCharged = currentStored >= curReq;
             if(!isCharged && powerIn > opereratingIn) {

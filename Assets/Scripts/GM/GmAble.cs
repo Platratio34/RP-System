@@ -119,7 +119,7 @@ public class GmAble : MonoBehaviour {
         }
 
         if(selEntity != null) {
-            enityName = selEntity.entityName;
+            enityName = selEntity.isNameKey?selEntity.localName.ToString(): selEntity.dispName;
 
             selEntity.Select();
             // selectionBox.DrawSelBox(selEntity.transform, selEntity, Color.blue);

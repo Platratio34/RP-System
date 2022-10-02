@@ -52,4 +52,26 @@ public class LocalString {
     public string ToString(bool print) {
         return "Local String: " + catagory + "." + key;
     }
+    
+    public JsonObj toJson() {
+        JsonObj obj = new JsonObj();
+        obj.AddKey("cat", catagory);
+        obj.AddKey("key", key);
+        JsonObj[] arr = new JsonObj[dropIns.Length];
+        for (int i = 0; i < dropIns.Length; i++) {
+            arr[i] = new JsonObj(dropIns[i], false);
+        }
+        obj.AddKey("dropIns", arr);
+        return obj;
+    }
+
+    public LocalString(JsonObj obj) {
+        key = obj.GetString("key");
+        catagory = obj.GetString("cat");
+        JsonObj[] arr = obj.GetArray("dropIns");
+        dropIns = new string[arr.Length];
+        for (int i = 0; i < arr.Length; i++) {
+            dropIns[i] = arr[i].val;
+        }
+    }
 }

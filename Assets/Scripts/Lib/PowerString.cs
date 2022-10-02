@@ -17,6 +17,8 @@ public class PowerString {
     };
 
     public static string convert(float input) {
+        bool n = input < 0;
+        float i2 = input * (n ? -1 : 1);
         string cStr = Math.Round(input,3)+"";
         if(input >= 1) {
             cStr = Math.Round(input,2)+"";
@@ -28,7 +30,7 @@ public class PowerString {
             cStr = Math.Round(input)+"";
         }
         for(int i = 0; i < amounts.Length; i++) {
-            if(input >= amounts[i]) {
+            if(i2 >= amounts[i]) {
                 double amt = Math.Round(input/amounts[i],3);
                 if(amt >= 1) {
                     amt = Math.Round(amt,2);

@@ -19,6 +19,7 @@ public class LocalStrings : MonoBehaviour {
     /// The array of language files to load. The value of <c>lang</c> should be in this array
     /// </value>
     public static string[] langs;
+    [SerializeField]
     private string[] langs2;
     
     // Called when initialized
@@ -37,7 +38,7 @@ public class LocalStrings : MonoBehaviour {
             langs = new string[]{lang};
         }
         for(int i = 0; i < langs.Length; i++) {
-            string f = "Localizaton/" + langs[i] + ".json";
+            string f = "Localization/" + langs[i] + ".json";
             if(SaveLoadData.Exists(f)) {
                 JsonObj l = StringParser.ParseObject(SaveLoadData.LoadString(f)).data;
                 local.Add(langs[i], new LocalLang(l));
@@ -71,26 +72,26 @@ public class LocalStrings : MonoBehaviour {
     /// <summary>
     /// Returns a localized string based on the category and key from the current language
     /// </summary>
-    /// <param name="catagory">The first level category of key</param>
+    /// <param name="category">The first level category of key</param>
     /// <param name="key">The localization key. May include '.' to mark sub-category, ex: "file.save"</param>
     /// <returns>The localized string</returns>
-    public static string GetLocalString(string catagory, string key) {
+    public static string GetLocalString(string category, string key) {
         string r = "";
         if(local == null) {
             LoadDict();
         }
         if(local.ContainsKey(lang)) {
-            if(local[lang].catagories.ContainsKey(catagory)) {
+            if(local[lang].catagories.ContainsKey(category)) {
                 string[] keys = key.Split('.');
-                string str = local[lang].catagories[catagory].GetString(keys);
+                string str = local[lang].catagories[category].GetString(keys);
 
                 if(str != null) {
                     return str;
                 } else {
-                    r = GetLocalStringD("lang", "missingString_keyInCatOfLang", new string[]{key,catagory,lang} );
+                    r = GetLocalStringD("lang", "missingString_keyInCatOfLang", new string[]{key,category,lang} );
                 }
             } else {
-                r = GetLocalStringD("lang", "missingCatagory", new string[]{catagory,lang} );
+                r = GetLocalStringD("lang", "missingCategory", new string[]{category,lang} );
             }
         } else {
             r = GetLocalStringD("lang", "missingLanguage", new string[]{lang} );
@@ -99,10 +100,10 @@ public class LocalStrings : MonoBehaviour {
         return r;
     }
     /// <summary>
-    /// Returns a localized string based on the catagory and key from the current language, with variable replacement
+    /// Returns a localized string based on the category and key from the current language, with variable replacement
     /// </summary>
-    /// <param name="cat">The first level catagory of key</param>
-    /// <param name="key">The localization key. May include '.' to mark sub-catagory, ex: "file.save"</param>
+    /// <param name="cat">The first level category of key</param>
+    /// <param name="key">The localization key. May include '.' to mark sub-category, ex: "file.save"</param>
     /// <param name="drops">The array of variables to drop into the string</param>
     /// <returns>The localized string</returns>
     public static string GetLocalStringD(string cat, string key, string[] drops) {
@@ -156,25 +157,25 @@ public class LocalStrings : MonoBehaviour {
         }
 
         /// <summary>
-        /// Returns a string from the catagory based on the keys provided
+        /// Returns a string from the category based on the keys provided
         /// </summary>
-        /// <param name="keys">Array of keys, each element except the last is a sub-catagory</param>
+        /// <param name="keys">Array of keys, each element except the last is a sub-category</param>
         /// <returns>The localized string</returns>
         public string GetString(string[] keys) {
             return GetString(keys, 0);
         }
         /// <summary>
-        /// Returns a string from the catagory based on the keys provided started at index <c>l</c>
+        /// Returns a string from the category based on the keys provided started at index <c>l</c>
         /// </summary>
-        /// <param name="keys">Array of keys, each element except the last is a sub-catagory</param>
-        /// <param name="l">The index to start looking for a  key or catagory at</param>
+        /// <param name="keys">Array of keys, each element except the last is a sub-category</param>
+        /// <param name="l">The index to start looking for a  key or category at</param>
         /// <returns>The localized string</returns>
         private string GetString(string[] keys, int l) {
             if(strings.ContainsKey(keys[l])) {
                 return strings[keys[l]];
             } else {
                 if(catagories.ContainsKey(keys[l])) {
-                    return catagories[keys[l]].GetString(keys, 1);
+                    return catagories[keys[l]].GetString(keys, l+1);
                 } else {
                     return null;
                 }

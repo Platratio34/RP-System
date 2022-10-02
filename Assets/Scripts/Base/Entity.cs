@@ -53,9 +53,9 @@ public class Entity : Interactable {
     public bool editableEntity = true;
 
     void Start() {
-        if(isNameKey && entityName.Equals("")) {
-            entityName = LocalStrings.GetLocalString("entitiyTypeNames", dispName);
-        }
+        // if(isNameKey && entityName.Equals("")) {
+        //     entityName = LocalStrings.GetLocalString("entitiyTypeNames", dispName);
+        // }
         customData = new Dictionary<string, string>();
         for(int i = 0; i < customDataArray.Length; i++) {
             customData.Add(customDataArray[i].key, customDataArray[i].value);
@@ -96,7 +96,11 @@ public class Entity : Interactable {
 
         obj.AddKey("type", entityType);
         obj.AddKey("id", entityId);
-        obj.AddKey("name", entityName);
+        if(isNameKey) {
+            obj.AddKey("localName", localName.toJson());
+        } else {
+            obj.AddKey("name", dispName);
+        }
         obj.AddBool("static", staticEntity);
         obj.AddBool("editable", editableEntity);
         obj.AddVector3("pos", transform.position);
@@ -127,7 +131,11 @@ public class Entity : Interactable {
         
         if(obj.ContainsKey("type")) entityType = obj.GetString("type");
         if(obj.ContainsKey("id")) entityId = obj.GetString("id");
-        if(obj.ContainsKey("name")) entityName = obj.GetString("name");
+        if(obj.ContainsKey("name")) dispName = obj.GetString("name");
+        if(obj.ContainsKey("localName")) {
+            isNameKey = true;
+            localName = new LocalString(obj.GetObj("localName"));
+        }
         if(obj.ContainsKey("static")) staticEntity = obj.GetBool("static");
         if(obj.ContainsKey("editable")) editableEntity = obj.GetBool("editable");
         

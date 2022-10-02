@@ -227,13 +227,14 @@ MonoBehaviour:
   rb: {fileID: 5723097154966896345}
   move: {x: 0, y: 0}
   jp: 75
-  mp: 20
+  mp: 10
   turnSpeed: 3
   cameraO: {fileID: 5723097155701178156}
   firstPers: 1
   cameraLock: 1
   interactDist: 3
-  lookingAtText: {fileID: 4884596404042341688}
+  tooltip1: {fileID: 4884596404042341688}
+  tooltip2: {fileID: 6717806300265106725}
 --- !u!54 &5723097154966896345
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -638,6 +639,17 @@ RectTransform:
 --- !u!114 &4884596404042341688 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3046386343051422967, guid: 019aa6ca15fdbcb47b32846ccfed7c50, type: 3}
+  m_PrefabInstance: {fileID: 7606406810890039759}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6717806300265106725 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3797963359099862250, guid: 019aa6ca15fdbcb47b32846ccfed7c50, type: 3}
   m_PrefabInstance: {fileID: 7606406810890039759}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}

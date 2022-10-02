@@ -11,14 +11,14 @@ public class Satellite : Entity {
     public Satellite parent;
     /// <value>The altitude of the orbit.</value>
     // public float orbitalAlt;
-    /// <value>The inclenation of the orbit. Not implemented</value>
+    /// <value>The inclination of the orbit. Not implemented</value>
     // public float orbitalInc;
     /// <value>The period of the orbit in seconds.</value>
     public float orbitalPer;
     // [Range(0.0f, 1.0f)]
     public float orbitalPos;
     // [Range(0.5f,1.5f)]
-    /// <value>The ecentricity of the orbit. Percent of alt for minimum altitude, inverted for max</value>
+    /// <value>The eccentricity of the orbit. Percent of alt for minimum altitude, inverted for max</value>
     // public float orbitalEct = 1f;
     public float offset;
     public float sOI;
