@@ -96,11 +96,18 @@ public class AutoPilot : MonoBehaviour {
 
     // Called when the AP is created
     void Start() {
+        if(ship == null) {
+            Debug.LogError("Autopilot should be associated with a ship");
+            return;
+        }
         shipT = ship.transform;
     }
 
     // Called every tick
     void Update() {
+        if(ship == null) {
+            return;
+        }
         if(shipT == null) {
             shipT = ship.transform;
         }
@@ -193,10 +200,10 @@ public class AutoPilot : MonoBehaviour {
 
         // If the ship is pointing pretty close to the target, set the target speed relative to the distance
         if(dRot2.magnitude < 1) {
-            float ts = Mathf.Clamp(pID(dPos.magnitude), 0, 2f);
+            float ts = Mathf.Clamp(pID(dPos.magnitude), 0, dPos.magnitude/2f);
             tLatVel.x = ts;
         } else { // If the ship is pointing somewhat close, set the target speed, but reduce it based on how far off in direction the ship is
-            float ts = Mathf.Clamp(pID(dPos.magnitude), 0, 2f);
+            float ts = Mathf.Clamp(pID(dPos.magnitude), 0, dPos.magnitude/2f);
             tLatVel.x = ts * (dRot2.magnitude/Mathf.Pow(dRot2.magnitude, 1.1f));
         }
         if(dRot2.magnitude > 10 || atTarget) {
@@ -225,6 +232,9 @@ public class AutoPilot : MonoBehaviour {
 
     // Draws pretty colors in the editor
     void OnDrawGizmos() {
+        if(ship == null) {
+            return;
+        }
         if(shipT == null) {
             shipT = ship.transform;
         }
@@ -268,7 +278,7 @@ public class AutoPilot : MonoBehaviour {
     /// </summary>
     /// <param name="v">Process variable</param>
     /// <returns>Change</returns>
-    private float pID(float v) {
+    public static float pID(float v) {
         bool n = v<0;
         if(n) v *= -1f;
         v /= 8;
@@ -276,6 +286,6 @@ public class AutoPilot : MonoBehaviour {
         if(v == 0) {
             return 0;
         }
-        return (n?-2f:2f) * Mathf.Log(v);
+        return (n?-4f:4f) * Mathf.Log(v);
     }
 }

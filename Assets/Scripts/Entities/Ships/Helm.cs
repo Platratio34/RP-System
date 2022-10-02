@@ -74,6 +74,8 @@ public class Helm : Interactable {
     /// </summary>
     public AutoPilot aP;
 
+    public Vector3 thrust;
+
     // Called when the helm is created
     void Start() {
         shipT = ship.transform;
@@ -87,11 +89,11 @@ public class Helm : Interactable {
 
         Vector3 relVel = ship.getRelativeVel();
         Vector3 eRot = shipT.rotation.eulerAngles;
-        Vector3 thrust = Vector3.zero;
+        /*Vector3*/ thrust = Vector3.zero;
         Vector3 rot = Vector3.zero;
         if(velDampers && relVel.magnitude > 0.0001f) {
             // thrust = new Vector3(relVel.x / ship.effectiveAccl.x, relVel.y / ship.effectiveAccl.y, relVel.z / ship.effectiveAccl.z) * -1f;
-            thrust = ship.effectiveAccl.divide(relVel) * -1f;
+            thrust = ship.effectiveAccl.divide(relVel) * -4f;
         }
         if(rotDampers && ship.rVel.magnitude > 0.0001f) {
             rot = new Vector3(ship.rVel.x / ship.effectiveRot.x, ship.rVel.y / ship.effectiveRot.y, ship.rVel.z / ship.effectiveRot.z) * -1f;
@@ -118,24 +120,27 @@ public class Helm : Interactable {
             thrust = addOver(thrust, aII);
             Debug.DrawLine(shipT.position, shipT.position + shipT.forward, Color.red);
         } if(posHold) { // This is comment out for now to try to figure out what was creating the oscillation
-            // if(!lposHold) {
-            //     holdPos = shipT.localPosition;
-            // }
-            // Vector3 tVel = shipT.localPosition - holdPos * 0.5f;
-            // if(tVel.magnitude > 0.01f) {
-            //     // thrust = (1/tVel.x) * shipT.forward;
-            //     // thrust += (1/tVel.y) * shipT.up;
-            //     // thrust += (1/tVel.z) * shipT.right;
-            //     thrust = tVel.x * shipT.forward;
-            //     thrust += tVel.y * shipT.up;
-            //     thrust += tVel.z * shipT.right;
-            // } else {
-            //     thrust = Vector3.zero;
-            // }
+            if(!lposHold) {
+                holdPos = shipT.localPosition;
+            }
+            Vector3 tVel = (shipT.localPosition - holdPos) * -0.5f;
+            tVel.x = AutoPilot.pID(tVel.x);
+            tVel.y = AutoPilot.pID(tVel.y);
+            tVel.z = AutoPilot.pID(tVel.z);
+            if(tVel.magnitude > 0.01f) {
+                // thrust = (1/tVel.x) * shipT.forward;
+                // thrust += (1/tVel.y) * shipT.up;
+                // thrust += (1/tVel.z) * shipT.right;
+                thrust = tVel.x * shipT.forward;
+                thrust += tVel.y * shipT.up;
+                thrust += tVel.z * shipT.right;
+            } else {
+                thrust = Vector3.zero;
+            }
         }
         lposHold = posHold;
 
-        if((localPlayerControlled || aIControlled) && active) { // Apply the control form the helm to the ship
+        if(active) { // Apply the control form the helm to the ship
             ship.thrust(thrust);
             ship.rotate(rot);
         }
@@ -148,22 +153,47 @@ public class Helm : Interactable {
     /// <param name="o">Vector 2</param>
     /// <returns>Combination of the 2 vectors</returns>
     private Vector3 addOver(Vector3 b, Vector3 o) {
-        if(o.x > 0) {
-            b.x = Mathf.Max(b.x, o.x);
-        } else if(o.x < 0) {
-            b.x = Mathf.Min(b.x, o.x);
-        }
-        if(o.y > 0) {
-            b.y = Mathf.Max(b.y, o.y);
-        } else if(o.y < 0) {
-            b.y = Mathf.Min(b.y, o.y);
-        }
-        if(o.z > 0) {
-            b.z = Mathf.Max(b.z, o.z);
-        } else if(o.z < 0) {
-            b.z = Mathf.Min(b.z, o.z);
-        }
+        b.x = absMax(b.x, o.x);
+        b.y = absMax(b.y, o.y);
+        b.z = absMax(b.z, o.z);
+        // if(o.x > 0) {
+        //     b.x = Mathf.Max(b.x, o.x);
+        // } else if(o.x < 0) {
+        //     b.x = Mathf.Min(b.x, o.x);
+        // }
+        // if(o.y > 0) {
+        //     b.y = Mathf.Max(b.y, o.y);
+        // } else if(o.y < 0) {
+        //     b.y = Mathf.Min(b.y, o.y);
+        // }
+        // if(o.z > 0) {
+        //     b.z = Mathf.Max(b.z, o.z);
+        // } else if(o.z < 0) {
+        //     b.z = Mathf.Min(b.z, o.z);
+        // }
         return b;
+    }
+
+    private float absMax(float a, float b) {
+        if(a == b) {
+            return a;
+        }
+        if(a >= 0 && b >= 0) {
+            return Mathf.Max(a, b);
+        } else if(a < 0 && b < 0) {
+            return Mathf.Min(a, b);
+        } else if(a < 0 && b >= 0) {
+            if(a*-1 > b) {
+                return a;
+            }
+            return b;
+        } else if(a >= 0 && b < 0) {
+            if(b*-1 > a) {
+                return b;
+            }
+            return a;
+        }
+        return a;
     }
 
     /// <summary>

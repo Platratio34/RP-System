@@ -71,6 +71,7 @@ public class Ship : Entity {
         //     pPos = transform.position;
         // } else {
         vel += accl * Time.deltaTime;
+        accl = Vector3.zero;
         Vector3 mVel = new Vector3(vel.x,vel.y,vel.z);
         // if(cSat != null) {
         //     mVel -= cSat.getVel();
@@ -145,6 +146,12 @@ public class Ship : Entity {
                         // vel -= nSat.getVel();
                     }
                 }
+            }
+        }
+        Entity ent = other.GetComponent<Entity>();
+        if(ent != null) {
+            if(!ent.transform.IsChildOf(transform)) {
+                ent.transform.SetParent(transform);
             }
         }
     }
