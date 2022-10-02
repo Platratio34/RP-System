@@ -16,26 +16,25 @@ public class InteractableEditor : Editor {
     }
 
     public override void OnInspectorGUI() {
-        EditorGUILayout.LabelField("- Interactable -");
+        EditorGUILayout.LabelField("- Intractable -");
 
-        String tS = EditorGUILayout.TextField("Interactable ID", it.id);
-        if(it.id != tS) {
-            it.id = tS;
-        }
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("id"), new GUIContent("Intractable ID"));
+        // String tS = EditorGUILayout.TextField("Interactable ID", it.id);
+        // if(it.id != tS) {
+        //     it.id = tS;
+        // }
 
         if(it.isNameKey) {
             EditorGUILayout.PropertyField(serializedObject.FindProperty("localName"), new GUIContent("Localized Name"));
         } else {
-            tS = EditorGUILayout.TextField("Display Name", it.dispName);
-            if(it.dispName != tS) {
-                it.dispName = tS;
-            }
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("dispName"), new GUIContent("Display Name"));
         }
 
-        bool tB = EditorGUILayout.Toggle("Localize Name", it.isNameKey);
-        if(tB != it.isNameKey) {
-            it.isNameKey = tB;
-        }
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("isNameKey"), new GUIContent("Localize Name"));
+        // bool tB = EditorGUILayout.Toggle("Localize Name", it.isNameKey);
+        // if(tB != it.isNameKey) {
+        //     it.isNameKey = tB;
+        // }
 
         EditorGUILayout.PropertyField(serializedObject.FindProperty("eParams"), new GUIContent("Editable Parameters"));
 

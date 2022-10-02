@@ -19,10 +19,14 @@ public class PowerStorageEditor : EquipmentEditor {
         EditorGUILayout.Space();
         EditorGUILayout.LabelField("- Power Storage -");
 
-        ps.maxStored = EditorGUILayout.FloatField("Capacity (J)", ps.maxStored);
-        ps.currentStored = EditorGUILayout.FloatField("Current (J)", ps.currentStored);
-        ps.maxIn = EditorGUILayout.FloatField("Max Input (W)", ps.maxIn);
-        ps.maxOut = EditorGUILayout.FloatField("Max Output (W)", ps.maxOut);
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("maxStored"), new GUIContent("Capacity (J)"));
+        // ps.maxStored = EditorGUILayout.FloatField("Capacity (J)", ps.maxStored);
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("currentStored"), new GUIContent("Current (J)"));
+        // ps.currentStored = EditorGUILayout.FloatField("Current (J)", ps.currentStored);
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("maxIn"), new GUIContent("Max Input (W)"));
+        // ps.maxIn = EditorGUILayout.FloatField("Max Input (W)", ps.maxIn);
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("maxOut"), new GUIContent("Max Output (W)"));
+        // ps.maxOut = EditorGUILayout.FloatField("Max Output (W)", ps.maxOut);
 
         base.serializedObject.ApplyModifiedProperties();
     }

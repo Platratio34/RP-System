@@ -18,8 +18,8 @@ public class HeatSinkEditor : EquipmentEditor {
         base.OnInspectorGUI();
         EditorGUILayout.Space();
         EditorGUILayout.LabelField("- Heat Sinnk -");
-
-        hs.maxHeatIn = EditorGUILayout.FloatField("Max heat in", hs.maxHeatIn);
+        
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("maxHeatIn"), new GUIContent("Max heat in"));
         EditorGUILayout.PropertyField(serializedObject.FindProperty("sources"), new GUIContent("Sources"));
 
         EditorGUILayout.Space();

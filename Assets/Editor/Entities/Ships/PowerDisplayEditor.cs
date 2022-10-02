@@ -19,11 +19,15 @@ public class PowerDisplayEditor : InteractableEditor {
         EditorGUILayout.Space();
         EditorGUILayout.LabelField("- Power Display -");
 
-        pDisp.network = (PowerNetwork)EditorGUILayout.ObjectField("Network", (UnityEngine.Object)pDisp.network, typeof(PowerNetwork), true);
+        
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("network"), new GUIContent("Network"));
+        // pDisp.network = (PowerNetwork)EditorGUILayout.ObjectField("Network", (UnityEngine.Object)pDisp.network, typeof(PowerNetwork), true);
 
-        pDisp.gCard = (GraphicsCard)EditorGUILayout.ObjectField("Graphics Card", (UnityEngine.Object)pDisp.gCard, typeof(GraphicsCard), true);
-
-        pDisp.networkName = EditorGUILayout.TextField("Network Name", pDisp.networkName);
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("gCard"), new GUIContent("Graphics Card"));
+        // pDisp.gCard = (GraphicsCard)EditorGUILayout.ObjectField("Graphics Card", (UnityEngine.Object)pDisp.gCard, typeof(GraphicsCard), true);
+        
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("networkName"), new GUIContent("Network Name"));
+        // pDisp.networkName = EditorGUILayout.TextField("Network Name", pDisp.networkName);
 
         base.serializedObject.ApplyModifiedProperties();
     }

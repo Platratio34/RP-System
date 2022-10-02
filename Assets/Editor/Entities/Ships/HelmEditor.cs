@@ -19,18 +19,29 @@ public class HelmEditor : InteractableEditor {
         EditorGUILayout.Space();
         EditorGUILayout.LabelField("- Helm -");
 
-        helm.ship = (Ship)EditorGUILayout.ObjectField("Ship", (UnityEngine.Object)helm.ship, typeof(Ship), true);
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("ship"), new GUIContent("Ship"));
+        // helm.ship = (Ship)EditorGUILayout.ObjectField("Ship", (UnityEngine.Object)helm.ship, typeof(Ship), true);
 
-        helm.active = EditorGUILayout.Toggle("Active", helm.active);
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("active"), new GUIContent("Active"));
+        // helm.active = EditorGUILayout.Toggle("Active", helm.active);
 
-        helm.localPlayerControlled = EditorGUILayout.Toggle("Local Player Controlled", helm.localPlayerControlled);
-        helm.aIControlled = EditorGUILayout.Toggle("AI Controlled", helm.aIControlled);
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("localPlayerControlled"), new GUIContent("Local Player Controlled"));
+        // helm.localPlayerControlled = EditorGUILayout.Toggle("Local Player Controlled", helm.localPlayerControlled);
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("aIControlled"), new GUIContent("AI Controlled"));
+        // helm.aIControlled = EditorGUILayout.Toggle("AI Controlled", helm.aIControlled);
+        if(helm.aIControlled) {
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("aII"), new GUIContent("AI Input"));
+        }
 
-        helm.velDampers = EditorGUILayout.Toggle("Lateral Dampers", helm.velDampers);
-        helm.rotDampers = EditorGUILayout.Toggle("Rotational Dampers", helm.rotDampers);
-        helm.posHold = EditorGUILayout.Toggle("HoldPosition", helm.posHold);
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("velDampers"), new GUIContent("Lateral Dampers"));
+        // helm.velDampers = EditorGUILayout.Toggle("Lateral Dampers", helm.velDampers);
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("rotDampers"), new GUIContent("Rotational Dampers"));
+        // helm.rotDampers = EditorGUILayout.Toggle("Rotational Dampers", helm.rotDampers);
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("posHold"), new GUIContent("Hold Position"));
+        // helm.posHold = EditorGUILayout.Toggle("HoldPosition", helm.posHold);
 
-        helm.aP = (AutoPilot)EditorGUILayout.ObjectField("Auto Pilot", (UnityEngine.Object)helm.aP, typeof(AutoPilot), true);
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("aP"), new GUIContent("Auto Pilot"));
+        // helm.aP = (AutoPilot)EditorGUILayout.ObjectField("Auto Pilot", (UnityEngine.Object)helm.aP, typeof(AutoPilot), true);
         EditorGUILayout.BeginHorizontal();
         if(helm.autopilot) {
             GUILayout.Label("Autopilot Status: active");
@@ -72,6 +83,8 @@ public class HelmEditor : InteractableEditor {
         //     EditorGUILayout.LabelField("Overheating!");
         //     EditorGUILayout.LabelField("Time", rt.overheatingTime+"s");
         // }
+
+        EditorGUILayout.Vector3Field("Thrust", helm.thrust);
 
         base.serializedObject.ApplyModifiedProperties();
     }

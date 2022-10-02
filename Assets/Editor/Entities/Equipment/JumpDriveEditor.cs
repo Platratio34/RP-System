@@ -19,15 +19,20 @@ public class JumpDriveEditor : EquipmentEditor {
         base.OnInspectorGUI();
         EditorGUILayout.Space();
         EditorGUILayout.LabelField("- Jump Drive -");
-        jD.opereratingIn = EditorGUILayout.FloatField("Operating Power (W)", jD.opereratingIn);
-        jD.maxIn = EditorGUILayout.FloatField("Max Charging (W)", jD.maxIn);
-        jD.overchargeRate = EditorGUILayout.FloatField("Passive Charging (W)", jD.overchargeRate);
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("opereratingIn"), new GUIContent("Operating Power (W)"));
+        // jD.opereratingIn = EditorGUILayout.FloatField("Operating Power (W)", jD.opereratingIn);
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("maxIn"), new GUIContent("Max Charging (W)"));
+        // jD.maxIn = EditorGUILayout.FloatField("Max Charging (W)", jD.maxIn);
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("overchargeRate"), new GUIContent("Passive Charging (W)"));
+        // jD.overchargeRate = EditorGUILayout.FloatField("Passive Charging (W)", jD.overchargeRate);
 
         EditorGUILayout.Space();
 
-        jD.currentStored = EditorGUILayout.FloatField("Current Stored (J)", jD.currentStored);
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("currentStored"), new GUIContent("Current Stored (J)"));
+        // jD.currentStored = EditorGUILayout.FloatField("Current Stored (J)", jD.currentStored);
         EditorGUILayout.LabelField("Current Required", jD.curReq + " W");
-        jD.maxStored = EditorGUILayout.FloatField("Max Power Stored (J)", jD.maxStored);
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("maxStored"), new GUIContent("Max Power Stored (J)"));
+        // jD.maxStored = EditorGUILayout.FloatField("Max Power Stored (J)", jD.maxStored);
         if(jD.state == 1) {
             String tTC = "";
             float sTC = jD.getTimeToCharged();
@@ -59,11 +64,15 @@ public class JumpDriveEditor : EquipmentEditor {
 
         EditorGUILayout.Space();
 
-        jD.ship = (GameObject)EditorGUILayout.ObjectField(jD.ship, typeof(GameObject), true);
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("ship"), new GUIContent("Ship"));
+        // jD.ship = (GameObject)EditorGUILayout.ObjectField(jD.ship, typeof(GameObject), true);
 
-        jD.effecincy = EditorGUILayout.FloatField("Effecincy", jD.effecincy);
-        jD.totalMass = EditorGUILayout.FloatField("Total Mass (metric Tonne)", jD.totalMass);
-        jD.dischargeTime = EditorGUILayout.FloatField("Discharge Time", jD.dischargeTime);
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("effecincy"), new GUIContent("Efficiency"));
+        // jD.effecincy = EditorGUILayout.FloatField("Effecincy", jD.effecincy);
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("totalMass"), new GUIContent("Total Mass (metric Tonne)"));
+        // jD.totalMass = EditorGUILayout.FloatField("Total Mass (metric Tonne)", jD.totalMass);
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("dischargeTime"), new GUIContent("Discharge Time"));
+        // jD.dischargeTime = EditorGUILayout.FloatField("Discharge Time", jD.dischargeTime);
 
         base.serializedObject.ApplyModifiedProperties();
     }
