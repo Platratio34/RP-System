@@ -9,7 +9,7 @@ public class EntityEditor : Editor {
 
     private Entity o;
     private GameObject gO;
-    private bool saveChange = true;
+    // private bool saveChange = true;
     // private bool objs = true;
 
     void OnEnable() {

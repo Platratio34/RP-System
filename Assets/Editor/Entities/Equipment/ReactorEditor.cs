@@ -9,7 +9,7 @@ public class ReactorEditor : EquipmentEditor {
 
     protected Reactor rt;
 
-    protected void OnEnable() {
+    protected new void OnEnable() {
         base.OnEnable();
         rt = (Reactor)target;
     }

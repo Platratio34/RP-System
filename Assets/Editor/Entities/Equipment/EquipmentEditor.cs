@@ -10,14 +10,13 @@ public class EquipmentEditor : InteractableEditor {
     protected Equipment eq;
     // private bool objs = true;
 
-    protected void OnEnable() {
+    protected new void OnEnable() {
         base.OnEnable();
         eq = (Equipment)target;
     }
 
     public override void OnInspectorGUI() {
         base.OnInspectorGUI();
-        bool change = false;
 
         EditorGUILayout.Space();
         EditorGUILayout.LabelField("- Equipment -");

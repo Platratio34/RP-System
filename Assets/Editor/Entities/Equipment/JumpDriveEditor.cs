@@ -10,7 +10,7 @@ public class JumpDriveEditor : EquipmentEditor {
     protected JumpDrive jD;
     private Vector3 tPos;
 
-    protected void OnEnable() {
+    protected new void OnEnable() {
         base.OnEnable();
         jD = (JumpDrive)target;
     }

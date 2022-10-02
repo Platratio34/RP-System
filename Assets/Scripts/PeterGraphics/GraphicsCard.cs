@@ -26,9 +26,12 @@ public class GraphicsCard : MonoBehaviour {
     private List<Thread> threads;
     // public int frame = 0;
 
-    void Start() {
+    private List<DisplayerHandel> dspHandles;
+
+    void Awake() {
         frames = new Queue<Frame>();
         threads = new List<Thread>();
+        dspHandles = new List<DisplayerHandel>();
         GChar.init();
     }
 
@@ -44,13 +47,18 @@ public class GraphicsCard : MonoBehaviour {
                                 print("Couldn't Draw frame for screen " + dest + ", because the renderer is null");
                             }
                         } else {
-                            print("Couldn't Draw frame for screen " + dest + " with " + frame.GetNumActions() + " actions, becasue the screen is null");
+                            print("Couldn't Draw frame for screen " + dest + " with " + frame.GetNumActions() + " actions, because the screen is null");
                         }
                     } else {
-                        print("Couldn't Draw frame for screen " + dest + " with " + frame.GetNumActions() + " actions, becasue the index is out of range");
+                        print("Couldn't Draw frame for screen " + dest + " with " + frame.GetNumActions() + " actions, because the index is out of range");
                     }
                     frame.Dispose();
                 }
+            }
+        }
+        foreach (DisplayerHandel handel in dspHandles) {
+            if(handel.evaluate(Time.deltaTime)) {
+                handel.dsp.display();
             }
         }
     }
@@ -65,7 +73,7 @@ public class GraphicsCard : MonoBehaviour {
         // threads.Add(new Thread(frame.Render));
         Thread t = new Thread(frame.Render);
         t.Start();
-        threads.Add(t);
+        // threads.Add(t);
         // frame.Render();
     }
 
@@ -100,5 +108,32 @@ public class GraphicsCard : MonoBehaviour {
     /// <param name="text">Log message</param>
     public void Log(string text) {
         print(text);
+    }
+
+    public void addDisplayer(Displayer dsp, int fps) {
+        dspHandles.Add(new DisplayerHandel(dsp, fps));
+    }
+
+    private class DisplayerHandel {
+
+        public Displayer dsp;
+        public int rfsp;
+        private float tft;
+        private float tsf;
+
+        public DisplayerHandel(Displayer dsp, int fsp) {
+            this.dsp = dsp;
+            rfsp = fsp;
+            tft = 1f/(float)rfsp;
+        }
+
+        public bool evaluate(float time) {
+            tsf += time;
+            if(tsf > tft) {
+                tsf = 0;
+                return true;
+            }
+            return false;
+        }
     }
 }

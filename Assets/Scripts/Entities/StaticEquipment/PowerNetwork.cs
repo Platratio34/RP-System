@@ -25,6 +25,8 @@ public class PowerNetwork : MonoBehaviour {
     private float totalReq;
     private float powerUsed;
     private float batUssage;
+    private float[] batUssageRunAvg = new float[10];
+    private int batUssageRunAvgInd = 0;
     private float overage;
     private float totalStored;
     private float estTimeToOut;
@@ -93,20 +95,32 @@ public class PowerNetwork : MonoBehaviour {
         }
 
         // keep track of power stored for information purposes
+        batUssageRunAvg[batUssageRunAvgInd] = batUssage;
+        batUssageRunAvgInd++;
+        if(batUssageRunAvgInd >= 10) {
+            batUssageRunAvgInd -= 10;
+        }
+
+        float batUssageAvg = 0;
+        for (int i = 0; i < 10; i++) {
+            batUssageAvg += batUssageRunAvg[i];
+        }
+        batUssageAvg /= 10;
+
         totalStored = 0;
         for(int i = 0; i < powerStorage.Length; i++) {
             totalStored += powerStorage[i].currentStored;
         }
-        estTimeToOut = totalStored / Mathf.Max(batUssage, 0);
+        estTimeToOut = totalStored / Mathf.Max(batUssageAvg, 0);
         if(estTimeToOut == float.NaN) estTimeToOut = float.PositiveInfinity;
 
         maxStored = 0;
         for(int i = 0; i < powerStorage.Length; i++) {
             maxStored += powerStorage[i].maxStored;
         }
-        estTimeToCharged = (maxStored-totalStored) / Mathf.Max(batUssage*-1f, 0);
+        estTimeToCharged = (maxStored-totalStored) / Mathf.Max(batUssageAvg*-1f, 0);
         if(estTimeToCharged == float.NaN) estTimeToCharged = float.PositiveInfinity;
-        if(batUssage > 0) estTimeToCharged = float.PositiveInfinity;
+        if(batUssageAvg > 0) estTimeToCharged = float.PositiveInfinity;
         
         for(int i = 0; i < equipment.Length; i++) {
             equipment[i].onPowerIn(); // let equipment know it's power in was updated
@@ -154,7 +168,7 @@ public class PowerNetwork : MonoBehaviour {
     /// <summary>
     /// Gets total power stored in batteries
     /// </summary>
-    /// <returns>Total power stored (W)</returns>
+    /// <returns>Total power stored (J)</returns>
     public float getTotalStored() {
         return totalStored;
     }
@@ -169,7 +183,7 @@ public class PowerNetwork : MonoBehaviour {
     /// <summary>
     /// Gets the maximum amount of power the batteries can store
     /// </summary>
-    /// <returns>Total possible power storage (W)</returns>
+    /// <returns>Total possible power storage (J)</returns>
     public float getMaxStorage() {
         return maxStored;
     }

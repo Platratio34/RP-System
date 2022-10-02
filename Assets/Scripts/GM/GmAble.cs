@@ -173,7 +173,7 @@ public class GmAble : MonoBehaviour {
                             if(selEntity.GetParamType(strs[i]) == ParamType.BOOL) {
                                 popup.AddValue(strs[i], LocalStrings.GetLocalString("parameterNames", strs[i]), selEntity.GetParamB(strs[i]) );
                             } else if(selEntity.GetParamType(strs[i]) == ParamType.STRING){
-                                popup.AddValue(strs[i], LocalStrings.GetLocalString("parameterNames", strs[i]), selEntity.GetParam(strs[i], selEntity.GetParamType(strs[i]) ), true);
+                                popup.AddValue(strs[i], LocalStrings.GetLocalString("parameterNames", strs[i]), selEntity.GetParamS(strs[i]), true);
                             } else if(selEntity.GetParamType(strs[i]) == ParamType.FLOAT) {
                                 popup.AddValue(strs[i], LocalStrings.GetLocalString("parameterNames", strs[i]), selEntity.GetParamF(strs[i]), true);
                             } else if(selEntity.GetParamType(strs[i]) == ParamType.INT) {
@@ -287,7 +287,7 @@ public class GmAble : MonoBehaviour {
                             if(selInter.GetParamType(strs[i]) == ParamType.BOOL) {
                                 popup.AddValue(strs[i], LocalStrings.GetLocalString("parameterNames", strs[i]), selInter.GetParamB(strs[i]) );
                             } else if(selInter.GetParamType(strs[i]) == ParamType.STRING){
-                                popup.AddValue(strs[i], LocalStrings.GetLocalString("parameterNames", strs[i]), selInter.GetParam(strs[i], selInter.GetParamType(strs[i]) ), true);
+                                popup.AddValue(strs[i], LocalStrings.GetLocalString("parameterNames", strs[i]), selInter.GetParamS(strs[i]), true);
                             } else if(selInter.GetParamType(strs[i]) == ParamType.FLOAT) {
                                 popup.AddValue(strs[i], LocalStrings.GetLocalString("parameterNames", strs[i]), selInter.GetParamF(strs[i]), true);
                             } else if(selInter.GetParamType(strs[i]) == ParamType.INT) {

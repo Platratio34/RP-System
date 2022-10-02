@@ -9,7 +9,7 @@ public class PowerStorageEditor : EquipmentEditor {
 
     protected PowerStorage ps;
 
-    protected void OnEnable() {
+    protected new void OnEnable() {
         base.OnEnable();
         ps = (PowerStorage)target;
     }

@@ -83,6 +83,10 @@ public class Frame {
         actions = new Queue<FrameAction>();
     }
 
+    ~Frame() {
+        // output.Dispose();
+    }
+
     /// <summary>
     /// Gets the index of the destination screen
     /// </summary>
@@ -249,7 +253,7 @@ public class Frame {
                 if(action.code == ActionCode.RECT) {
                     for(int i = 0; i < action.w; i++) {
                         output.SetPixel(action.x + i, height-(action.y), action.color);
-                        output.SetPixel(action.x + i, (action.y + action.h - 1), action.color);
+                        output.SetPixel(action.x + i, height-(action.y + action.h - 1), action.color);
                     }
                     for(int i = 1; i < action.h - 1; i++) {
                         output.SetPixel(action.x, height-(action.y + i), action.color);
@@ -276,15 +280,15 @@ public class Frame {
                     for(int i = 0; i < chars.Length; i++) {
                         if(chars[i] == '\n') {
                             DrawMap(xo, yo, GChar.getChar(chars[i], action.h, action.debug), action.color);
-                            xo = action.x - 6;
-                            yo += 10;
+                            xo = action.x - (action.h-1);
+                            yo += (int)(action.h*1.5f);
                         }
                         if(xo + 6 > width) {
                             xo = action.x;
-                            yo += 10;
+                            yo += (int)(action.h*1.5f);
                         }
                         DrawMap(xo, yo, GChar.getChar(chars[i], action.h, action.debug), action.color);
-                        xo += 6;
+                        xo += (action.h-1);
                     }
                 }
             }

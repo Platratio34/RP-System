@@ -8,7 +8,7 @@ public class GChar {
 
     private static Dictionary<int, float[][,]> chars;
     private static bool inited = false;
-    public static int[,] charMaps = new int[0,0];
+    public static int[,] charMaps = null;
     private static string log;
 
     private static bool detailLog = false;
@@ -45,17 +45,28 @@ public class GChar {
     }
 
     static GChar() {
-        charMaps = JsonUtility.FromJson<CharMapArr>(SaveLoadData.LoadString("charMaps.json")).getArr();
         if(charMaps == null) {
-            charMaps = new int[,] { {0,0} };
-            Debug.LogError("Loaded null charMaps array: created default array");
+            charMaps = JsonUtility.FromJson<CharMapArr>(SaveLoadData.LoadString("charMaps.json")).getArr();
+			if(charMaps == null) {
+				charMaps = new int[,] { {0,0} };
+				Debug.LogError("Loaded null charMaps array: created default array");
+			}
+			chars = new Dictionary<int, float[][,]>();
+			initF();
         }
-        chars = new Dictionary<int, float[][,]>();
-        initF();
         // Debug.Log("Inited: " + inited);
     }
 
-    public static void init() {}
+    public static void init() {
+        if(charMaps == null) {
+            charMaps = JsonUtility.FromJson<CharMapArr>(SaveLoadData.LoadString("charMaps.json")).getArr();
+			if(charMaps == null) {
+				charMaps = new int[,] { {0,0} };
+				Debug.LogError("Loaded null charMaps array: created default array");
+			}
+			chars = new Dictionary<int, float[][,]>();
+			initF();
+        }}
 
     public static void initF() {
         if(inited) {
@@ -68,6 +79,7 @@ public class GChar {
         for(int i = 0; i < charMaps.GetLength(0); i++) {
             int h = charMaps[i,0];
             int w = charMaps[i,1];
+            int h2 = charMaps[i,2];
             if(h == 0 || w == 0) {
                 log += "\nSkiping 0x0 CharMap";
                 SaveLoadData.SaveString(logFile,log);
@@ -77,20 +89,20 @@ public class GChar {
             log += "\nLoading CharMap {h=" + h + "; w=" + w + "; path=\"" + path + "\"}";
             SaveLoadData.SaveString(logFile,log);
             Texture2D map = Resources.Load<Texture2D>(path);
-            chars.Add(h, new float[128][,]);
-            for(int cy = 0; cy < 8; cy++) {
+            chars.Add(h, new float[256][,]);
+            for(int cy = 0; cy < 16; cy++) {
                 for(int cx = 0; cx < 16; cx++) {
                     int c = cx+(cy*16);
                     if(detailLog) {
                         log += "\n\t- Loading Char {x=" + cx + "; y=" + cy + "; c=" + c + "; char=\'" + visChar((char)c) + "\'}";
                         SaveLoadData.SaveString(logFile,log);
                     }
-                    chars[h][c] = new float[h,w];
+                    chars[h][c] = new float[h2,w];
                     int x = cx*w;
-                    int y = cy*h;
+                    int y = cy*h2;
                     for(int xo = 0; xo < w; xo++) {
-                        for(int yo = 0; yo < h; yo ++) {
-                            chars[h][c][yo,xo] = map.GetPixel(x+xo,(h*16-1)-(y+yo)).grayscale;
+                        for(int yo = 0; yo < h2; yo ++) {
+                            chars[h][c][yo,xo] = map.GetPixel(x+xo,(h2*16-1)-(y+yo)).grayscale;
                         }
                     }
                 }

@@ -1,9 +1,9 @@
 {
     "lang": {
         "missingString_keyInLang":"Missing localized string for key: \"[0]\", in language: \"[1]\"",
-        "missingString_keyInCatOfLang":"Missing localized string for key: \"[0]\", in catagory: \"[1]\", of language: \"[2]\"",
+        "missingString_keyInCatOfLang":"Missing localized string for key: \"[0]\", in category: \"[1]\", of language: \"[2]\"",
         "missingLanguage": "Missing localized language \"[0]\"",
-        "missingCatagory": "Missing localized catagory \"[0]\", in language \"[1]\""
+        "missingCatagory": "Missing localized category \"[0]\", in language \"[1]\""
     },
     "entitiyTypeNames": {
         "player": "Player",

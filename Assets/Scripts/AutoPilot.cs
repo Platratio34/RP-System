@@ -225,6 +225,10 @@ public class AutoPilot : MonoBehaviour {
 
     // Draws pretty colors in the editor
     void OnDrawGizmos() {
+        if(shipT == null) {
+            shipT = ship.transform;
+        }
+        
         Vector3 trDir = cThrust.x * shipT.forward;
         trDir += cThrust.y * shipT.up;
         trDir += cThrust.z * shipT.right;

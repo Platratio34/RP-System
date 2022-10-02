@@ -9,7 +9,7 @@ public class HelmEditor : InteractableEditor {
 
     protected Helm helm;
 
-    protected void OnEnable() {
+    protected new void OnEnable() {
         base.OnEnable();
         helm = (Helm)target;
     }

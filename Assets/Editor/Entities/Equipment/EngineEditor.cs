@@ -9,7 +9,7 @@ public class EngineEditor : EquipmentEditor {
 
     protected Engine eng;
 
-    protected void OnEnable() {
+    protected new void OnEnable() {
         base.OnEnable();
         eng = (Engine)target;
     }

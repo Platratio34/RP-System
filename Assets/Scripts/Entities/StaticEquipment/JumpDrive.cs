@@ -70,6 +70,9 @@ public class JumpDrive : Equipment {
         return eT;
     }
     public float calcEnergy(Vector3 target) {
+        if(ship == null) {
+            return float.PositiveInfinity;
+        }
         return calcEnergy(Vector3.Distance(ship.transform.position, target));
     }
 

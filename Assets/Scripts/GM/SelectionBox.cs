@@ -77,26 +77,26 @@ public class SelectionBox : MonoBehaviour {
         side2.endColor = c;
         side3.endColor = c;
     }
-    public void DrawSelBox(Transform transform, Interactable interactable, Color c) {
-        Vector3 offset = Vector3.zero;
-        offset += interactable.selBoxOffset.z * transform.forward;
-        offset += interactable.selBoxOffset.y * transform.up;
-        offset += interactable.selBoxOffset.x * transform.right;
-        this.transform.position = transform.position + offset;
-        this.transform.localScale = interactable.selBoxScale;
-        this.transform.rotation = transform.rotation;
+    // public void DrawSelBox(Transform transform, Interactable interactable, Color c) {
+    //     Vector3 offset = Vector3.zero;
+    //     offset += interactable.selBoxOffset.z * transform.forward;
+    //     offset += interactable.selBoxOffset.y * transform.up;
+    //     offset += interactable.selBoxOffset.x * transform.right;
+    //     this.transform.position = transform.position + offset;
+    //     this.transform.localScale = interactable.selBoxScale;
+    //     this.transform.rotation = transform.rotation;
 
-        lower.startColor = c;
-        upper.startColor = c;
-        side0.startColor = c;
-        side1.startColor = c;
-        side2.startColor = c;
-        side3.startColor = c;
-        lower.endColor = c;
-        upper.endColor = c;
-        side0.endColor = c;
-        side1.endColor = c;
-        side2.endColor = c;
-        side3.endColor = c;
-    }
+    //     lower.startColor = c;
+    //     upper.startColor = c;
+    //     side0.startColor = c;
+    //     side1.startColor = c;
+    //     side2.startColor = c;
+    //     side3.startColor = c;
+    //     lower.endColor = c;
+    //     upper.endColor = c;
+    //     side0.endColor = c;
+    //     side1.endColor = c;
+    //     side2.endColor = c;
+    //     side3.endColor = c;
+    // }
 }

@@ -170,7 +170,7 @@ public class Ship : Entity {
         dir.x = Mathf.Clamp(dir.x, -1f, 1f);
         dir.y = Mathf.Clamp(dir.y, -1f, 1f);
         dir.z = Mathf.Clamp(dir.z, -1f, 1f);
-        thrustArray.setT(dir);
+        // thrustArray.setT(dir);
         engineArray.setT(dir);
     }
 
