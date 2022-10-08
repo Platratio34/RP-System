@@ -28,10 +28,18 @@ public class Player : Entity {
     void Update() {
         Vector3 xD = new Vector3(0.1f*transform.forward.x,0.1f*transform.forward.y,0.1f*transform.forward.z);
         Vector3 yD = new Vector3(0.1f*transform.right.x,0.1f*transform.right.y,0.1f*transform.right.z);
+        Vector3 xD2 = new Vector3(0.05f*transform.forward.x,0.05f*transform.forward.y,0.05f*transform.forward.z);
+        Vector3 yD2 = new Vector3(0.05f*transform.right.x,0.05f*transform.right.y,0.05f*transform.right.z);
         bool onGround = Physics.Raycast(transform.position+xD, transform.up*-1, 1.1f);
         onGround = onGround || Physics.Raycast(transform.position-xD, transform.up*-1, 1.1f);
         onGround = onGround || Physics.Raycast(transform.position+yD, transform.up*-1, 1.1f);
         onGround = onGround || Physics.Raycast(transform.position-yD, transform.up*-1, 1.1f);
+        
+        onGround = onGround || Physics.Raycast(transform.position+xD2, transform.up*-1, 1.1f);
+        onGround = onGround || Physics.Raycast(transform.position+yD2, transform.up*-1, 1.1f);
+        onGround = onGround || Physics.Raycast(transform.position-xD2, transform.up*-1, 1.1f);
+        onGround = onGround || Physics.Raycast(transform.position-yD2, transform.up*-1, 1.1f);
+
         if(controlled) {
             float h = Input.GetAxis("Left/Right");
             move.y=h;

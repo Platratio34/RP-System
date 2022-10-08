@@ -73,6 +73,8 @@ public class EID : Interactable {
     /// </summary>
     public float mTarget = 1f;
 
+    private bool firstTick = true;
+
     public override void OnInteract(bool gm, int b) {
         if(type == EidType.PUSH) {
             state = 1;
@@ -115,6 +117,25 @@ public class EID : Interactable {
 
     // Update is called once per frame
     void Update() {
+        if(firstTick) {
+            firstTick = false;
+            if(state != 0) {
+                if(type == EidType.PUSH) {
+                    pTime = pushTime;
+                } else if(type == EidType.DIAL) {
+                    if(state < 0) state = 0;
+                    if(state > maxVal) state = maxVal;
+                } else if(type == EidType.DIAL_CONT) {
+                    state %= (maxVal+1);
+                    if(state < 0) {
+                        state += maxVal+1;
+                    }
+                }
+                if(animator != null) animator.speed = 1;
+                onChangeEvent.Invoke((EID)this);
+            }
+        }
+
         if(type == EidType.PUSH) {
             if(state != 0) {
                 pTime -= Time.deltaTime;
@@ -185,6 +206,25 @@ public class EID : Interactable {
     public void matchEID(EID eid) {
         if(eid.type == type) {
             state = eid.state;
+        }
+    }
+
+    public void rotate(int r) {
+        // Debug.Log("Rotating by " + r);
+        state += r;
+        if(state < 0) {
+            if (type == EidType.DIAL_CONT) {
+                state += maxVal;
+            } else {
+                state = 0;
+            }
+        }
+        if(state > maxVal) {
+            if (type == EidType.DIAL_CONT) {
+                state -= maxVal;
+            } else {
+                state = maxVal;
+            }
         }
     }
 }

@@ -8,3 +8,5 @@ EditorBuildSettings:
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: f323cd54b32e4934e9112b4097ed2cf0, type: 2}
     com.unity.localization.settings: {fileID: 11400000, guid: 77f4ef5e1e217fc4095cd0f6597c8203, type: 2}
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 3f6681d5471904046905c702dda35fb9, type: 2}
+    com.unity.xr.openxr.settings4: {fileID: 11400000, guid: 3097d24976ecdf54aaec270bda068a98, type: 2}
