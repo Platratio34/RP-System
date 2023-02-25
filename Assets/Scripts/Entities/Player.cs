@@ -8,9 +8,10 @@ public class Player : Entity {
     public bool controlled;
     public Rigidbody rb;
     public Vector2 move;
-    public float jp = 6f;
-    public float mp = 2f;
-    public float turnSpeed = 1f;
+    public float jp = 75f;
+    public float mp = 20f;
+    public float sp = 30f;
+    public float turnSpeed = 60f;
     private float crx = 45f;
     public GameObject cameraO;
     public bool firstPers = true;
@@ -26,40 +27,28 @@ public class Player : Entity {
     }
 
     void Update() {
-        Vector3 xD = new Vector3(0.1f*transform.forward.x,0.1f*transform.forward.y,0.1f*transform.forward.z);
-        Vector3 yD = new Vector3(0.1f*transform.right.x,0.1f*transform.right.y,0.1f*transform.right.z);
-        Vector3 xD2 = new Vector3(0.05f*transform.forward.x,0.05f*transform.forward.y,0.05f*transform.forward.z);
-        Vector3 yD2 = new Vector3(0.05f*transform.right.x,0.05f*transform.right.y,0.05f*transform.right.z);
-        bool onGround = Physics.Raycast(transform.position+xD, transform.up*-1, 1.1f);
-        onGround = onGround || Physics.Raycast(transform.position-xD, transform.up*-1, 1.1f);
-        onGround = onGround || Physics.Raycast(transform.position+yD, transform.up*-1, 1.1f);
-        onGround = onGround || Physics.Raycast(transform.position-yD, transform.up*-1, 1.1f);
         
-        onGround = onGround || Physics.Raycast(transform.position+xD2, transform.up*-1, 1.1f);
-        onGround = onGround || Physics.Raycast(transform.position+yD2, transform.up*-1, 1.1f);
-        onGround = onGround || Physics.Raycast(transform.position-xD2, transform.up*-1, 1.1f);
-        onGround = onGround || Physics.Raycast(transform.position-yD2, transform.up*-1, 1.1f);
 
         if(controlled) {
-            float h = Input.GetAxis("Left/Right");
-            move.y=h;
-            float v = Input.GetAxis("Forward/Backward");
-            move.x=v;
-            Cursor.lockState = CursorLockMode.Locked;
-            MouseAiming();
-            if(!onGround) {
-                rb.drag = 0.5f;
-                rb.AddForce(transform.forward*v*rb.mass*mp/4f, ForceMode.Force);
-                rb.AddForce(transform.right*h*rb.mass*mp/4f, ForceMode.Force);
-            } else {
-                rb.drag = 5f;
-                rb.AddForce(transform.forward*v*rb.mass*mp, ForceMode.Force);
-                rb.AddForce(transform.right*h*rb.mass*mp, ForceMode.Force);
-                if(Input.GetButton("Jump")) {
-                    rb.AddForce(transform.up*jp*rb.mass, ForceMode.Force);
-                }
-            }
-            rb.AddForce(transform.up*-5*rb.mass, ForceMode.Force);
+            // float h = Input.GetAxis("Left/Right");
+            // move.y = h;
+            // float v = Input.GetAxis("Forward/Backward");
+            // move.x = v;
+            // Cursor.lockState = CursorLockMode.Locked;
+            // MouseAiming();
+            // if(!onGround) {
+            //     rb.drag = 0.5f;
+            //     rb.AddForce(transform.forward*v*mp, ForceMode.Acceleration);
+            //     rb.AddForce(transform.right*h*mp*0.5f, ForceMode.Acceleration);
+            // } else {
+            //     rb.drag = 5f;
+            //     rb.AddForce(transform.forward*v*mp, ForceMode.Acceleration);
+            //     rb.AddForce(transform.right*h*mp, ForceMode.Acceleration);
+            //     if(Input.GetButton("Jump")) {
+            //         rb.AddForce(transform.up*jp, ForceMode.Acceleration);
+            //     }
+            // }
+            // rb.AddForce(transform.up*-9.81f, ForceMode.Acceleration);
 
             Interactable inter = null;
 
@@ -104,6 +93,52 @@ public class Player : Entity {
         }
     }
 
+    void FixedUpdate() {
+        Vector3 xD = new Vector3(0.1f*transform.forward.x,0.1f*transform.forward.y,0.1f*transform.forward.z);
+        Vector3 yD = new Vector3(0.1f*transform.right.x,0.1f*transform.right.y,0.1f*transform.right.z);
+        Vector3 xD2 = new Vector3(0.05f*transform.forward.x,0.05f*transform.forward.y,0.05f*transform.forward.z);
+        Vector3 yD2 = new Vector3(0.05f*transform.right.x,0.05f*transform.right.y,0.05f*transform.right.z);
+        bool onGround = Physics.Raycast(transform.position+xD, transform.up*-1, 1.1f);
+        onGround = onGround || Physics.Raycast(transform.position-xD, transform.up*-1, 1.1f);
+        onGround = onGround || Physics.Raycast(transform.position+yD, transform.up*-1, 1.1f);
+        onGround = onGround || Physics.Raycast(transform.position-yD, transform.up*-1, 1.1f);
+        
+        onGround = onGround || Physics.Raycast(transform.position+xD2, transform.up*-1, 1.1f);
+        onGround = onGround || Physics.Raycast(transform.position+yD2, transform.up*-1, 1.1f);
+        onGround = onGround || Physics.Raycast(transform.position-xD2, transform.up*-1, 1.1f);
+        onGround = onGround || Physics.Raycast(transform.position-yD2, transform.up*-1, 1.1f);
+
+        if(controlled) {
+            float h = Input.GetAxis("Left/Right");
+            move.y = h;
+            float v = Input.GetAxis("Forward/Backward");
+            move.x = v;
+            Cursor.lockState = CursorLockMode.Locked;
+            MouseAiming();
+            if(!onGround) {
+                rb.drag = 0.5f;
+                if(Input.GetButton("Sprint")) { 
+                    rb.AddForce(transform.forward*v*sp/4f, ForceMode.Acceleration);
+                } else {
+                    rb.AddForce(transform.forward*v*mp/4f, ForceMode.Acceleration);
+                }
+                rb.AddForce(transform.right*h*mp*0.5f/4f, ForceMode.Acceleration);
+            } else {
+                rb.drag = 5f;
+                if(Input.GetButton("Sprint")) { 
+                    rb.AddForce(transform.forward*v*sp, ForceMode.Acceleration);
+                } else {
+                    rb.AddForce(transform.forward*v*mp, ForceMode.Acceleration);
+                }
+                rb.AddForce(transform.right*h*mp*0.5f, ForceMode.Acceleration);
+                if(Input.GetButton("Jump")) {
+                    rb.AddForce(transform.up*jp, ForceMode.Acceleration);
+                }
+            }
+            rb.AddForce(transform.up*-9.81f, ForceMode.Acceleration);
+        }
+    }
+
     void OnDrawGizmos() {
         if(interP != null) {
             Gizmos.color = Color.red;
@@ -117,12 +152,12 @@ public class Player : Entity {
     void MouseAiming () {
         Cursor.lockState = CursorLockMode.Locked;
         // get the mouse inputs
-        float y = Input.GetAxis("Mouse X") * turnSpeed;
+        float y = Input.GetAxis("Mouse X") * turnSpeed * Time.deltaTime;
         if(!firstPers) {
-            crx += Input.GetAxis("Mouse Y") * turnSpeed;
+            crx += Input.GetAxis("Mouse Y") * turnSpeed * Time.deltaTime;
             crx = Mathf.Clamp(crx, 0, 90);
         } else {
-            crx -= Input.GetAxis("Mouse Y") * turnSpeed;
+            crx -= Input.GetAxis("Mouse Y") * turnSpeed * Time.deltaTime;
             crx = Mathf.Clamp(crx, -89, 89);
         }
 

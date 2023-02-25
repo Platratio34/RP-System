@@ -227,8 +227,9 @@ MonoBehaviour:
   rb: {fileID: 5723097154966896345}
   move: {x: 0, y: 0}
   jp: 75
-  mp: 10
-  turnSpeed: 3
+  mp: 20
+  sp: 30
+  turnSpeed: 60
   cameraO: {fileID: 5723097155701178156}
   firstPers: 1
   cameraLock: 1

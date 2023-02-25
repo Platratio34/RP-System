@@ -32,7 +32,6 @@ public class PowerNetwork : MonoBehaviour {
     private float estTimeToOut;
     private float maxStored;
     private float estTimeToCharged;
-    // End display variables
 
     void Start() {
 
