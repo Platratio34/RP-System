@@ -11,16 +11,26 @@ public class InteractableDoor : Interactable {
     public bool invertAnimation = false;
     public ObjAnimator animator;
 
-    public bool hasO;
-    public bool hasL;
-    public bool hasLb;
-    public bool hasF;
+    // public bool hasO;
+    // public bool hasL;
+    // public bool hasLb;
+    // public bool hasF;
+
+    private EditableParam openP;
+    private EditableParam lockedP;
+    private EditableParam lockableP;
+    private EditableParam frozenP;
+
 
     void Start() {
-        hasO = eParams.HasParam("open");
-        hasL = eParams.HasParam("locked");
-        hasLb = eParams.HasParam("lockable");
-        hasF = eParams.HasParam("frozen");
+        // hasO = eParams.HasParam("open");
+        // hasL = eParams.HasParam("locked");
+        // hasLb = eParams.HasParam("lockable");
+        // hasF = eParams.HasParam("frozen");
+        openP = eParams.GetParam("open");
+        lockedP = eParams.GetParam("locked");
+        lockableP = eParams.GetParam("lockable");
+        frozenP = eParams.GetParam("frozen");
     }
 
     void Update() {
@@ -32,17 +42,17 @@ public class InteractableDoor : Interactable {
         if(frozen) {
             animator.speed = 0;
         }
-        if(hasO) {
-            eParams.GetParam("open").valueB = open;
+        if(openP != null) {
+            openP.valueB = open;
         }
-        if(hasL) {
-            eParams.GetParam("locked").valueB = locked;
+        if(lockedP != null) {
+            lockedP.valueB = locked;
         }
-        if(hasLb) {
-            eParams.GetParam("lockable").valueB = lockable;
+        if(lockableP != null) {
+            lockableP.valueB = lockable;
         }
-        if(hasF) {
-            eParams.GetParam("frozen").valueB = frozen;
+        if(frozenP != null) {
+            frozenP.valueB = frozen;
         }
     }
 

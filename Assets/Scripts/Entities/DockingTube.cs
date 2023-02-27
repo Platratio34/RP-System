@@ -24,6 +24,22 @@ public class DockingTube : Interactable {
     public bool door;
     public ObjAnimator doorAnimator;
 
+    private EditableParam openP;
+    private EditableParam extendP;
+    private EditableParam manualP;
+    private EditableParam fPosP;
+    private EditableParam exPosP;
+    private EditableParam doorP;
+
+    void Start() {
+        openP = eParams.GetParam("open");
+        extendP = eParams.GetParam("extend");
+        manualP = eParams.GetParam("manual");
+        fPosP = eParams.GetParam("floorPos");
+        exPosP = eParams.GetParam("ringPos");
+        doorP = eParams.GetParam("door");
+    }
+
     void Update() {
         // if(fT < fPos) {
         //     fT += Time.deltaTime;
@@ -116,12 +132,12 @@ public class DockingTube : Interactable {
             doorAnimator.target = door?1f:0f;
         }
 
-        eParams.GetParam("open").valueB = open;
-        eParams.GetParam("extend").valueB = extend;
-        eParams.GetParam("manual").valueB = manual;
-        eParams.GetParam("floorPos").valueI = fPos;
-        eParams.GetParam("ringPos").valueI = exPos;
-        eParams.GetParam("door").valueB = door;
+        openP.valueB = open;
+        extendP.valueB = extend;
+        manualP.valueB = manual;
+        fPosP.valueI = fPos;
+        exPosP.valueI = exPos;
+        doorP.valueB = door;
     }
 
     public override void OnInteract(bool gm, int b) {
@@ -130,12 +146,12 @@ public class DockingTube : Interactable {
     }
 
     protected override void OnEdit() {
-        open = eParams.GetParam("open").valueB;
-        extend = eParams.GetParam("extend").valueB;
-        manual = eParams.GetParam("manual").valueB;
-        fPos = eParams.GetParam("floorPos").valueI;
-        exPos = eParams.GetParam("ringPos").valueI;
-        door = eParams.GetParam("door").valueB;
+        open = openP.valueB;
+        extend = extendP.valueB;
+        manual = manualP.valueB;
+        fPos = fPosP.valueI;
+        exPos = exPosP.valueI;
+        door = doorP.valueB;
     }
 
     public override JsonObj Save() {
