@@ -12,6 +12,9 @@ public class FPSCount : MonoBehaviour {
     private int smoothI;
     private float[] smooth;
     public float smoothTps { get; private set; }
+    private float sTT;
+
+    public string formatText = "TPS: {0}\nSmoothed: {1} ({2} samples)";
 
     // private 
     void Start() {
@@ -20,21 +23,21 @@ public class FPSCount : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        float tickTime = Time.deltaTime;
-        tps = 1f / tickTime;
+        tps = 1f / Time.deltaTime;
 
-        smooth[smoothI] = tickTime;
+        smooth[smoothI] = Time.deltaTime;
         smoothI++;
         if(smoothI == smooth.Length) {
             smoothI = 0;
         }
-        float sTT = 0;
+
+        sTT = 0;
         for (int i = 0; i < smooth.Length; i++) {
             sTT += smooth[i];
         }
         sTT /= smooth.Length;
         smoothTps = Mathf.Floor((1f / sTT)*10f) / 10f;
 
-        text.text = string.Format("TPS: {0}\nSmoothed: {1} ({2} samples)", tps, smoothTps, smooth.Length);
+        text.text = string.Format(formatText, tps, smoothTps, smooth.Length);
     }
 }

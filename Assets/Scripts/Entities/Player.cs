@@ -97,19 +97,25 @@ public class Player : Entity {
 
     void FixedUpdate() {
         if(gravitySource != null) {
-            Vector3 xD = new Vector3(0.1f*transform.forward.x,0.1f*transform.forward.y,0.1f*transform.forward.z);
-            Vector3 yD = new Vector3(0.1f*transform.right.x,0.1f*transform.right.y,0.1f*transform.right.z);
-            Vector3 xD2 = new Vector3(0.05f*transform.forward.x,0.05f*transform.forward.y,0.05f*transform.forward.z);
-            Vector3 yD2 = new Vector3(0.05f*transform.right.x,0.05f*transform.right.y,0.05f*transform.right.z);
-            bool onGround = Physics.Raycast(transform.position+xD, transform.up*-1, 1.1f);
-            onGround = onGround || Physics.Raycast(transform.position-xD, transform.up*-1, 1.1f);
-            onGround = onGround || Physics.Raycast(transform.position+yD, transform.up*-1, 1.1f);
-            onGround = onGround || Physics.Raycast(transform.position-yD, transform.up*-1, 1.1f);
+            Vector3 forward = transform.forward;
+            Vector3 right = transform.right;
+            Vector3 up = transform.up;
+            Vector3 down = up * -1f;
+
+            Vector3 xD = new Vector3(0.75f*forward.x,0.75f*forward.y,0.75f*forward.z);
+            Vector3 yD = new Vector3(0.75f*right.x,0.75f*right.y,0.75f*right.z);
+            // Vector3 xD2 = new Vector3(0.05f*forward.x,0.05f*forward.y,0.05f*forward.z);
+            // Vector3 yD2 = new Vector3(0.05f*right.x,0.05f*right.y,0.05f*right.z);
+            bool onGround = Physics.Raycast(transform.position, down, 1.1f);
+            onGround = onGround || Physics.Raycast(transform.position+xD, down, 1.1f);
+            onGround = onGround || Physics.Raycast(transform.position-xD, down, 1.1f);
+            onGround = onGround || Physics.Raycast(transform.position+yD, down, 1.1f);
+            onGround = onGround || Physics.Raycast(transform.position-yD, down, 1.1f);
             
-            onGround = onGround || Physics.Raycast(transform.position+xD2, transform.up*-1, 1.1f);
-            onGround = onGround || Physics.Raycast(transform.position+yD2, transform.up*-1, 1.1f);
-            onGround = onGround || Physics.Raycast(transform.position-xD2, transform.up*-1, 1.1f);
-            onGround = onGround || Physics.Raycast(transform.position-yD2, transform.up*-1, 1.1f);
+            // onGround = onGround || Physics.Raycast(transform.position+xD2, down, 1.1f);
+            // onGround = onGround || Physics.Raycast(transform.position+yD2, down, 1.1f);
+            // onGround = onGround || Physics.Raycast(transform.position-xD2, down, 1.1f);
+            // onGround = onGround || Physics.Raycast(transform.position-yD2, down, 1.1f);
 
             if(controlled) {
                 float h = Input.GetAxis("Left/Right");
@@ -118,29 +124,43 @@ public class Player : Entity {
                 move.x = v;
                 Cursor.lockState = CursorLockMode.Locked;
                 MouseAiming();
+                Vector3 force = Vector3.zero;
                 if(!onGround) {
                     rb.drag = 0.5f;
-                    if(Input.GetButton("Sprint")) { 
-                        rb.AddForce(transform.forward*v*sp/4f, ForceMode.Acceleration);
+                    if(Input.GetButton("Sprint")) {
+                        force += forward * v * sp / 4f;
+                        // rb.AddForce(forward*v*sp/4f, ForceMode.Acceleration);
                     } else {
-                        rb.AddForce(transform.forward*v*mp/4f, ForceMode.Acceleration);
+                        force += forward*v*mp/4f;
+                        // rb.AddForce(forward*v*mp/4f, ForceMode.Acceleration);
                     }
-                    rb.AddForce(transform.right*h*mp*0.5f/4f, ForceMode.Acceleration);
+                    force += right*h*mp*0.5f/4f;
+                    // rb.AddForce(right*h*mp*0.5f/4f, ForceMode.Acceleration);
                 } else {
                     rb.drag = 5f;
                     if(Input.GetButton("Sprint")) { 
-                        rb.AddForce(transform.forward*v*sp, ForceMode.Acceleration);
+                        force += forward*v*sp;
+                        // rb.AddForce(forward*v*sp, ForceMode.Acceleration);
                     } else {
-                        rb.AddForce(transform.forward*v*mp, ForceMode.Acceleration);
+                        force += forward*v*mp;
+                        // rb.AddForce(forward*v*mp, ForceMode.Acceleration);
                     }
-                    rb.AddForce(transform.right*h*mp*0.5f, ForceMode.Acceleration);
+                    force += right*h*mp*0.5f;
+                    // rb.AddForce(right*h*mp*0.5f, ForceMode.Acceleration);
                     if(Input.GetButton("Jump")) {
-                        rb.AddForce(transform.up*jp, ForceMode.Acceleration);
+                        force += up*jp;
+                        // rb.AddForce(up*jp, ForceMode.Acceleration);
                     }
                 }
+                rb.AddForce(force, ForceMode.Acceleration);
             }
         } else {
             if(controlled) {
+                Vector3 forward = transform.forward;
+                Vector3 right = transform.right;
+                Vector3 up = transform.up;
+                Vector3 down = up * -1f;
+
                 float h = Input.GetAxis("Left/Right");
                 move.y = h;
                 float v = Input.GetAxis("Forward/Backward");
@@ -148,19 +168,27 @@ public class Player : Entity {
                 Cursor.lockState = CursorLockMode.Locked;
                 MouseAiming();
                 rb.drag = 0.5f;
-                if(Input.GetButton("Sprint")) { 
-                    rb.AddForce(transform.forward*v*spz, ForceMode.Acceleration);
-                    rb.AddForce(transform.right*h*spz, ForceMode.Acceleration);
+                Vector3 force = Vector3.zero;
+                if(Input.GetButton("Sprint")) {
+                    force += forward*v*spz;
+                    force += right*h*spz;
+                    // rb.AddForce(forward*v*spz, ForceMode.Acceleration);
+                    // rb.AddForce(right*h*spz, ForceMode.Acceleration);
                 } else {
-                    rb.AddForce(transform.forward*v*mpz, ForceMode.Acceleration);
-                    rb.AddForce(transform.right*h*mpz, ForceMode.Acceleration);
+                    force += forward*v*mpz;
+                    force += right*h*mpz;
+                    // rb.AddForce(forward*v*mpz, ForceMode.Acceleration);
+                    // rb.AddForce(right*h*mpz, ForceMode.Acceleration);
                 }
                 if(Input.GetButton("Jump")) {
-                    rb.AddForce(transform.up*mpz, ForceMode.Acceleration);
+                    force += up*mpz;
+                    // rb.AddForce(up*mpz, ForceMode.Acceleration);
                 }
                 if(Input.GetButton("Thrust Down")) {
-                    rb.AddForce(transform.up*mpz*-1, ForceMode.Acceleration);
+                    force += down*mpz;
+                    // rb.AddForce(down*mpz, ForceMode.Acceleration);
                 }
+                rb.AddForce(force, ForceMode.Acceleration);
             }
         }
     }
@@ -178,18 +206,19 @@ public class Player : Entity {
     void MouseAiming () {
         Cursor.lockState = CursorLockMode.Locked;
         // get the mouse inputs
-        float y = Input.GetAxis("Mouse X") * turnSpeed * Time.deltaTime;
+        float y = Input.GetAxis("Mouse X") * turnSpeed;
         if(!firstPers) {
-            crx += Input.GetAxis("Mouse Y") * turnSpeed * Time.deltaTime;
+            crx += Input.GetAxis("Mouse Y") * turnSpeed;
             crx = Mathf.Clamp(crx, 0, 90);
         } else {
-            crx -= Input.GetAxis("Mouse Y") * turnSpeed * Time.deltaTime;
+            crx -= Input.GetAxis("Mouse Y") * turnSpeed;
             crx = Mathf.Clamp(crx, -89, 89);
         }
 
         // rotate the camera
         transform.localEulerAngles = new Vector3(0, transform.localEulerAngles.y + y, 0);
-        cameraO.transform.localEulerAngles = new Vector3(crx, cameraO.transform.localEulerAngles.y, cameraO.transform.localEulerAngles.z);
+        Vector3 cAngle = cameraO.transform.localEulerAngles;
+        cameraO.transform.localEulerAngles = new Vector3(crx, cAngle.y, cAngle.z);
     }
 
     protected override void OnEntitySave() {

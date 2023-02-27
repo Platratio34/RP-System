@@ -16,7 +16,18 @@ public class SelectionBox : MonoBehaviour {
     public GameObject box;
 
     public bool show;
-    private bool lShow = !show;
+    private bool lShow;
+
+    void Start() {
+        lShow = show;
+        upper.enabled = show;
+        lower.enabled = show;
+        side0.enabled = show;
+        side1.enabled = show;
+        side2.enabled = show;
+        side3.enabled = show;
+        box.SetActive(show);
+    }
 
     private Vector3[] cubePoints = new Vector3[] {
         new Vector3(-0.5f, -0.5f, -0.5f),

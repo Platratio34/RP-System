@@ -6,14 +6,15 @@ public class BulbedLight : MonoBehaviour {
 
     public new Light light;
     public Renderer bulb;
-    public bool active { get; private set; }
+    public bool active;
     public Color color { get; private set; }
-    private Color lColor;
+    // private Color lColor;
     private bool lActive;
+    private bool colorChange = false;
 
     void Start() {
         lActive = light.gameObject.activeSelf;
-        lColor = light.color;
+        // lColor = light.color;
     }
 
     public void SetActive(bool active) {
@@ -23,9 +24,12 @@ public class BulbedLight : MonoBehaviour {
     void Update() {
         if(active) {
             if(!lActive) light.gameObject.SetActive(true);
-            if(color != lColor) bulb.material.SetColor("_Color", color);
-            if(color != lColor) light.color = color;
-            lColor = color;
+            if(colorChange) {
+                bulb.material.SetColor("_Color", color);
+                light.color = color;
+                colorChange = false;
+            }
+            // lColor = color;
         } else {
             if(lActive) {
                 bulb.material.SetColor("_Color", Color.black);
@@ -36,6 +40,7 @@ public class BulbedLight : MonoBehaviour {
     }
 
     public void setColor(Color color) {
+        colorChange = this.color != color;
         this.color = color;
     }
 }

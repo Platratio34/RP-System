@@ -9,17 +9,20 @@ public class GravityArea : MonoBehaviour {
 
     private Dictionary<string, Entity> entities;
 
+    private Vector3 force;
+
     void Start() {
         entities = new Dictionary<string, Entity>();
     }
 
     void Update() {
+        if(entities.Count > 0) force = transform.up * -9.81f;
         foreach (Entity ent in entities.Values) {
             if(!ent.gravity) continue;
             if(ent.gravitySource != null && ent.gravitySource != this) {
                 if(ent.gravitySource.priority >= priority) continue;
             }
-            ent.GetComponent<Rigidbody>().AddForce(transform.up*-9.81f, ForceMode.Acceleration);
+            ent.GetComponent<Rigidbody>().AddForce(force, ForceMode.Acceleration);
             ent.gravitySource = this;
         }
     }

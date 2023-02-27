@@ -222,6 +222,8 @@ MonoBehaviour:
   parentEntity: 
   children: []
   staticEntity: 0
+  gravity: 1
+  gravitySource: {fileID: 0}
   editableEntity: 1
   controlled: 1
   rb: {fileID: 5723097154966896345}
@@ -229,7 +231,9 @@ MonoBehaviour:
   jp: 75
   mp: 20
   sp: 30
-  turnSpeed: 60
+  mpz: 10
+  spz: 15
+  turnSpeed: 5
   cameraO: {fileID: 5723097155701178156}
   firstPers: 1
   cameraLock: 1

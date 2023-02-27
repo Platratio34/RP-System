@@ -18,6 +18,10 @@ public class LightSwitcher : Equipment
     private float powerPerLight = 10f;
     // public Bounds cullingBox;
 
+    private bool lOn;
+    private bool lOp;
+    private bool lBackup = true;
+
     public CustomLight[] lights;
 
     // void Update() {
@@ -54,9 +58,17 @@ public class LightSwitcher : Equipment
             onPow = false;
             backup = true;
         }
+
+        if(!on && !lOn) {
+            return;
+        }
         
-        t += Time.deltaTime;
-        t %= 2;
+        if(emergency) {
+            t += Time.deltaTime;
+            t %= 2;
+        } else {
+            if(opMode == lOp && backup == lBackup) return;
+        }
 
         // bool any = false;
         // foreach (Camera cam in Camera.allCameras) {
@@ -107,22 +119,30 @@ public class LightSwitcher : Equipment
         [Range(0.00f, 2f)]
         public float blinkOffset = 0.0f;
 
+        private int lC = -100;
+
         public void processes(bool on, bool op, bool em, bool backup, float t) {
             if(on || (isBackup && backup)) {
-                light.SetActive(true);
+                light.active = true;
             } else {
-                light.SetActive(false);
+                light.active = false;
                 return;
             }
 
+
+
             if(em && isEmerg && checkBlink(t) ) {
-                light.setColor(eColor);
+                if(lC != 9) light.setColor(eColor);
+                lC = 9;
             } else if(backup && isBackup) {
-                light.setColor(bColor);
+                if(lC != -1) light.setColor(bColor);
+                lC = -1;
             } else if(op && isOp) {
-                light.setColor(oColor);
+                if(lC != 1) light.setColor(oColor);
+                lC = 1;
             } else {
-                light.setColor(color);
+                if(lC != 0) light.setColor(color);
+                lC = 0;
             }
         }
 

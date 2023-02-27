@@ -75,6 +75,7 @@ public class EID : Interactable {
     public float mTarget = 1f;
 
     private bool firstTick = true;
+    private bool hasAnimator;
 
     public override void OnInteract(bool gm, int b) {
         if(type == EidType.PUSH) {
@@ -117,6 +118,10 @@ public class EID : Interactable {
         sRot = transform.localEulerAngles;
     }
 
+    void Awake() {
+        hasAnimator = animator != null;
+    }
+
     // Update is called once per frame
     void Update() {
         if(firstTick) {
@@ -133,7 +138,7 @@ public class EID : Interactable {
                         state += maxVal+1;
                     }
                 }
-                if(animator != null) animator.speed = 1;
+                if(hasAnimator) animator.speed = 1;
                 onChangeEvent.Invoke((EID)this);
             }
         }
@@ -149,7 +154,17 @@ public class EID : Interactable {
                 }
             }
         }
-        if(animator == null) {
+        if(hasAnimator) {
+            if(type == EidType.DIAL) {
+                animator.target = state * (animator.steps / (float)maxVal);
+            } else if(type == EidType.DIAL_CONT) {
+                animator.target = state * (animator.steps / ((float)maxVal+1f));
+            } else if(state == 0) {
+                animator.target = 0;
+            } else {
+                animator.target = mTarget;
+            }
+        } else {
             float mA = Time.deltaTime/moveTime;
             if(cState > state) {
                 cState -= Mathf.Min(mA, cState-state);
@@ -165,16 +180,6 @@ public class EID : Interactable {
                 cState = Mathf.Clamp(cState, 0, maxVal);
                 transform.localPosition = sPos + Vector3.Lerp(pos0, posF, (float)cState/(float)maxVal);
                 transform.localEulerAngles = sRot + Vector3.Lerp(rot0, rotF, (float)cState/(float)maxVal);
-            }
-        } else {
-            if(type == EidType.DIAL) {
-                animator.target = state * (animator.steps / (float)maxVal);
-            } else if(type == EidType.DIAL_CONT) {
-                animator.target = state * (animator.steps / ((float)maxVal+1f));
-            } else if(state == 0) {
-                animator.target = 0;
-            } else {
-                animator.target = mTarget;
             }
         }
     }
