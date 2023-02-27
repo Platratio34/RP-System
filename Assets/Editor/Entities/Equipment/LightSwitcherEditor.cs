@@ -44,6 +44,8 @@ public class LightSwitcherEditor : EquipmentEditor {
 
         EditorGUILayout.PropertyField(serializedObject.FindProperty("lights"), new GUIContent("Lights"));
 
+        // EditorGUILayout.PropertyField(serializedObject.FindProperty("cullingBox"), new GUIContent("Culling Box"));
+
         base.serializedObject.ApplyModifiedProperties();
 
         // DrawDefaultInspector();

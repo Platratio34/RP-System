@@ -12,25 +12,9 @@ public class PowerDisplay : Interactable, Displayer {
     public GraphicsCard gCard;
     public string networkName;
 
-    private float tBF = 1f/15f;
-    private float tsl = 0f;
-    private long frames;
-
     // Called when the display is created
     void Start() {
         gCard.addDisplayer(this, 10);
-    }
-
-    // Called every tick
-    void Update() {
-        tsl += Time.deltaTime;
-        if(tsl < tBF) {
-            return;
-        }
-        frames ++;
-        tsl = 0f;
-
-        // display();
     }
 
     public void display() {
