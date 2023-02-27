@@ -174,6 +174,17 @@ public class Frame {
     public void DrawText(int x, int y, string text, int h, Color color, bool debug) {
         actions.Enqueue(new FrameAction(ActionCode.TEXT, x, y, 0, h, text, color,debug));
     }
+    /// <summary>
+    /// Draws text at location, with color and size
+    /// </summary>
+    /// <param name="x">Left x</param>
+    /// <param name="y">Top y</param>
+    /// <param name="text">Text</param>
+    /// <param name="h">Text size</param>
+    /// <param name="color">Text color</param>
+    public void DrawTextC(int x, int y, string text, int h, Color color) {
+        actions.Enqueue(new FrameAction(ActionCode.TEXT, x-((text.Length*(h-1))/2), y, 0, h, text, color));
+    }
 
     /// <summary>
     /// Draws a rectangle outline in color

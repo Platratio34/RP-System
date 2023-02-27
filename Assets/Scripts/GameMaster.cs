@@ -11,6 +11,8 @@ public class GameMaster : MonoBehaviour {
     public InputField saveTo;
     public bool showDebugMessages = false;
 
+    public static GameMaster master;
+
     void Start() {
         entities = new Dictionary<string, Entity>();
         if(entitiesArr != null) {
@@ -30,12 +32,14 @@ public class GameMaster : MonoBehaviour {
         // for(int i = 0; i < 8; i++) {
         //     print(GenerateUUID());
         // }
-        
+
         // JsonObj obj = new JsonObj();
         // obj.AddVector3("test", 1, 2, 3);
         // obj.AddQuaternion("test2", 1, 2, 3, 4);
         // obj.AddFloat("test3", 123);
         // print(obj.ToString(true,""));
+
+        master = this;
     }
 
     public void OnApplicationQuit() {
@@ -158,6 +162,16 @@ public class GameMaster : MonoBehaviour {
         } else {
             return null;
         }
+    }
+
+    public List<Entity> GetEntitiesByType(string type) {
+        List<Entity> list = new List<Entity>();
+        foreach (Entity ent in entities.Values) {
+            if(ent.entityType.Equals(type)) {
+                list.Add(ent);
+            }
+        }
+        return list;
     }
 
     public static bool IsPointerOverUIObject()

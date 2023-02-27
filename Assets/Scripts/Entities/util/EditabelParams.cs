@@ -9,6 +9,7 @@ public class EditabelParams {
     /// The array of parameter editable in game
     /// </summary>
     public EditableParam[] parameters;
+    private Dictionary<string, EditableParam> paramDict;
 
     /// <summary>
     /// If a parameter with the name exists
@@ -16,8 +17,11 @@ public class EditabelParams {
     /// <param name="name">The name to look for</param>
     /// <returns>If there is a parameter by that name</returns>
     public bool HasParam(string name) {
+        if(paramDict == null) paramDict = new Dictionary<string, EditableParam>();
+        if(paramDict.ContainsKey(name)) return true;
         for(int i = 0; i < parameters.Length; i++) {
             if(parameters[i].name.Equals(name)) {
+                paramDict.Add(name, parameters[i]);
                 return true;
             }
         }
@@ -32,12 +36,13 @@ public class EditabelParams {
         if(!HasParam(name)) {
             return null;
         }
-        for(int i = 0; i < parameters.Length; i++) {
-            if(parameters[i].name.Equals(name)) {
-                return parameters[i];
-            }
-        }
-        return null;
+        return paramDict[name];
+        // for(int i = 0; i < parameters.Length; i++) {
+        //     if(parameters[i].name.Equals(name)) {
+        //         return parameters[i];
+        //     }
+        // }
+        // return null;
     }
 
     /// <summary>
@@ -49,12 +54,13 @@ public class EditabelParams {
         if(!HasParam(name)) {
             return false;
         }
-        for(int i = 0; i < parameters.Length; i++) {
-            if(parameters[i].name.Equals(name)) {
-                return parameters[i].range.x != parameters[i].range.y;
-            }
-        }
-        return false;
+        return paramDict[name].range.x != paramDict[name].range.y;
+        // for(int i = 0; i < parameters.Length; i++) {
+        //     if(parameters[i].name.Equals(name)) {
+        //         return parameters[i].range.x != parameters[i].range.y;
+        //     }
+        // }
+        // return false;
     }
 
     /// <summary>
@@ -66,12 +72,13 @@ public class EditabelParams {
         if(!HasParam(name)) {
             return Vector2.zero;
         }
-        for(int i = 0; i < parameters.Length; i++) {
-            if(parameters[i].name.Equals(name)) {
-                return parameters[i].range;
-            }
-        }
-        return Vector2.zero;
+        return paramDict[name].range;
+        // for(int i = 0; i < parameters.Length; i++) {
+        //     if(parameters[i].name.Equals(name)) {
+        //         return parameters[i].range;
+        //     }
+        // }
+        // return Vector2.zero;
     }
     /// <summary>
     /// If the parameter should have a slider
@@ -82,12 +89,13 @@ public class EditabelParams {
         if(!HasParam(name)) {
             return false;
         }
-        for(int i = 0; i < parameters.Length; i++) {
-            if(parameters[i].name.Equals(name)) {
-                return parameters[i].slid;
-            }
-        }
-        return false;
+        return paramDict[name].slid;
+        // for(int i = 0; i < parameters.Length; i++) {
+        //     if(parameters[i].name.Equals(name)) {
+        //         return parameters[i].slid;
+        //     }
+        // }
+        // return false;
     }
 
     // public JsonObj Save() {

@@ -16,6 +16,7 @@ public class LightSwitcher : Equipment
     private float t;
 
     private float powerPerLight = 10f;
+    // public Bounds cullingBox;
 
     public CustomLight[] lights;
 
@@ -57,10 +58,27 @@ public class LightSwitcher : Equipment
         t += Time.deltaTime;
         t %= 2;
 
+        // bool any = false;
+        // foreach (Camera cam in Camera.allCameras) {
+        //     if(cullingBox.Contains(cam.transform.position)) {
+        //         any = true;
+        //     }
+        // }
+        // if(!any) {
+        //     foreach(CustomLight l in lights) {
+        //         l.off();
+        //     }
+        // }
+
         foreach(CustomLight l in lights) {
             l.processes(onPow, opMode, emergency, backup, t);
         }
     }
+
+    // void OnDrawGizmosSelected() {
+    //     Gizmos.color = Color.green;
+    //     Gizmos.DrawWireCube(cullingBox.center + transform.position, cullingBox.extents * 2f);
+    // }
 
     public void setOn(EID eid) {
         on = eid.state == 1.0f;
@@ -75,7 +93,7 @@ public class LightSwitcher : Equipment
     [System.Serializable]
     public class CustomLight {
 
-        public Light light;
+        public BulbedLight light;
         public Color color = Color.white;
         public bool isEmerg;
         public Color eColor = Color.red;
@@ -84,26 +102,27 @@ public class LightSwitcher : Equipment
         public bool isOp;
         public Color oColor = Color.blue;
 
-        [Range(0f,2f)]
+        [Range(0f, 2f)]
         public float blinkLength = 0.15f;
-        [Range(0.00f,2f)]
+        [Range(0.00f, 2f)]
         public float blinkOffset = 0.0f;
 
         public void processes(bool on, bool op, bool em, bool backup, float t) {
             if(on || (isBackup && backup)) {
-                light.gameObject.SetActive(true);
+                light.SetActive(true);
             } else {
-                light.gameObject.SetActive(false);
+                light.SetActive(false);
                 return;
             }
+
             if(em && isEmerg && checkBlink(t) ) {
-                light.color = eColor;
-            } else if(op && isOp) {
-                light.color = oColor;
+                light.setColor(eColor);
             } else if(backup && isBackup) {
-                light.color = bColor;
+                light.setColor(bColor);
+            } else if(op && isOp) {
+                light.setColor(oColor);
             } else {
-                light.color = color;
+                light.setColor(color);
             }
         }
 

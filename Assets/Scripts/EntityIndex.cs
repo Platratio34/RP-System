@@ -46,7 +46,7 @@ public class EntityIndex : MonoBehaviour {
         if(entities != null && entities.ContainsKey(type)) {
             return entities[type];
         } else {
-            Debug.LogError("Atemted to get default entity of type: \"" + type + "\", no entity found, returning MissingEntity");
+            Debug.LogError("Attempted to get default entity of type: \"" + type + "\", no entity found, returning MissingEntity");
             return entities["missing"];
         }
     }
@@ -54,7 +54,7 @@ public class EntityIndex : MonoBehaviour {
         if(entities != null && entities.ContainsKey(type)) {
             return entities[type].prefab;
         } else {
-            Debug.LogError("Atemted to get prefab of type: \"" + type + "\", no entity found, returning MissingEntity prefab");
+            Debug.LogError("Attempted to get prefab of type: \"" + type + "\", no entity found, returning MissingEntity prefab");
             return entities["missing"].prefab;
         }
     }
@@ -73,7 +73,7 @@ public class EntityIndex : MonoBehaviour {
         if(entities.ContainsKey(type)) {
             return entities[type].spawnable;
         }
-        Debug.LogError("Atemted to check if entity of type: \"" + type + "\" is spawnable, no entity found");
+        Debug.LogError("Attempted to check if entity of type: \"" + type + "\" is spawnable, no entity found");
         return false;
     }
 

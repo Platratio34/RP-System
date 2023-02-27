@@ -11,8 +11,16 @@ public class InteractableDoor : Interactable {
     public bool invertAnimation = false;
     public ObjAnimator animator;
 
-    void Start() {
+    public bool hasO;
+    public bool hasL;
+    public bool hasLb;
+    public bool hasF;
 
+    void Start() {
+        hasO = eParams.HasParam("open");
+        hasL = eParams.HasParam("locked");
+        hasLb = eParams.HasParam("lockable");
+        hasF = eParams.HasParam("frozen");
     }
 
     void Update() {
@@ -24,16 +32,16 @@ public class InteractableDoor : Interactable {
         if(frozen) {
             animator.speed = 0;
         }
-        if(eParams.HasParam("open")) {
+        if(hasO) {
             eParams.GetParam("open").valueB = open;
         }
-        if(eParams.HasParam("locked")) {
+        if(hasL) {
             eParams.GetParam("locked").valueB = locked;
         }
-        if(eParams.HasParam("lockable")) {
+        if(hasLb) {
             eParams.GetParam("lockable").valueB = lockable;
         }
-        if(eParams.HasParam("frozen")) {
+        if(hasF) {
             eParams.GetParam("frozen").valueB = frozen;
         }
     }
@@ -80,6 +88,9 @@ public class InteractableDoor : Interactable {
 
     public void setOpen(bool open) {
         if(!locked) this.open = open;
+    }
+    public void toggleOpen() {
+        if(!locked) open = !open;
     }
     public void setOpenO(bool open) {
         this.open = open;

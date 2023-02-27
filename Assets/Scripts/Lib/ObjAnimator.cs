@@ -40,6 +40,8 @@ public class ObjAnimator : MonoBehaviour {
     /// </summary>
     public bool loop = false;
 
+    private float lt = float.NegativeInfinity;
+
     void Start() {
 
     }
@@ -114,8 +116,11 @@ public class ObjAnimator : MonoBehaviour {
     /// Updates all objects to current time state
     /// </summary>
     public void UpdateObjs() {
+        float t = time / timeScale;
+        if(t == lt) return;
+        lt = t;
         for(int i = 0; i < objs.Length; i++) {
-            objs[i].Update(time/timeScale);
+            objs[i].Update(t);
         }
     }
 
@@ -145,6 +150,8 @@ public class AnimatedObj {
     /// If the object is show in the editor
     /// </summary>
     public bool show;
+
+    
 
     /// <summary>
     /// Updates the objects position, rotation, and scale to the time state
