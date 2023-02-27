@@ -30,6 +30,9 @@ public class EIDEditor : InteractableEditor {
         
         EditorGUILayout.PropertyField(serializedObject.FindProperty("onChangeEvent"), new GUIContent("On Change Event"));
 
+        if(eid.type == EID.EidType.PUSH)
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("onActivateEvent"), new GUIContent("On Activate Event"));
+
         base.serializedObject.ApplyModifiedProperties();
     }
 }

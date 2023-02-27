@@ -36,6 +36,7 @@ public class EID : Interactable {
     /// Event called every time the state is changed
     /// </summary>
     public EidEvent onChangeEvent;
+    public EidEvent onActivateEvent;
     /// <summary>
     /// Position of the device at state 0
     /// </summary>
@@ -79,6 +80,7 @@ public class EID : Interactable {
         if(type == EidType.PUSH) {
             state = 1;
             pTime = pushTime;
+            onActivateEvent.Invoke((EID)this);
         } else if(type == EidType.TOGGLE) {
             if(state == 0) {
                 state = 1;

@@ -48,9 +48,16 @@ public class Entity : Interactable {
     /// </summary>
     public bool staticEntity = false;
     /// <summary>
+    /// If the entity should be effected by gravity
+    /// </summary>
+    public bool gravity = true;
+    public GravityArea gravitySource;
+    /// <summary>
     /// If the entity is editable by GM
     /// </summary>
     public bool editableEntity = true;
+
+    // public Rigidbody rigidbody;
 
     void Start() {
         // if(isNameKey && entityName.Equals("")) {
@@ -62,6 +69,10 @@ public class Entity : Interactable {
         }
         children = new List<string>();
         OnStart();
+
+        // if(rigidbody == null) {
+        //     rigidbody = gameObject.GetComponent<Rigidbody>();
+        // }
     }
 
     /// <summary>

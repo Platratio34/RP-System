@@ -11,6 +11,8 @@ public class Player : Entity {
     public float jp = 75f;
     public float mp = 20f;
     public float sp = 30f;
+    public float mpz = 10f;
+    public float spz = 15f;
     public float turnSpeed = 60f;
     private float crx = 45f;
     public GameObject cameraO;
@@ -94,48 +96,72 @@ public class Player : Entity {
     }
 
     void FixedUpdate() {
-        Vector3 xD = new Vector3(0.1f*transform.forward.x,0.1f*transform.forward.y,0.1f*transform.forward.z);
-        Vector3 yD = new Vector3(0.1f*transform.right.x,0.1f*transform.right.y,0.1f*transform.right.z);
-        Vector3 xD2 = new Vector3(0.05f*transform.forward.x,0.05f*transform.forward.y,0.05f*transform.forward.z);
-        Vector3 yD2 = new Vector3(0.05f*transform.right.x,0.05f*transform.right.y,0.05f*transform.right.z);
-        bool onGround = Physics.Raycast(transform.position+xD, transform.up*-1, 1.1f);
-        onGround = onGround || Physics.Raycast(transform.position-xD, transform.up*-1, 1.1f);
-        onGround = onGround || Physics.Raycast(transform.position+yD, transform.up*-1, 1.1f);
-        onGround = onGround || Physics.Raycast(transform.position-yD, transform.up*-1, 1.1f);
-        
-        onGround = onGround || Physics.Raycast(transform.position+xD2, transform.up*-1, 1.1f);
-        onGround = onGround || Physics.Raycast(transform.position+yD2, transform.up*-1, 1.1f);
-        onGround = onGround || Physics.Raycast(transform.position-xD2, transform.up*-1, 1.1f);
-        onGround = onGround || Physics.Raycast(transform.position-yD2, transform.up*-1, 1.1f);
+        if(gravitySource != null) {
+            Vector3 xD = new Vector3(0.1f*transform.forward.x,0.1f*transform.forward.y,0.1f*transform.forward.z);
+            Vector3 yD = new Vector3(0.1f*transform.right.x,0.1f*transform.right.y,0.1f*transform.right.z);
+            Vector3 xD2 = new Vector3(0.05f*transform.forward.x,0.05f*transform.forward.y,0.05f*transform.forward.z);
+            Vector3 yD2 = new Vector3(0.05f*transform.right.x,0.05f*transform.right.y,0.05f*transform.right.z);
+            bool onGround = Physics.Raycast(transform.position+xD, transform.up*-1, 1.1f);
+            onGround = onGround || Physics.Raycast(transform.position-xD, transform.up*-1, 1.1f);
+            onGround = onGround || Physics.Raycast(transform.position+yD, transform.up*-1, 1.1f);
+            onGround = onGround || Physics.Raycast(transform.position-yD, transform.up*-1, 1.1f);
+            
+            onGround = onGround || Physics.Raycast(transform.position+xD2, transform.up*-1, 1.1f);
+            onGround = onGround || Physics.Raycast(transform.position+yD2, transform.up*-1, 1.1f);
+            onGround = onGround || Physics.Raycast(transform.position-xD2, transform.up*-1, 1.1f);
+            onGround = onGround || Physics.Raycast(transform.position-yD2, transform.up*-1, 1.1f);
 
-        if(controlled) {
-            float h = Input.GetAxis("Left/Right");
-            move.y = h;
-            float v = Input.GetAxis("Forward/Backward");
-            move.x = v;
-            Cursor.lockState = CursorLockMode.Locked;
-            MouseAiming();
-            if(!onGround) {
-                rb.drag = 0.5f;
-                if(Input.GetButton("Sprint")) { 
-                    rb.AddForce(transform.forward*v*sp/4f, ForceMode.Acceleration);
+            if(controlled) {
+                float h = Input.GetAxis("Left/Right");
+                move.y = h;
+                float v = Input.GetAxis("Forward/Backward");
+                move.x = v;
+                Cursor.lockState = CursorLockMode.Locked;
+                MouseAiming();
+                if(!onGround) {
+                    rb.drag = 0.5f;
+                    if(Input.GetButton("Sprint")) { 
+                        rb.AddForce(transform.forward*v*sp/4f, ForceMode.Acceleration);
+                    } else {
+                        rb.AddForce(transform.forward*v*mp/4f, ForceMode.Acceleration);
+                    }
+                    rb.AddForce(transform.right*h*mp*0.5f/4f, ForceMode.Acceleration);
                 } else {
-                    rb.AddForce(transform.forward*v*mp/4f, ForceMode.Acceleration);
-                }
-                rb.AddForce(transform.right*h*mp*0.5f/4f, ForceMode.Acceleration);
-            } else {
-                rb.drag = 5f;
-                if(Input.GetButton("Sprint")) { 
-                    rb.AddForce(transform.forward*v*sp, ForceMode.Acceleration);
-                } else {
-                    rb.AddForce(transform.forward*v*mp, ForceMode.Acceleration);
-                }
-                rb.AddForce(transform.right*h*mp*0.5f, ForceMode.Acceleration);
-                if(Input.GetButton("Jump")) {
-                    rb.AddForce(transform.up*jp, ForceMode.Acceleration);
+                    rb.drag = 5f;
+                    if(Input.GetButton("Sprint")) { 
+                        rb.AddForce(transform.forward*v*sp, ForceMode.Acceleration);
+                    } else {
+                        rb.AddForce(transform.forward*v*mp, ForceMode.Acceleration);
+                    }
+                    rb.AddForce(transform.right*h*mp*0.5f, ForceMode.Acceleration);
+                    if(Input.GetButton("Jump")) {
+                        rb.AddForce(transform.up*jp, ForceMode.Acceleration);
+                    }
                 }
             }
-            rb.AddForce(transform.up*-9.81f, ForceMode.Acceleration);
+        } else {
+            if(controlled) {
+                float h = Input.GetAxis("Left/Right");
+                move.y = h;
+                float v = Input.GetAxis("Forward/Backward");
+                move.x = v;
+                Cursor.lockState = CursorLockMode.Locked;
+                MouseAiming();
+                rb.drag = 0.5f;
+                if(Input.GetButton("Sprint")) { 
+                    rb.AddForce(transform.forward*v*spz, ForceMode.Acceleration);
+                    rb.AddForce(transform.right*h*spz, ForceMode.Acceleration);
+                } else {
+                    rb.AddForce(transform.forward*v*mpz, ForceMode.Acceleration);
+                    rb.AddForce(transform.right*h*mpz, ForceMode.Acceleration);
+                }
+                if(Input.GetButton("Jump")) {
+                    rb.AddForce(transform.up*mpz, ForceMode.Acceleration);
+                }
+                if(Input.GetButton("Thrust Down")) {
+                    rb.AddForce(transform.up*mpz*-1, ForceMode.Acceleration);
+                }
+            }
         }
     }
 
