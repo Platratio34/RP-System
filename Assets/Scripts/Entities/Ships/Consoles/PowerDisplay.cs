@@ -12,9 +12,23 @@ public class PowerDisplay : Interactable, Displayer {
     public GraphicsCard gCard;
     public string networkName;
 
+    private string text1Format =
+        "Power Network: {0}\n"+
+        "\n\n\n\n"+
+        "Bat Draw:  {1}W\n"+
+        "Overage:   {2}W\n"+
+        "Stored:    {3}Wh\n"+
+        "Capacity:  {4}Wh\n"+
+        "Time out:  {5}\n"+
+        "Time full: {6}";
+    private string text2Format =
+        "Availble:  {0}W\n"+
+        "Required:  {1}W\n"+
+        "Net:       {2}W\n";
+
     // Called when the display is created
     void Start() {
-        gCard.addDisplayer(this, 10);
+        gCard.addDisplayer(this, 4);
     }
 
     public void display() {
@@ -50,10 +64,11 @@ public class PowerDisplay : Interactable, Displayer {
             }
         }
 
-        String text = "Power Network: " + networkName+"\n\n\n\n\n";
-        String text2 = "Availble:  " + PowerString.convert(network.getTotalAvalib()) + "W\n";
-        text2 += "Required:  " + PowerString.convert(network.getTotalReq()) + "W\n";
-        text2 += "Net:       " + PowerString.convert(np) + "W\n";
+        // String text = "Power Network: " + networkName+"\n\n\n\n\n";
+        string text2 = string.Format(text2Format, PowerString.convert(network.getTotalAvalib()), PowerString.convert(network.getTotalReq()), PowerString.convert(np) );
+        // String text2 = "Availble:  " + PowerString.convert(network.getTotalAvalib()) + "W\n";
+        // text2 += "Required:  " + PowerString.convert(network.getTotalReq()) + "W\n";
+        // text2 += "Net:       " + PowerString.convert(np) + "W\n";
 
         frame.DrawText(1, 14, text2, 9, oc);
 
@@ -78,13 +93,13 @@ public class PowerDisplay : Interactable, Displayer {
         frame.DrawRect(211, 11, 1, 100, Color.white);
         frame.DrawText(201, 1, PowerString.convert(tp) + "W", 7, Color.white);
 
-        text += "Bat Draw:  " + PowerString.convert(network.getBatUssage()) + "W\n";
-        text += "Overage:   " + PowerString.convert(network.getOverage()) + "W\n";
+        // text += "Bat Draw:  " + PowerString.convert(network.getBatUssage()) + "W\n";
+        // text += "Overage:   " + PowerString.convert(network.getOverage()) + "W\n";
         // frame.DrawText(1, 51, "Bat Draw:  " + PowerString.convert(network.getBatUssage()) + "W", 7, Color.white);
         // frame.DrawText(1, 61, "Overage:   " + PowerString.convert(network.getOverage()) + "W", 7, Color.white);
 
-        text += "Stored:    " + PowerString.convert(network.getTotalStored()/360f)+"Wh\n";
-        text += "Capacity:  " + PowerString.convert(network.getMaxStorage()/360f)+"Wh\n";
+        // text += "Stored:    " + PowerString.convert(network.getTotalStored()/360f)+"Wh\n";
+        // text += "Capacity:  " + PowerString.convert(network.getMaxStorage()/360f)+"Wh\n";
         // frame.DrawText(1, 71, "Stored:    " + PowerString.convert(network.getTotalStored()/360f)+"Wh", 7, Color.white);
         // frame.DrawText(1, 81, "Capacity:  " + PowerString.convert(network.getMaxStorage()/360f)+"Wh", 7, Color.white);
 
@@ -95,7 +110,7 @@ public class PowerDisplay : Interactable, Displayer {
         } else {
             tTO = "Infinity";
         }
-        text += "Time out:  " + tTO + "\n";
+        // text += "Time out:  " + tTO + "\n";
         // frame.DrawText(1, 91, "Time out:  " + tTO, 7, Color.white);
 
         float sTC = network.getTimeToCharged();
@@ -105,9 +120,19 @@ public class PowerDisplay : Interactable, Displayer {
         } else {
             tTC = "Infinity";
         }
-        text += "Time full: " + tTC + "\n";
+        // text += "Time full: " + tTC + "\n";
         // frame.DrawText(1, 101, "Time full:  " + tTC, 7, Color.white);
-        
+
+        string text = string.Format(text1Format,
+            networkName,
+            PowerString.convert(network.getBatUssage()),
+            PowerString.convert(network.getOverage()),
+            PowerString.convert(network.getTotalStored()/360f),
+            PowerString.convert(network.getMaxStorage()/360f),
+            tTO,
+            tTC
+        );
+
         int bpb = (int)((network.getTotalStored()/360f) / (network.getMaxStorage()/360f) * 100f);
         frame.DrawRectF(251, 11, 10, 100, new Color(0.1f,0.1f,0.1f));
         frame.DrawRectF(251, (100 - bpb) + 11, 10, bpb, Color.blue);

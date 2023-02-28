@@ -42,6 +42,12 @@ public class LightSwitcher : Equipment
     //     }
     // }
 
+    void Start() {
+        lOn = !on;
+        lOp = !opMode;
+        lBackup = !backup;
+    }
+
     public override float getPowerReq() {
         powerInReq = on ? powerPerLight * lights.Length : 0f;
         return powerInReq;
@@ -67,8 +73,14 @@ public class LightSwitcher : Equipment
             t += Time.deltaTime;
             t %= 2;
         } else {
-            if(opMode == lOp && backup == lBackup) return;
+            if(opMode == lOp && backup == lBackup && lOn == on) return;
         }
+
+        // Debug.Log(string.Format("{0} {1} {2}", on, lOn, onPow));
+
+        lOn = on;
+        lOp = opMode;
+        lBackup = backup;
 
         // bool any = false;
         // foreach (Camera cam in Camera.allCameras) {
