@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using System;
 
 /// <summary>
 /// Frame to be drawn on a CustomScreen
@@ -250,11 +251,19 @@ public class Frame {
         this.card = card;
     }
 
+    private long startTime;
+    private long endTime;
+    public bool profile = false;
+
     /// <summary>
     /// Render the frame. SHOULD BE DONE IN SEPARATE THREAD TO AVOID LARGE LAG
     /// </summary>
     public void Render() {
         // card.Log("Frame rendering " + actions.Count + " actions");
+        if(profile && GetTimeSinceStart() > 1) {
+            card.Log(string.Format("Took {0}ms to start rendering frame", GetTimeSinceStart()));
+        }
+        if(!profile) startTime = GetUnixTime();
         if(!rendered) {
             output = new Texture(width, height);
 
@@ -310,6 +319,7 @@ public class Frame {
                 card.frames.Enqueue(this);
             }
         }
+        endTime = GetUnixTime();
     }
 
     /// <summary>
@@ -335,6 +345,22 @@ public class Frame {
     /// <returns></returns>
     public int GetNumActions() {
         return numActions;
+    }
+
+    public void MarkStart() {
+        if(profile) startTime = GetUnixTime();
+    }
+    public long GetRenderTime() {
+        if(endTime > 0) return endTime - startTime;
+        else return -1;
+    }
+    public long GetTimeSinceStart() {
+        if(startTime > 0) return GetUnixTime() - startTime;
+        else return -1;
+    }
+
+    private long GetUnixTime() {
+        return DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond;
     }
 
     // public void SetPixel(int x, int y, Color color) {

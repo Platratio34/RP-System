@@ -21,17 +21,24 @@ public class PowerString {
     public static string convert(float input) {
         bool n = input < 0;
         float i2 = input * (n ? -1 : 1);
-        // string cStr = Math.Round(input,3)+"";
-        // if(input >= 100) {
-        //     cStr = Math.Round(input)+"";
-        // } else if(input >= 10) {
-        //     cStr = Math.Round(input,1)+"";
-        // } else if(input >= 1) {
-        //     cStr = Math.Round(input,2)+"";
-        // }
         for(int i = amounts.Length-1; i >= 0; i--) {
             if(i2 >= amounts[i]) {
-                double amt = Math.Round(input/amounts[i],3);
+                // int[] digits = new int[5];
+                // int dm = 1000 * amounts[i];
+                // int nz = 0;
+                // for (int d = 5; d >= 0; d--) {
+                //     int c = dm / 10;
+                //     digits[d] = (int)(i2 % dm) / c;
+                //     if(digits[d] > 0) nz++;
+
+                //     if(nz == 3) {
+
+                //     }
+
+                //     dm = c;
+                // }
+                // double amt = Math.Round(input/amounts[i],3);
+                double amt = input / amounts[i];
                 double amtA = Math.Abs(amt);
                 if(amtA >= 100) {
                     amt = Math.Round(amt);
@@ -43,7 +50,7 @@ public class PowerString {
                     amt = Math.Round(amt,3);
                 }
                 // cStr = amt + names[i];
-                return amt + names[i];
+                return string.Format("{0}{1}", amt, names[i]);
             }
         }
         return Math.Round(input,3)+"";

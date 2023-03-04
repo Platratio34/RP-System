@@ -27,11 +27,21 @@ public class GraphicsCard : MonoBehaviour {
     // public int frame = 0;
 
     private List<DisplayerHandel> dspHandles;
+    
+    private Queue<Frame> renderQueue;
+    public System.Object renderQueueLocker = new System.Object();
+    private bool runRenderThreads = true;
 
     void Awake() {
         frames = new Queue<Frame>();
         threads = new List<Thread>();
         dspHandles = new List<DisplayerHandel>();
+        renderQueue = new Queue<Frame>();
+
+        Thread t = new Thread(RenderThreadLoop);
+        t.Start();
+        threads.Add(t);
+
         GChar.init();
     }
 
@@ -40,6 +50,7 @@ public class GraphicsCard : MonoBehaviour {
             lock(queueLocker) { // prevent the queue from being modified while reading from it
                 while(frames.Count > 0) {
                     Frame frame = frames.Dequeue();
+                    // Log(string.Format("Frame took {0}ms to render", frame.GetRenderTime()));
                     int dest = frame.GetDest();
                     if(screens.Length >= dest) {
                         if(screens[dest] != null) {
@@ -61,6 +72,13 @@ public class GraphicsCard : MonoBehaviour {
                 handel.dsp.display();
             }
         }
+
+        if(renderQueue.Count > 1) {
+            Thread t = new Thread(RenderThreadLoop);
+            t.Start();
+            threads.Add(t);
+            Log("Created new render thread");
+        }
     }
 
     /// <summary>
@@ -71,10 +89,22 @@ public class GraphicsCard : MonoBehaviour {
         frame.SetCard(this);
         // print("Starting render of frame for screen " + frame.GetDest());
         // threads.Add(new Thread(frame.Render));
-        Thread t = new Thread(frame.Render);
-        t.Start();
+        // Thread t = new Thread(frame.Render);
+        // t.Start();
+        frame.MarkStart();
+        lock(renderQueueLocker) renderQueue.Enqueue(frame);
         // threads.Add(t);
         // frame.Render();
+    }
+
+    private void RenderThreadLoop() {
+        while(runRenderThreads) {
+            if(renderQueue.Count > 0) {
+                Frame frame;
+                lock(renderQueueLocker) frame = renderQueue.Dequeue();
+                frame.Render();
+            }
+        }
     }
 
     /// <summary>
