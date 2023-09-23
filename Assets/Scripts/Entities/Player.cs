@@ -24,6 +24,8 @@ public class Player : Entity {
     public Text tooltip1;
     public Text tooltip2;
 
+    public Light headLight;
+
     public override void OnStart() {
         rb.freezeRotation = true;
     }
@@ -81,6 +83,15 @@ public class Player : Entity {
                     } else {
                         tooltip2.text = eid.state+"";
                     }
+                } else if(inter is InteractableDoor) {
+                    InteractableDoor door = (InteractableDoor)inter;
+                    if(door.locked) {
+                        tooltip2.text = "["+LocalStrings.GetLocalString("ui","door.locked")+"]"; 
+                    } else if(door.frozen) {
+                        tooltip2.text = "["+LocalStrings.GetLocalString("ui","door.frozen")+"]"; 
+                    } else {
+                        tooltip2.text = (door.open ? LocalStrings.GetLocalString("ui","door.close") : LocalStrings.GetLocalString("ui","door.open"));
+                    }
                 }
             } else {
                 tooltip1.text = "";
@@ -89,6 +100,10 @@ public class Player : Entity {
 
             if(Input.GetButtonDown("Interact") && inter != null) {
                 inter.OnInteract(false, Input.GetButton("Interact Modifier")?1:0);
+            }
+            if(Input.GetButtonDown("Toggle Flashlight")) {
+                // headLight.gameObject.SetActive(!headLight.gameObject.activeSelf);
+                headLight.enabled = !headLight.enabled;
             }
         } else {
             Cursor.lockState = CursorLockMode.None;

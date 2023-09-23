@@ -42,7 +42,13 @@
             "load": "Load"
         },
         "true": "True",
-        "false": "False"
+        "false": "False",
+        "door": {
+            "open": "Open",
+            "close": "Close",
+            "locked": "Locked",
+            "frozen": "Frozen"
+        }
     },
     "interactableNames": {
         "wCC": {

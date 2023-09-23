@@ -1588,7 +1588,8 @@ GameObject:
   - component: {fileID: 6784888949843390412}
   - component: {fileID: 699803554982462437}
   - component: {fileID: 4277759584415003141}
-  m_Layer: 0
+  - component: {fileID: 7549586870227715335}
+  m_Layer: 6
   m_Name: C Screen (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1674,6 +1675,20 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &7549586870227715335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1286326656965643006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9cd2e5026dcdb048b61492a1c2ef779, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 8906831332818493098}
+  vis: 0
 --- !u!1 &1344449344510665264
 GameObject:
   m_ObjectHideFlags: 0
@@ -4812,7 +4827,8 @@ GameObject:
   - component: {fileID: 6949673327242523003}
   - component: {fileID: 6487640666574474890}
   - component: {fileID: 4618328244780187521}
-  m_Layer: 0
+  - component: {fileID: 1564134014169163794}
+  m_Layer: 6
   m_Name: C Screen (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4898,6 +4914,20 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1564134014169163794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5523420776399875923}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9cd2e5026dcdb048b61492a1c2ef779, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 1444816256198775434}
+  vis: 0
 --- !u!1 &5565667560933308562
 GameObject:
   m_ObjectHideFlags: 0
@@ -5633,7 +5663,8 @@ GameObject:
   - component: {fileID: 7018780928288191865}
   - component: {fileID: 1286726631821083392}
   - component: {fileID: 4089418777748668010}
-  m_Layer: 0
+  - component: {fileID: 2953654788191173885}
+  m_Layer: 6
   m_Name: C Screen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5719,6 +5750,20 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &2953654788191173885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5914061230884369094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9cd2e5026dcdb048b61492a1c2ef779, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 2624285865996914876}
+  vis: 0
 --- !u!1 &5987451042612903002
 GameObject:
   m_ObjectHideFlags: 0
@@ -9832,6 +9877,10 @@ PrefabInstance:
     - target: {fileID: 3076354786095421321, guid: 7d960d2350e30d8b5822f4662bf919e3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7655845028754751326, guid: 7d960d2350e30d8b5822f4662bf919e3, type: 3}
+      propertyPath: dispName
+      value: Elevator
       objectReference: {fileID: 0}
     - target: {fileID: 7655845028754751326, guid: 7d960d2350e30d8b5822f4662bf919e3, type: 3}
       propertyPath: onActivateEvent.m_PersistentCalls.m_Calls.Array.size
@@ -14153,6 +14202,10 @@ PrefabInstance:
     - target: {fileID: 3076354786095421321, guid: 7d960d2350e30d8b5822f4662bf919e3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7655845028754751326, guid: 7d960d2350e30d8b5822f4662bf919e3, type: 3}
+      propertyPath: dispName
+      value: Elevator
       objectReference: {fileID: 0}
     - target: {fileID: 7655845028754751326, guid: 7d960d2350e30d8b5822f4662bf919e3, type: 3}
       propertyPath: onActivateEvent.m_PersistentCalls.m_Calls.Array.size

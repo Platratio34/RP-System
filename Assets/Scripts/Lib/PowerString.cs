@@ -19,6 +19,7 @@ public class PowerString {
     };
 
     public static string convert(float input) {
+        if (input == float.NaN) input = 0;
         bool n = input < 0;
         float i2 = input * (n ? -1 : 1);
         for(int i = amounts.Length-1; i >= 0; i--) {

@@ -21,6 +21,7 @@ public class PlayerEditor : EntityEditor {
         
         EditorGUILayout.PropertyField(serializedObject.FindProperty("rb"), new GUIContent("Ridgedbody"));
         EditorGUILayout.PropertyField(serializedObject.FindProperty("cameraO"), new GUIContent("Camera Object"));
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("headLight"), new GUIContent("Flashlight"));
 
         EditorGUILayout.LabelField(" -- -- UI");
 

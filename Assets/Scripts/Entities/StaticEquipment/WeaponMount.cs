@@ -19,6 +19,7 @@ public class WeaponMount : Equipment {
     }
 
     protected override void onUpdate() {
+        if (powerStore == float.NaN) powerStore = 0;
         if(storedPower < powerStore) {
             powerInReq = Mathf.Min((powerStore - storedPower) * Time.deltaTime, maxIn);
             storedPower = Mathf.Min(powerStore, storedPower + powerIn / Time.deltaTime);

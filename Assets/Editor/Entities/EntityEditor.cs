@@ -53,6 +53,9 @@ public class EntityEditor : Editor {
 
         EditorGUILayout.PropertyField(serializedObject.FindProperty("selBoxes"), new GUIContent("Selection Boxes"));
 
+        // EditorGUILayout.PropertyField(serializedObject.FindProperty("selBoxes"), new GUIContent("Gravity Source"));
+        EditorGUILayout.ObjectField("Gravity", o.gravitySource, typeof(GravityArea));
+
         base.serializedObject.ApplyModifiedProperties();
     }
 }
