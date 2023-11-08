@@ -17,7 +17,6 @@ public class PowerString {
         "G",
         "T"
     };
-
     public static string convert(float input) {
         if (input == float.NaN) input = 0;
         bool n = input < 0;

@@ -21,7 +21,9 @@ public class SatelliteEditor : EntityEditor {
         EditorGUILayout.PropertyField(serializedObject.FindProperty("sOI"), new GUIContent("SOI"));
         EditorGUILayout.PropertyField(serializedObject.FindProperty("sOICollider"), new GUIContent("SOI Collider"));
 
-        EditorGUILayout.PropertyField(serializedObject.FindProperty("mass"), new GUIContent("Mass"));
+        // EditorGUILayout.PropertyField(serializedObject.FindProperty("mass"), new GUIContent("Mass"));
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("surfaceGravity"), new GUIContent("Surface Gravity"));
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("radius"), new GUIContent("Radius"));
         EditorGUILayout.PropertyField(serializedObject.FindProperty("orbit"), new GUIContent("Orbit"));
         
         EditorGUILayout.PropertyField(serializedObject.FindProperty("lockDirToParent"), new GUIContent("Parent Look"));

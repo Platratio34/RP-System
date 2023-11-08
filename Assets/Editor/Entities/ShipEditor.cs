@@ -24,13 +24,15 @@ public class ShipEditor : EntityEditor {
 
         EditorGUILayout.LabelField("Velocity");
         EditorGUI.indentLevel++;
-
+        EditorGUILayout.LabelField("Speed: "+(serializedObject.FindProperty("vel").vector3Value.magnitude)+" m/s");
         EditorGUILayout.PropertyField(serializedObject.FindProperty("vel"), new GUIContent("Lateral"));
         EditorGUILayout.PropertyField(serializedObject.FindProperty("accl"), new GUIContent("Acceleration"));
         EditorGUILayout.PropertyField(serializedObject.FindProperty("rVel"), new GUIContent("Rotation"));
         EditorGUILayout.PropertyField(serializedObject.FindProperty("rAccl"), new GUIContent("Acceleration"));
 
         EditorGUI.indentLevel--;
+
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("cSat"), new GUIContent("Current Satellite"));
 
         base.serializedObject.ApplyModifiedProperties();
     }

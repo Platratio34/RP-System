@@ -64,6 +64,7 @@ public class AutoPilot : MonoBehaviour {
     public Vector3 dPos;
     public Vector3 dRot;
     public Vector3 dRot2;
+    public float ts;
     // end debug vars
 
     /// <summary>
@@ -94,6 +95,9 @@ public class AutoPilot : MonoBehaviour {
     /// </summary>
     private float rG = 10f;
 
+    public Vector3 tVel = Vector3.zero;
+    public float tRSpeed = 0.0f;
+
     // Called when the AP is created
     void Start() {
         if(ship == null) {
@@ -120,11 +124,13 @@ public class AutoPilot : MonoBehaviour {
             transTargPoint += shipT.position;
         }
         tRot = shipT.eulerAngles;
-        dPos = targetPos - shipT.position;
+        dPos = FloatingOrigin.WorldToFloating(targetPos) - shipT.position;
         dRot = targetRot - shipT.eulerAngles;
         // Vector3 transVel;
         Vector3 relVel = ship.getRelativeVel();
 
+        tLatVel = Vector3.zero;
+        Vector3 reqVel = Vector3.zero;
         // If the AP is going to a transform, set the difference in position accordingly
         if(goToTransform) {
             dPos = transTargPoint - shipT.position;
@@ -133,13 +139,17 @@ public class AutoPilot : MonoBehaviour {
                 dRot = targetTrans.eulerAngles - shipT.eulerAngles;
             }
             // If the ship is not in the same SOI as the target transform or in the target's SOI, subtract the target's speed to the ship's speed
-            if(shipT.parent != targetTrans && shipT.parent != targetTrans.parent) {
-            //     // Satellite s = shipT.parent.GetComponent<Satellite>();
-            //     float v = ;
-            //     // v -= ship.makeRel(s.getVel()).x;
-            //      += v;
-                relVel.x += ship.makeRel((transLPos - targetTrans.position) / Time.deltaTime).x;
-            }
+            // if(shipT.parent == null || (shipT.parent != targetTrans && shipT.parent != targetTrans.parent)) {
+                //     // Satellite s = shipT.parent.GetComponent<Satellite>();
+                //     float v = ;
+                //     // v -= ship.makeRel(s.getVel()).x;
+                //      += v;
+                // Debug.Log(transLPos - targetTrans.position);
+                tVel = (transLPos - targetTrans.position) / Time.deltaTime;
+                reqVel += tVel;
+                tLatVel = ship.makeRel(tVel);
+                // tLatVel.x = Mathf.Max(tVel.x, 0);
+            // }
         }
 
         // Something to do with orbits, I think this is no longer needed
@@ -150,7 +160,9 @@ public class AutoPilot : MonoBehaviour {
         Vector3 eRot = shipT.rotation.eulerAngles; // euler rotation of the ship right now
         dRot2 = Vector3.zero;
         // bool oT = true;
+        float distL = distToTarget;
         distToTarget = dPos.magnitude;
+        tRSpeed = (distL - distToTarget) / Time.deltaTime;
 
         // If the ship is not yet at the target (and has one), set the target rotation
         if(distToTarget > 0.1 && (goToPos || goToTransform) ) {
@@ -161,7 +173,7 @@ public class AutoPilot : MonoBehaviour {
             // print("x=" + tRot.x + ", y=" + tRot.y);
         } else {
             atTarget = true;
-            tLatVel = Vector3.zero;
+            // tLatVel = Vector3.zero;
             cThrust.x = 0;
             eRot = shipT.rotation.eulerAngles;
         }
@@ -170,48 +182,42 @@ public class AutoPilot : MonoBehaviour {
             tRot.z = 0; // Keeps the ship flat
         }
 
-        // Set the requested rotational acceleration
+        
         if(eRot.x > tRot.x + 0.1 || eRot.x < tRot.x - 0.1) {
             float tv = getDiff(tRot.x, eRot.x, 360) / 2f;
             dRot2.x = tv*2f;
-            tv = Mathf.Clamp(pID(tv)*rG, -15, 15);
-            tRotVel.x = tv;
-            cRot.x = (tv - ship.rVel.x) / ship.effectiveRot.x;
             // oT = false;
         }
         if(eRot.y > tRot.y + 0.1 || eRot.y < tRot.y - 0.1) {
             float tv = getDiff(tRot.y, eRot.y, 360) / 2f;
             dRot2.y = tv*2f;
-            // print(tv + ", " + pID(tv));
-            tv = Mathf.Clamp(pID(tv)*rG, -15, 15);
-            tRotVel.y = tv;
-            cRot.y = (tv - ship.rVel.y) / ship.effectiveRot.y;
             // oT = false;
         }
         if(eRot.z > tRot.z + 0.1 || eRot.z < tRot.z - 0.1) {
             float tv = getDiff(tRot.z, eRot.z, 360) / 2f;
             dRot2.z = tv*2f;
-            tv = Mathf.Clamp(pID(tv)*rG, -15, 15);
-            tRotVel.z = tv;
-            // print("e=" + eRot.z + ", tv=" + tv);
-            cRot.z = (tv - ship.rVel.z) / ship.effectiveRot.z;
             // oT = false;
         }
 
-        // If the ship is pointing pretty close to the target, set the target speed relative to the distance
-        if(dRot2.magnitude < 1) {
-            float ts = Mathf.Clamp(pID(dPos.magnitude), 0, dPos.magnitude/2f);
-            tLatVel.x = ts;
-        } else { // If the ship is pointing somewhat close, set the target speed, but reduce it based on how far off in direction the ship is
-            float ts = Mathf.Clamp(pID(dPos.magnitude), 0, dPos.magnitude/2f);
-            tLatVel.x = ts * (dRot2.magnitude/Mathf.Pow(dRot2.magnitude, 1.1f));
-        }
-        if(dRot2.magnitude > 10 || atTarget) {
-            tLatVel.x = 0; // Don't thrust at all if the ship is not pointing close to the target or ar at the target
-        }
+        // float ts = Mathf.Clamp(pID(dPos.magnitude), 0, dPos.magnitude/2f);
+        // float ts = Mathf.Pow(dPos.magnitude, 0.66f) / 2f;
+        ts = Mathf.Pow(dPos.magnitude, 0.75f) / 2f;
+        ts = Mathf.Clamp(ts, 0f, 5000f);
+        // if(dRot2.magnitude < 1) { // If the ship is pointing pretty close to the target, set the target speed relative to the distance
+            // tLatVel.x += ts;
+            reqVel += ts * dPos.normalized;
+        // } else { // If the ship is pointing somewhat close, set the target speed, but reduce it based on how far off in direction the ship is
+        //     tLatVel.x += ts * (dRot2.magnitude/Mathf.Pow(dRot2.magnitude, 1.1f));
+        //     reqVel += ts * (dRot2.magnitude/Mathf.Pow(dRot2.magnitude, 1.1f)) * dPos.normalized;
+        // }
+        // if(dRot2.magnitude > 10 || atTarget) {
+        //     tLatVel.x =+ 0; // Don't thrust at all if the ship is not pointing close to the target or ar at the target
+        // }
 
-        // Re-ranges the diffrence in velocity to match percentage thrusting
-        cThrust = ship.effectiveAccl.divide(new Vector3((tLatVel.x - relVel.x), (tLatVel.y - relVel.y), (tLatVel.z - relVel.z)));
+        // Re-ranges the difference in velocity to match percentage thrusting
+        tLatVel = ship.makeRel(reqVel);
+        Vector3 latVel = new Vector3(tLatVel.x - relVel.x, tLatVel.y - relVel.y, tLatVel.z - relVel.z);
+        cThrust = ship.effectiveAccl.divide(latVel);
 
         // Don't thrust if it is only a small amount
         if(Mathf.Abs(cThrust.x) < 0.00001) {
@@ -222,6 +228,42 @@ public class AutoPilot : MonoBehaviour {
         }
         if(Mathf.Abs(cThrust.z) < 0.00001) {
             cThrust.z = 0;
+        }
+
+        if(ts > 1) {
+            // Debug.Log("Fixing dir");
+            Vector3 dir = latVel.normalized;
+            Vector2 xz = new Vector2(dir.x, dir.z);
+            tRot.y = Mathf.Atan2(xz.x, xz.y) * (360f/6.28f);
+            tRot.x = Mathf.Atan2(dir.y, xz.magnitude) * (-360f/6.28f);
+        }
+
+        // Set the requested rotational acceleration
+        if(eRot.x > tRot.x + 0.1 || eRot.x < tRot.x - 0.1) {
+            float tv = getDiff(tRot.x, eRot.x, 360) / 2f;
+            // dRot2.x = tv*2f;
+            tv = Mathf.Clamp(pID(tv)*rG, -15, 15);
+            tRotVel.x = tv;
+            cRot.x = (tv - ship.rVel.x) / ship.effectiveRot.x;
+            // oT = false;
+        }
+        if(eRot.y > tRot.y + 0.1 || eRot.y < tRot.y - 0.1) {
+            float tv = getDiff(tRot.y, eRot.y, 360) / 2f;
+            // dRot2.y = tv*2f;
+            // print(tv + ", " + pID(tv));
+            tv = Mathf.Clamp(pID(tv)*rG, -15, 15);
+            tRotVel.y = tv;
+            cRot.y = (tv - ship.rVel.y) / ship.effectiveRot.y;
+            // oT = false;
+        }
+        if(eRot.z > tRot.z + 0.1 || eRot.z < tRot.z - 0.1) {
+            float tv = getDiff(tRot.z, eRot.z, 360) / 2f;
+            // dRot2.z = tv*2f;
+            tv = Mathf.Clamp(pID(tv)*rG, -15, 15);
+            tRotVel.z = tv;
+            // print("e=" + eRot.z + ", tv=" + tv);
+            cRot.z = (tv - ship.rVel.z) / ship.effectiveRot.z;
+            // oT = false;
         }
 
         // Update the last position of the target transform
@@ -242,9 +284,9 @@ public class AutoPilot : MonoBehaviour {
         Vector3 trDir = cThrust.x * shipT.forward;
         trDir += cThrust.y * shipT.up;
         trDir += cThrust.z * shipT.right;
-        Gizmos.color = ((goToPos&&!goToTransform)?Color.yellow:Color.blue);
-        Gizmos.DrawLine(shipT.position, targetPos);
-        Gizmos.DrawSphere(targetPos, 0.1f);
+        Gizmos.color = (goToPos&&!goToTransform)?Color.yellow:Color.blue;
+        Gizmos.DrawLine(shipT.position, FloatingOrigin.WorldToFloating(targetPos));
+        Gizmos.DrawSphere(FloatingOrigin.WorldToFloating(targetPos), 0.1f);
         if(targetTrans != null) {
             Gizmos.color = goToTransform?Color.yellow:Color.blue;
             // Gizmos.color = (goToTransform?Color.yellow:Color.blue);

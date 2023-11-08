@@ -15,7 +15,7 @@ public class Ship : Entity {
     /// <summary>
     /// Parent body
     /// </summary>
-    private Satellite cSat;
+    public Satellite cSat;
 
     /// <summary>
     /// Current velocity of the ship (m/s)
@@ -64,22 +64,41 @@ public class Ship : Entity {
     void Update() {
         engineArray.updateAccl(effectiveAccl, mass);
 
+    }
+
+    void FixedUpdate() {
+
         // if(orbit.parent!=null) {
         //     Vector3 dPos = transform.position - pPos;
-        //     dPos /= Time.deltaTime;
+        //     dPos /= Time.fixedDeltaTime;
         //     vel = dPos;
         //     pPos = transform.position;
         // } else {
-        vel += accl * Time.deltaTime;
+        if(cSat != null) {
+            Vector3 dir = cSat.transform.position - transform.position;
+            float dist = dir.magnitude;
+            float satMass = 6.673e-11f*(cSat.surfaceGravity*(cSat.radius*cSat.radius));
+            // accl += dir.normalized * grav/(dist*dist);
+            accl += dir.normalized * (6.673e-11f*((satMass)/(dist * dist)));
+        }
+        vel += accl * Time.fixedDeltaTime;
         accl = Vector3.zero;
+        if(vel.magnitude > 10) {
+            // float oSpd = vel.magnitude - 1000;
+            vel -= vel * Mathf.Pow(vel.magnitude/10000f, 2) * Time.fixedDeltaTime;
+        }
+        if(vel.magnitude > 1e10) {
+            Debug.LogError("TOO FAST!");
+            vel = Vector3.zero;
+        }
         Vector3 mVel = new Vector3(vel.x,vel.y,vel.z);
         // if(cSat != null) {
         //     mVel -= cSat.getVel();
         // }
-        transform.position += mVel * Time.deltaTime;
+        transform.position += mVel * Time.fixedDeltaTime;
 
-        rVel += rAccl * Time.deltaTime;
-        transform.Rotate(rVel * Time.deltaTime);
+        rVel += rAccl * Time.fixedDeltaTime;
+        transform.Rotate(rVel * Time.fixedDeltaTime);
     }
 
     // Called when this object stays in a collider
@@ -95,11 +114,11 @@ public class Ship : Entity {
         Satellite nSat = other.GetComponent<Satellite>();
         if(nSat != null && cSat == nSat) {
             // print("Adding: " + vel + " + " + cSat.getVel());
-            vel += cSat.getVel();
+            // vel += cSat.getVel();
             cSat = null;
             // orbit.parent = null;
             // transform.SetParent(null);
-            transform.parent = null;
+            // transform.parent = null;
             // vel += nSat.getVel();
         }
     }
@@ -111,38 +130,39 @@ public class Ship : Entity {
     private void checkCollider(Collider other) {
         Satellite nSat = other.GetComponent<Satellite>();
         if(nSat != null && nSat != cSat) {
+            Debug.Log("Entering SOI");
             if(cSat == null) {
                 cSat = nSat;
                 // print("Subtracting: " + vel + " - " + cSat.getVel());
-                vel -= cSat.getVel();
+                // vel -= cSat.getVel();
                 // newOrbit();
                 // parent object
                 // transform.SetParent(other.transform);
-                transform.parent = other.transform;
+                // transform.parent = other.transform;
                 // vel -= nSat.getVel();
             } else {
                 if(cSat.sOI > nSat.sOI) {
                     // print("Adding: " + vel + " + " + cSat.getVel());
-                    vel += cSat.getVel();
+                    // vel += cSat.getVel();
                     cSat = nSat;
                     // print("Subtracting: " + vel + " - " + cSat.getVel());
-                    vel -= cSat.getVel();
+                    // vel -= cSat.getVel();
                     // newOrbit();
                     // parent object
                     // transform.SetParent(other.transform);
-                    transform.parent = other.transform;
+                    // transform.parent = other.transform;
                     // vel -= nSat.getVel();
                 } else {
                     if(Vector3.Distance(transform.position, cSat.transform.position) > cSat.sOI) {
                         // print("Adding: " + vel + " + " + cSat.getVel());
-                        vel += cSat.getVel();
+                        // vel += cSat.getVel();
                         cSat = nSat;
                         // print("Subtracting: " + vel + " - " + cSat.getVel());
-                        vel -= cSat.getVel();
+                        // vel -= cSat.getVel();
                         // newOrbit();
                         // parent object
                         // transform.SetParent(other.transform);
-                        transform.parent = other.transform;
+                        // transform.parent = other.transform;
                         // vel -= nSat.getVel();
                     }
                 }

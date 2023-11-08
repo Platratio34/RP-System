@@ -28,15 +28,23 @@ public class GravityArea : MonoBehaviour {
     }
 
     void OnTriggerEnter(Collider other) {
-        Entity ent = (Entity)Interactable.GetInteractable(other.gameObject);
-        if(ent != null) {
+        Interactable intr = Interactable.GetInteractable(other.gameObject);
+        if(!(intr is Entity)) {
+            return;
+        }
+        Entity ent = (Entity)intr;
+        if(ent != null && ent.GetComponent<Rigidbody>() && !entities.ContainsKey(ent.entityId)) {
             entities.Add(ent.entityId, ent);
         }
     }
     
     void OnTriggerExit(Collider other){
-        Entity ent = (Entity)Interactable.GetInteractable(other.gameObject);
-        if(ent != null) {
+        Interactable intr = Interactable.GetInteractable(other.gameObject);
+        if(!(intr is Entity)) {
+            return;
+        }
+        Entity ent = (Entity)intr;
+        if(ent != null && entities.ContainsKey(ent.entityId)) {
             entities.Remove(ent.entityId);
             if(ent.gravitySource == this) {
                 ent.gravitySource = null;

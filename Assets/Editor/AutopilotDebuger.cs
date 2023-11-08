@@ -52,14 +52,25 @@ public class AutopilotDebuger : EditorWindow {
         }
         GUILayout.EndHorizontal();
 
-        if(aP.atTarget) GUILayout.Label("At Target!");
-        if(aP.goToPos || aP.goToTransform) EditorGUILayout.FloatField("Distance To Target", aP.distToTarget);
-        if(aP.goToPos || aP.goToTransform) EditorGUILayout.Vector3Field("Target Lateral Velocity"+(aP.dRot2.magnitude>1?(", "+(Mathf.Floor(aP.dRot2.magnitude*10f)/10f)+" m away"):""), aP.tLatVel);
+        string tooFast = "";
+        if(aP.cThrust.x < -1) {
+            tooFast = " [Too Fast!]";
+        }
+
+        if(aP.atTarget) GUILayout.Label("At Dest!");
+        if(aP.goToPos || aP.goToTransform) EditorGUILayout.FloatField("Distance To Dest", aP.distToTarget);
+        if(aP.goToTransform) EditorGUILayout.Vector3Field("Dest Velocity", aP.tVel);
+        if(aP.goToTransform) GUILayout.Label("Dest Speed: " + (aP.tVel.magnitude).ToString("0.0") + " m/s");
+        // if(aP.goToTransform) EditorGUILayout.FloatField("Target Relative Speed", aP.tRSpeed);
+        if(aP.goToTransform) GUILayout.Label("Dest Relative Velocity: " + (aP.tRSpeed).ToString("+0.0;-0.0") + " m/s");
+        if(aP.goToTransform) GUILayout.Label("dSpeed: " + (aP.tRSpeed - aP.tLatVel.x).ToString("+0.0;-0.0") + " m/s");
+        if(aP.goToTransform) GUILayout.Label("Target Speed: " + (aP.ts).ToString("0.0") + " m/s");
+        if(aP.goToPos || aP.goToTransform) EditorGUILayout.Vector3Field("Target Lateral Velocity"+(aP.dRot2.magnitude>1?(", "+(Mathf.Floor(aP.dRot2.magnitude*10f)/10f)+"d away"):""), aP.tLatVel);
         if(aP.goToPos || aP.goToRot || aP.goToTransform) EditorGUILayout.Vector3Field("Target Rotational Velocity", aP.tRotVel);
         if(aP.goToPos || aP.goToRot || aP.goToTransform) EditorGUILayout.Vector3Field("Target Rotation", aP.tRot);
         if(aP.goToPos || aP.goToTransform) EditorGUILayout.Vector3Field("Diffrence in Position", aP.dPos);
         if(aP.goToRot || aP.goToTransform) EditorGUILayout.Vector3Field("Diffrence in Rotation", aP.dRot);
-        EditorGUILayout.Vector3Field("Current Thrusting", aP.cThrust);
+        EditorGUILayout.Vector3Field("Current Thrusting"+tooFast, aP.cThrust);
         EditorGUILayout.Vector3Field("Current Rotating", aP.cRot);
         SaveToSaver();
     }

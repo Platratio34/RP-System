@@ -52,5 +52,12 @@
         "ProjectSettings/":true,
         "temp/":true,
         "Temp/":true
-    }
+    },
+    "cSpell.words": [
+        "Behaviour",
+        "inited",
+        "Mathf",
+        "Prograde"
+    ],
+    "dotnet.preferCSharpExtension": true
 }

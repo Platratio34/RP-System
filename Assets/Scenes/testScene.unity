@@ -1045,32 +1045,8 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 5723097154966896345, guid: 723d6ab6592a7c74eb6a2245269422ea, type: 3}
-      propertyPath: m_CollisionDetection
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5723097155876729314, guid: 723d6ab6592a7c74eb6a2245269422ea, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5723097155876729317, guid: 723d6ab6592a7c74eb6a2245269422ea, type: 3}
       propertyPath: m_TargetDisplay
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5723097155876729317, guid: 723d6ab6592a7c74eb6a2245269422ea, type: 3}
-      propertyPath: near clip plane
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5723097155876729317, guid: 723d6ab6592a7c74eb6a2245269422ea, type: 3}
-      propertyPath: m_BackGroundColor.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5723097155876729317, guid: 723d6ab6592a7c74eb6a2245269422ea, type: 3}
-      propertyPath: m_BackGroundColor.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5723097155876729317, guid: 723d6ab6592a7c74eb6a2245269422ea, type: 3}
-      propertyPath: m_BackGroundColor.r
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6289769596280629605, guid: 723d6ab6592a7c74eb6a2245269422ea, type: 3}
@@ -1104,10 +1080,6 @@ PrefabInstance:
     - target: {fileID: 8061528105085629780, guid: 723d6ab6592a7c74eb6a2245269422ea, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8077934781295907845, guid: 723d6ab6592a7c74eb6a2245269422ea, type: 3}
-      propertyPath: m_PlaneDistance
-      value: 0.11
       objectReference: {fileID: 0}
     - target: {fileID: 8289233685182777438, guid: 723d6ab6592a7c74eb6a2245269422ea, type: 3}
       propertyPath: m_AnchorMax.y
@@ -1314,6 +1286,7 @@ MonoBehaviour:
   gravitySource: {fileID: 0}
   editableEntity: 1
   orbit: {fileID: 0}
+  cSat: {fileID: 0}
   vel: {x: 0, y: 0, z: 0}
   accl: {x: 0, y: 0, z: 0}
   rVel: {x: 0, y: 0, z: 0}
@@ -1489,7 +1462,7 @@ MonoBehaviour:
   sameRot: 0
   distToTransform: 0
   flatZ: 1
-  tLatVel: {x: 6.998747, y: 0, z: 0}
+  tLatVel: {x: 5.5181837, y: 0, z: 0}
   tRotVel: {x: 0, y: 0.40504676, z: 0}
   tRot: {x: -0, y: 158.75108, z: 0}
   distToTarget: 38.022404
@@ -1497,9 +1470,11 @@ MonoBehaviour:
   dRot: {x: 0, y: -158.58824, z: 0}
   dRot2: {x: 0, y: 0.1628418, z: 0}
   ship: {fileID: 402827620}
-  cThrust: {x: 6.998747, y: 0, z: 0}
+  cThrust: {x: 5.5181837, y: 0, z: 0}
   cRot: {x: 0, y: 0.010126169, z: 0}
   atTarget: 0
+  tVel: {x: 0, y: 0, z: 0}
+  tRSpeed: 0
 --- !u!114 &423264482
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3300,73 +3275,6 @@ Transform:
   m_Father: {fileID: 402827621}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &881593558 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5723097155876729319, guid: 723d6ab6592a7c74eb6a2245269422ea, type: 3}
-  m_PrefabInstance: {fileID: 287822578}
-  m_PrefabAsset: {fileID: 0}
---- !u!108 &881593562
-Light:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 881593558}
-  m_Enabled: 0
-  serializedVersion: 10
-  m_Type: 0
-  m_Shape: 0
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
-  m_Range: 30
-  m_SpotAngle: 120
-  m_InnerSpotAngle: 6
-  m_CookieSize: 10
-  m_Shadows:
-    m_Type: 1
-    m_Resolution: -1
-    m_CustomResolution: -1
-    m_Strength: 1
-    m_Bias: 0.05
-    m_NormalBias: 0.4
-    m_NearPlane: 0.2
-    m_CullingMatrixOverride:
-      e00: 1
-      e01: 0
-      e02: 0
-      e03: 0
-      e10: 0
-      e11: 1
-      e12: 0
-      e13: 0
-      e20: 0
-      e21: 0
-      e22: 1
-      e23: 0
-      e30: 0
-      e31: 0
-      e32: 0
-      e33: 1
-    m_UseCullingMatrixOverride: 0
-  m_Cookie: {fileID: 0}
-  m_DrawHalo: 0
-  m_Flare: {fileID: 0}
-  m_RenderMode: 0
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RenderingLayerMask: 1
-  m_Lightmapping: 4
-  m_LightShadowCasterMode: 0
-  m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 0
-  m_ColorTemperature: 6570
-  m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
-  m_UseBoundingSphereOverride: 0
-  m_UseViewFrustumForShadowCasterCull: 1
-  m_ShadowRadius: 0
-  m_ShadowAngle: 0
 --- !u!1 &1011686735
 GameObject:
   m_ObjectHideFlags: 0

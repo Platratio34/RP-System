@@ -8,6 +8,8 @@ using System;
 [ExecuteInEditMode]
 public class Satellite : Entity {
 
+    public static float timeScale = 0.05f;
+
     public Satellite parent;
     /// <value>The altitude of the orbit.</value>
     // public float orbitalAlt;
@@ -23,6 +25,8 @@ public class Satellite : Entity {
     public float offset;
     public float sOI;
     public float mass = 1f;
+    public float surfaceGravity = 1f;
+    public float radius = 1000;
     public Orbit orbit;
     public bool disp = true;
     public bool dispPoints = false;
@@ -84,7 +88,7 @@ public class Satellite : Entity {
         cVel = transform.position - lpos;
         lpos = transform.position;
         cVel /= Time.deltaTime;
-        orbitalPos += Time.fixedDeltaTime;
+        orbitalPos += Time.fixedDeltaTime * timeScale;
         orbitalPos %= orbit.period;
         if(parent != null) {
             Vector3 p = orbit.GetPointA( (orbitalPos/orbit.period) + offset);
@@ -147,6 +151,7 @@ public class Satellite : Entity {
         return GetOrbitPoint(t, foc, off , true);
     }
     public Vector3 GetOrbitPoint(float t, bool foc, bool off, bool f) {
+        // t *= timeScale;
         t %= orbit.period;
         if(parent != null && !(orbit == null || !orbit.inited || orbit.period <= 0)) {
             if(focus && foc && f) {
@@ -210,7 +215,7 @@ public class Satellite : Entity {
 
     public void CalulateOrbit(Vector3 vel) {
         if(parent == null) {
-            Debug.LogError("Satellite must have parent to calulate orbit");
+            Debug.LogError("Satellite must have parent to calculate orbit");
             return;
         }
         float mu = parent.mass * 6.674f * Mathf.Pow(10, -11);
@@ -327,7 +332,7 @@ public class Orbit {
                 }
             }
             if(period == 0) {
-                Debug.LogWarning("You should set the period of the orbit before calulating the orbit");
+                Debug.LogWarning("You should set the period of the orbit before calculating the orbit");
                 period = 1;
             }
             inited = true;
@@ -337,7 +342,7 @@ public class Orbit {
             }
         } else {
             if(debug) {
-                Debug.LogError("Didn't calulate orbit of altitde 0");
+                Debug.LogError("Didn't calculate orbit of altitude 0");
             }
         }
     }
@@ -446,13 +451,13 @@ public class Orbit {
             a *= aPos.Length;
             a %= aPos.Length;
             if(a == Single.PositiveInfinity  || a == Single.NaN) {
-                Debug.LogError("Infinity or NaN value for point not alowed! a=" + a);
+                Debug.LogError("Infinity or NaN value for point not allowed! a=" + a);
                 return Vector3.zero;
             }
             int i = (int)a;
             float t = a - i;
             if(i < 0) {
-                Debug.LogError("Negative value for point not alowed! i=" + i + ", a=" + a);
+                Debug.LogError("Negative value for point not allowed! i=" + i + ", a=" + a);
                 return Vector3.zero;
             } else if(i > aPos.Length) {
                 Debug.LogError("Value for point too big! i=" + i + ", max=" + (aPos.Length - 1) );
